@@ -9,6 +9,7 @@ import ClassiTabelle.Dipendente;
 import ClassiTabelle.Sede;
 import Errori.ErroreDipendente;
 import Errori.ErroreDipendenteCentro;
+import Errori.ErroreDipendenteRuolo;
 import Errori.ErroreGenerico;
 import Errori.ErroreSede;
 
@@ -21,6 +22,8 @@ public class Controller {
 	static SetDipendente SetDipendente1 = new SetDipendente();
 	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
 	static ErroreDipendenteCentro ErroreDipendenteCentro1 = new ErroreDipendenteCentro();
+	static ErroreDipendenteRuolo ErroreDipendenteRuolo1 = new ErroreDipendenteRuolo();
+	
 	
 	public static void main(String[] args) {
 		
@@ -94,6 +97,14 @@ public class Controller {
 	
 	public static void ScompareErroreDipendenteCentro() {
 		ErroreDipendenteCentro1.setVisible(false);
+	}
+	
+	public static void AppareErroreDipendenteRuolo() {
+		ErroreDipendenteRuolo1.setVisible(true);
+	}
+	
+	public static void ScompareErroreDipendenteRuolo() {
+		ErroreDipendenteRuolo1.setVisible(false);
 	}
 	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE

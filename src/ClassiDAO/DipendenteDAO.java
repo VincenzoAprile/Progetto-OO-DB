@@ -47,7 +47,9 @@ public class DipendenteDAO {
 						Controller.AppareErroreDipendenteCentro();
 					}
 					else if (e.getSQLState().equals("23514")){
-						System.out.println(e.getSQLState());
+						System.out.println("Il ruolo inserito non esiste!");
+						Controller.AppareErroreDipendenteRuolo();
+						
 					}
 						
 				}
