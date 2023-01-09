@@ -34,6 +34,12 @@ public class AddNew extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtCosaVuoiAggiungere = new JTextField();
+		txtCosaVuoiAggiungere.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ScopareAddNew();
+			}
+		});
 		txtCosaVuoiAggiungere.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtCosaVuoiAggiungere.setText("Cosa Vuoi Aggiungere?");
 		txtCosaVuoiAggiungere.setBounds(62, 46, 257, 65);
@@ -49,8 +55,19 @@ public class AddNew extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(98, 259, 201, 93);
+		btnNewButton.setBounds(51, 259, 201, 93);
 		contentPane.add(btnNewButton);
+		
+		JButton NuovoDipendente = new JButton("Nuovo Dipendente");
+		NuovoDipendente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ScopareAddNew();
+				Controller.AppareSetDipendente();
+			}
+		});
+		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		NuovoDipendente.setBounds(362, 261, 176, 93);
+		contentPane.add(NuovoDipendente);
 	}
-
 }

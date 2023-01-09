@@ -1,11 +1,11 @@
 package ClassiGUI;
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ClassiDAO.SedeDAO;
 import ClassiTabelle.Sede;
 import PackageController.Controller;
 
@@ -24,7 +24,7 @@ public class SetSede extends JFrame {
 	private JTextField TextNomeCentro;
 	private JTextField TextIDCentro;
 
-	Sede temp = new Sede();
+	private Sede temp = new Sede();
 	/**
 	 * Create the frame.
 	 */
@@ -77,7 +77,7 @@ public class SetSede extends JFrame {
 				Controller.ScompareSetSede();
 				Controller.AppareMainGUI();
 				
-				Controller.PassaPerIlDAO(temp);
+				Controller.PassaPerIlSedeDAO(temp);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 22));

@@ -1,11 +1,16 @@
 package PackageController;
+import ClassiDAO.DipendenteDAO;
 import ClassiDAO.SedeDAO;
 import ClassiGUI.AddNew;
-import ClassiGUI.ErroreGenerico;
-import ClassiGUI.ErroreSede;
 import ClassiGUI.MainGUI;
+import ClassiGUI.SetDipendente;
 import ClassiGUI.SetSede;
+import ClassiTabelle.Dipendente;
 import ClassiTabelle.Sede;
+import Errori.ErroreDipendente;
+import Errori.ErroreDipendenteCentro;
+import Errori.ErroreGenerico;
+import Errori.ErroreSede;
 
 public class Controller {
 	static MainGUI Principale = new MainGUI();
@@ -13,6 +18,9 @@ public class Controller {
 	static SetSede SetSede1 = new SetSede();
 	static ErroreGenerico ErroreGenerico1 = new ErroreGenerico();
 	static ErroreSede ErroreSede1 = new ErroreSede();
+	static SetDipendente SetDipendente1 = new SetDipendente();
+	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
+	static ErroreDipendenteCentro ErroreDipendenteCentro1 = new ErroreDipendenteCentro();
 	
 	public static void main(String[] args) {
 		
@@ -64,11 +72,38 @@ public class Controller {
 		ErroreSede1.setVisible(true);
 	}
 	
+	public static void AppareSetDipendente() {
+		SetDipendente1.setVisible(true);
+	}
+	
+	public static void ScompareSetDipendente() {
+		SetDipendente1.setVisible(false);
+	}
+	
+	public static void AppareErroreDipendente() {
+		ErroreDipendente1.setVisible(true);
+	}
+	
+	public static void ScompareErroreDipendente() {
+		ErroreDipendente1.setVisible(false);
+	}
+	
+	public static void AppareErroreDipendenteCentro() {
+		ErroreDipendenteCentro1.setVisible(true);
+	}
+	
+	public static void ScompareErroreDipendenteCentro() {
+		ErroreDipendenteCentro1.setVisible(false);
+	}
 	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
-	public static void PassaPerIlDAO(Sede foo) {
+	public static void PassaPerIlSedeDAO(Sede foo) {
 		SedeDAO.PushSede(foo);
+	}
+	
+	public static void PassaPerIlDipendenteDAO(Dipendente foo) {
+		DipendenteDAO.PushDipendente(foo);
 	}
 	
 	

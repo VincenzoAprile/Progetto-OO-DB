@@ -1,4 +1,4 @@
-package ClassiGUI;
+package Errori;
 
 import java.awt.EventQueue;
 
@@ -14,20 +14,19 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
-
-public class ErroreGenerico extends JFrame {
+public class ErroreSede extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtQualcosaAndato;
+	private JTextField txtGiEsisteUna;
 
 	
+
 	/**
 	 * Create the frame.
 	 */
-	public ErroreGenerico() {
+	public ErroreSede() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 706, 386);
+		setBounds(100, 100, 615, 441);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -38,18 +37,18 @@ public class ErroreGenerico extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreGenerico();
+				Controller.ScompareErroreSede();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnNewButton.setBounds(267, 266, 119, 38);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton.setBounds(268, 284, 85, 41);
 		contentPane.add(btnNewButton);
 		
-		txtQualcosaAndato = new JTextField();
-		txtQualcosaAndato.setFont(new Font("Tahoma", Font.PLAIN, 33));
-		txtQualcosaAndato.setText("Qualcosa è andato storto!");
-		txtQualcosaAndato.setBounds(99, 94, 468, 101);
-		contentPane.add(txtQualcosaAndato);
-		txtQualcosaAndato.setColumns(10);
+		txtGiEsisteUna = new JTextField();
+		txtGiEsisteUna.setText("Già esiste una sede con quell'ID!");
+		txtGiEsisteUna.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		txtGiEsisteUna.setBounds(43, 102, 500, 144);
+		contentPane.add(txtGiEsisteUna);
+		txtGiEsisteUna.setColumns(10);
 	}
 }

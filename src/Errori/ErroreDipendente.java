@@ -1,4 +1,4 @@
-package ClassiGUI;
+package Errori;
 
 import java.awt.EventQueue;
 
@@ -8,47 +8,48 @@ import javax.swing.border.EmptyBorder;
 
 import PackageController.Controller;
 
-import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Font;
+import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreSede extends JFrame {
+public class ErroreDipendente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtGiEsisteUna;
+	private JTextField txtGiEsisteUn;
 
 	
-
 	/**
 	 * Create the frame.
 	 */
-	public ErroreSede() {
+	public ErroreDipendente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 615, 441);
+		setBounds(100, 100, 642, 414);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("ok");
+		txtGiEsisteUn = new JTextField();
+		txtGiEsisteUn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtGiEsisteUn.setText("Già esiste un dipendente con quell'id");
+		txtGiEsisteUn.setEditable(false);
+		txtGiEsisteUn.setBounds(58, 36, 419, 84);
+		contentPane.add(txtGiEsisteUn);
+		txtGiEsisteUn.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Ok");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreSede();
+				Controller.ScompareErroreDipendente();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(268, 284, 85, 41);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 34));
+		btnNewButton.setBounds(204, 217, 140, 62);
 		contentPane.add(btnNewButton);
-		
-		txtGiEsisteUna = new JTextField();
-		txtGiEsisteUna.setText("Già esiste una sede con quell'ID!");
-		txtGiEsisteUna.setFont(new Font("Tahoma", Font.PLAIN, 33));
-		txtGiEsisteUna.setBounds(43, 102, 500, 144);
-		contentPane.add(txtGiEsisteUna);
-		txtGiEsisteUna.setColumns(10);
 	}
+
 }
