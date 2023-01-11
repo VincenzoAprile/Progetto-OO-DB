@@ -33,19 +33,6 @@ public class AddNew extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtCosaVuoiAggiungere = new JTextField();
-		txtCosaVuoiAggiungere.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
-			}
-		});
-		txtCosaVuoiAggiungere.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtCosaVuoiAggiungere.setText("Cosa Vuoi Aggiungere?");
-		txtCosaVuoiAggiungere.setBounds(62, 46, 257, 65);
-		contentPane.add(txtCosaVuoiAggiungere);
-		txtCosaVuoiAggiungere.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Nuova Sede");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -81,5 +68,13 @@ public class AddNew extends JFrame {
 		btnNuovaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNuovaTartaruga.setBounds(635, 259, 176, 93);
 		contentPane.add(btnNuovaTartaruga);
+		
+		txtCosaVuoiAggiungere = new JTextField();
+		txtCosaVuoiAggiungere.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		txtCosaVuoiAggiungere.setText("Cosa Vuoi Aggiungere?");
+		txtCosaVuoiAggiungere.setEditable(false);
+		txtCosaVuoiAggiungere.setBounds(36, 31, 420, 63);
+		contentPane.add(txtCosaVuoiAggiungere);
+		txtCosaVuoiAggiungere.setColumns(10);
 	}
 }

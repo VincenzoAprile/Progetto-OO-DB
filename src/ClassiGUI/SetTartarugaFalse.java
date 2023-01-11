@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import ClassiTabelle.AmmissioneTartaruga;
+import PackageController.Controller;
+
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -46,7 +48,11 @@ public class SetTartarugaFalse extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				temp.setNome(Nome.getText());
 				temp.setTarghetta(Targhetta.getText());
+				Controller.AppareMainGUI();
 				
+				Controller.PassaPerIlTartarugaDAO(temp);
+				
+				Controller.ScompareSetTartarugaFalse();
 			}
 		});
 		btnNewButton.setBounds(350, 271, 173, 70);

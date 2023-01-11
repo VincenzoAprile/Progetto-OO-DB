@@ -1,4 +1,5 @@
 package PackageController;
+import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.SedeDAO;
 import ClassiGUI.AddNew;
@@ -12,9 +13,12 @@ import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.Dipendente;
 import ClassiTabelle.Sede;
 import Errori.ErroreDipendente;
-import Errori.ErroreDipendenteCentro;
+import Errori.ErroreCentroNonEsiste;
+import Errori.ErroreDataNonValida;
 import Errori.ErroreDipendenteRuolo;
 import Errori.ErroreGenerico;
+import Errori.ErroreIDAmmissione;
+import Errori.ErroreIDTartaruga;
 import Errori.ErroreSede;
 
 public class Controller {
@@ -25,11 +29,14 @@ public class Controller {
 	static ErroreSede ErroreSede1 = new ErroreSede();
 	static SetDipendente SetDipendente1 = new SetDipendente();
 	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
-	static ErroreDipendenteCentro ErroreDipendenteCentro1 = new ErroreDipendenteCentro();
+	static ErroreCentroNonEsiste ErroreCentroNonEsiste1 = new ErroreCentroNonEsiste();
 	static ErroreDipendenteRuolo ErroreDipendenteRuolo1 = new ErroreDipendenteRuolo();
 	static SetAmmissione SetAmmissione1 = new SetAmmissione();
 	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
 	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
+	static ErroreIDAmmissione ErroreIDAmmissione1 = new ErroreIDAmmissione();
+	static ErroreDataNonValida ErroreDataNonValida1 = new ErroreDataNonValida();
+	static ErroreIDTartaruga ErroreIDTartaruga1 = new ErroreIDTartaruga();
 	
 	
 	public static void main(String[] args) {
@@ -98,12 +105,12 @@ public class Controller {
 		ErroreDipendente1.setVisible(false);
 	}
 	
-	public static void AppareErroreDipendenteCentro() {
-		ErroreDipendenteCentro1.setVisible(true);
+	public static void AppareErroreCentroNonEsiste() {
+		ErroreCentroNonEsiste1.setVisible(true);
 	}
 	
-	public static void ScompareErroreDipendenteCentro() {
-		ErroreDipendenteCentro1.setVisible(false);
+	public static void ScompareErroreCentroNonEsiste() {
+		ErroreCentroNonEsiste1.setVisible(false);
 	}
 	
 	public static void AppareErroreDipendenteRuolo() {
@@ -138,6 +145,30 @@ public class Controller {
 		SetTartarugaFalse1.setVisible(false);
 	}
 	
+	public static void AppareErroreIDAmmissione() {
+		ErroreIDAmmissione1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDAmmissione() {
+		ErroreIDAmmissione1.setVisible(false);
+	}
+	
+	public static void AppareErroreDataNonValida() {
+		ErroreDataNonValida1.setVisible(true);
+	}
+	
+	public static void ScompareErroreDataNonValida() {
+		ErroreDataNonValida1.setVisible(false);
+	}
+	
+	public static void AppareErroreIDTartaruga() {
+		ErroreIDTartaruga1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDTartaruga() {
+		ErroreIDTartaruga1.setVisible(false);
+	}
+	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
 	public static void PassaPerIlSedeDAO(Sede foo) {
@@ -148,7 +179,15 @@ public class Controller {
 		DipendenteDAO.PushDipendente(foo);
 	}
 	
-	//METODO PER PASSARE NEI SETTARTARUGA
+	public static void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
+		AmmissioneTartarugaDAO.pushAmmissione(foo);
+	}
+	
+	public static void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
+		AmmissioneTartarugaDAO.pushTartaruga(foo);
+	}
+	
+	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
 	
 	public static void ControllerPassaTartarugaTrue(AmmissioneTartaruga foo) {
 		SetTartarugaTrue.PassaASetTartarugaTrue(foo);

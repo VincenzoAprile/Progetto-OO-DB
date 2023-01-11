@@ -90,6 +90,7 @@ public class SetAmmissione extends JFrame {
 					Controller.ControllerPassaTartarugaFalse(temp);
 					Controller.ScompareSetAmmissione();
 					Controller.AppareSetTartarugaFalse();
+					Controller.PassaPerIlAmmissioneDAO(temp);
 				}
 			}
 		});
