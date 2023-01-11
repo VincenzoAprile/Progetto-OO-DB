@@ -3,8 +3,12 @@ import ClassiDAO.DipendenteDAO;
 import ClassiDAO.SedeDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.MainGUI;
+import ClassiGUI.SetAmmissione;
 import ClassiGUI.SetDipendente;
 import ClassiGUI.SetSede;
+import ClassiGUI.SetTartarugaFalse;
+import ClassiGUI.SetTartarugaTrue;
+import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.Dipendente;
 import ClassiTabelle.Sede;
 import Errori.ErroreDipendente;
@@ -23,6 +27,9 @@ public class Controller {
 	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
 	static ErroreDipendenteCentro ErroreDipendenteCentro1 = new ErroreDipendenteCentro();
 	static ErroreDipendenteRuolo ErroreDipendenteRuolo1 = new ErroreDipendenteRuolo();
+	static SetAmmissione SetAmmissione1 = new SetAmmissione();
+	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
+	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
 	
 	
 	public static void main(String[] args) {
@@ -107,6 +114,30 @@ public class Controller {
 		ErroreDipendenteRuolo1.setVisible(false);
 	}
 	
+	public static void AppareSetAmmissione() {
+		SetAmmissione1.setVisible(true);
+	}
+	
+	public static void ScompareSetAmmissione() {
+		SetAmmissione1.setVisible(false);
+	}
+	
+	public static void AppareSetTartarugaTrue() {
+		SetTartarugaTrue1.setVisible(true);
+	}
+	
+	public static void ScompareSetTartarugaTrue() {
+		SetTartarugaTrue1.setVisible(false);
+	}
+	
+	public static void AppareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(true);
+	}
+	
+	public static void ScompareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(false);
+	}
+	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
 	public static void PassaPerIlSedeDAO(Sede foo) {
@@ -117,6 +148,15 @@ public class Controller {
 		DipendenteDAO.PushDipendente(foo);
 	}
 	
+	//METODO PER PASSARE NEI SETTARTARUGA
 	
+	public static void ControllerPassaTartarugaTrue(AmmissioneTartaruga foo) {
+		SetTartarugaTrue.PassaASetTartarugaTrue(foo);
+	}
+	
+	public static void ControllerPassaTartarugaFalse(AmmissioneTartaruga foo) {
+		SetTartarugaFalse.PassaASetTartarugaFalse(foo);
+		
+	}
 	
 }

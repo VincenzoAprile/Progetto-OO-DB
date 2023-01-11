@@ -69,5 +69,17 @@ public class AddNew extends JFrame {
 		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		NuovoDipendente.setBounds(362, 261, 176, 93);
 		contentPane.add(NuovoDipendente);
+		
+		JButton btnNuovaTartaruga = new JButton("Nuova Tartaruga");
+		btnNuovaTartaruga.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ScopareAddNew();
+				Controller.AppareSetAmmissione();
+			}
+		});
+		btnNuovaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNuovaTartaruga.setBounds(635, 259, 176, 93);
+		contentPane.add(btnNuovaTartaruga);
 	}
 }
