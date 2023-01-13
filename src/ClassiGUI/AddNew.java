@@ -37,36 +37,36 @@ public class AddNew extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
+				Controller.ScompareAddNew();
 				Controller.AppareSetSede();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(51, 259, 201, 93);
+		btnNewButton.setBounds(36, 177, 201, 93);
 		contentPane.add(btnNewButton);
 		
 		JButton NuovoDipendente = new JButton("Nuovo Dipendente");
 		NuovoDipendente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
+				Controller.ScompareAddNew();
 				Controller.AppareSetDipendente();
 			}
 		});
 		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		NuovoDipendente.setBounds(362, 261, 176, 93);
+		NuovoDipendente.setBounds(346, 177, 176, 93);
 		contentPane.add(NuovoDipendente);
 		
 		JButton btnNuovaTartaruga = new JButton("Nuova Tartaruga");
 		btnNuovaTartaruga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
+				Controller.ScompareAddNew();
 				Controller.AppareSetAmmissione();
 			}
 		});
 		btnNuovaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNuovaTartaruga.setBounds(635, 259, 176, 93);
+		btnNuovaTartaruga.setBounds(646, 177, 176, 93);
 		contentPane.add(btnNuovaTartaruga);
 		
 		txtCosaVuoiAggiungere = new JTextField();
@@ -76,5 +76,17 @@ public class AddNew extends JFrame {
 		txtCosaVuoiAggiungere.setBounds(36, 31, 420, 63);
 		contentPane.add(txtCosaVuoiAggiungere);
 		txtCosaVuoiAggiungere.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("Nuova Cartella Clinica");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareSetDocumentazione();
+				Controller.ScompareAddNew();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1.setBounds(346, 347, 176, 93);
+		contentPane.add(btnNewButton_1);
 	}
 }

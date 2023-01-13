@@ -69,15 +69,35 @@ public class SetSede extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				temp.setContatti(TextContatti.getText());
-				temp.setIDCentro(TextIDCentro.getText());
-				temp.setIndirizzo(TextIndirizzo.getText());
-				temp.setNomeCentro(TextNomeCentro.getText());
 				
-				Controller.ScompareSetSede();
-				Controller.AppareMainGUI();
+				//L'IF VERIFICA CHE NON CI SIANO CASELLE LASCIATE VUOTE
+				if (TextIndirizzo.getText().equals("") || TextContatti.getText().equals("")
+				|| TextNomeCentro.getText().equals("") || TextIDCentro.getText().equals("")) {
+					Controller.ScompareSetSede();
+					Controller.AppareMainGUI();
+					Controller.AppareErroreGenerico();
+					
+					TextIndirizzo.setText("");
+					TextContatti.setText("");
+					TextNomeCentro.setText("");
+					TextIDCentro.setText("");
+				}
+				else {
+					temp.setContatti(TextContatti.getText());
+					temp.setIDCentro(TextIDCentro.getText());
+					temp.setIndirizzo(TextIndirizzo.getText());
+					temp.setNomeCentro(TextNomeCentro.getText());
 				
-				Controller.PassaPerIlSedeDAO(temp);
+					Controller.ScompareSetSede();
+					Controller.AppareMainGUI();
+				
+					Controller.PassaPerIlSedeDAO(temp);
+				
+					TextIndirizzo.setText("");
+					TextContatti.setText("");
+					TextNomeCentro.setText("");
+					TextIDCentro.setText("");
+				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 22));

@@ -2,10 +2,12 @@ package ClassiGUI;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiTabelle.AmmissioneTartaruga;
 import PackageController.Controller;
 
@@ -46,13 +48,27 @@ public class SetTartarugaFalse extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				temp.setNome(Nome.getText());
-				temp.setTarghetta(Targhetta.getText());
-				Controller.AppareMainGUI();
 				
-				Controller.PassaPerIlTartarugaDAO(temp);
-				
-				Controller.ScompareSetTartarugaFalse();
+				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
+				if (Nome.getText().equals("") || Targhetta.getText().equals("")) {
+					Controller.AppareMainGUI();
+					Controller.ScompareSetTartarugaFalse();
+					Controller.AppareErroreGenerico();
+					AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(temp);
+					Nome.setText("");
+					Targhetta.setText("");
+				}
+				else {
+					temp.setNome(Nome.getText());
+					temp.setTarghetta(Targhetta.getText());
+					Controller.AppareMainGUI();
+					
+					Controller.PassaPerIlTartarugaDAO(temp);
+					
+					Controller.ScompareSetTartarugaFalse();
+					Nome.setText("");
+					Targhetta.setText("");
+				}
 			}
 		});
 		btnNewButton.setBounds(350, 271, 173, 70);

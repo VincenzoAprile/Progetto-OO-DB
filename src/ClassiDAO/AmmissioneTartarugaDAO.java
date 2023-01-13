@@ -2,6 +2,7 @@ package ClassiDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -110,6 +111,7 @@ public class AmmissioneTartarugaDAO {
 					}
 					
 					else {
+						e.printStackTrace();
 						Controller.AppareErroreGenerico();
 						AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(boh);
 						
@@ -145,4 +147,38 @@ public class AmmissioneTartarugaDAO {
 				}
 		
 	}
+	public static String CercaNomeTartaruga (String boh) { 
+
+		String query = "SELECT Nome FROM Tartaruga WHERE Targhetta = '"+boh+"';"; 
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();    
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				return result.getString(1);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 }
+
+

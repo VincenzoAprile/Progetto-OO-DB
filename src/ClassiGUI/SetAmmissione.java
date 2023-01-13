@@ -23,6 +23,7 @@ public class SetAmmissione extends JFrame {
 	private JTextField Data;
 	private JTextField IDAmmissione;
 	private JTextField Centro;
+	private JRadioButton Riammissione;
 
 	AmmissioneTartaruga temp = new AmmissioneTartaruga();
 	
@@ -74,23 +75,45 @@ public class SetAmmissione extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				temp.setDataDiAmmissione(Data.getText());
-				temp.setIDAmmssione(IDAmmissione.getText());
-				temp.setCentro(Centro.getText());
-				
-				
-				if (Riammissione.isSelected()) {
-					temp.setRiammissione("TRUE");
-					Controller.ControllerPassaTartarugaTrue(temp);
+				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
+				if (Centro.getText().equals("") || IDAmmissione.getText().equals("") || Centro.getText().equals("")) {
 					Controller.ScompareSetAmmissione();
-					Controller.AppareSetTartarugaTrue();
+					Controller.AppareMainGUI();
+					Controller.AppareErroreGenerico();
+					
+					Centro.setText("");
+					IDAmmissione.setText("");
+					Data.setText("");
 				}
 				else {
-					temp.setRiammissione("FALSE");
-					Controller.ControllerPassaTartarugaFalse(temp);
-					Controller.ScompareSetAmmissione();
-					Controller.AppareSetTartarugaFalse();
-					Controller.PassaPerIlAmmissioneDAO(temp);
+					temp.setDataDiAmmissione(Data.getText());
+					temp.setIDAmmssione(IDAmmissione.getText());
+					temp.setCentro(Centro.getText());
+					
+					
+					if (Riammissione.isSelected()) {
+						temp.setRiammissione("TRUE");
+						Controller.ControllerPassaTartarugaTrue(temp);
+						Controller.ScompareSetAmmissione();
+						Controller.AppareSetTartarugaTrue();
+						Controller.PassaPerIlAmmissioneDAO(temp);
+						
+						Centro.setText("");
+						IDAmmissione.setText("");
+						Data.setText("");
+						Riammissione.doClick();
+					}
+					else {
+						temp.setRiammissione("FALSE");
+						Controller.ControllerPassaTartarugaFalse(temp);
+						Controller.ScompareSetAmmissione();
+						Controller.AppareSetTartarugaFalse();
+						Controller.PassaPerIlAmmissioneDAO(temp);
+						
+						Centro.setText("");
+						IDAmmissione.setText("");
+						Data.setText("");
+					}
 				}
 			}
 		});
