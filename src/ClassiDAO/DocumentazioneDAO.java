@@ -6,15 +6,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import ClassiTabelle.Dipendente;
+import ClassiTabelle.Documentazione;
 import PackageController.Controller;
 
-public class DipendenteDAO {
-	public static void PushDipendente (Dipendente boh) {
+public class DocumentazioneDAO {
+	
+	public static void pushDocumentazione(Documentazione boh) {
 		
-		
-		String query = "INSERT INTO PERSONALE"
-				+ " VALUES ('"+boh.getMatricola()+"','"+boh.getNome()+"','"+boh.getCognome()+"','"+boh.getRuolo()+"','"+boh.getCentro()+"');"; 
+		String query = "INSERT INTO DOCUMENTAZIONE VALUES "
+					+ "('"+boh.getVeterinario()+"','"+boh.getLuogoDiRitrovamento()+"','"+boh.getData()+"','"+boh.getIDDocumentazione()+"','"
+					+boh.getEtichetta()+"');";
 				//DEFINIZIONE DELLA QUERY
 				try {
 					Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
@@ -36,25 +37,28 @@ public class DipendenteDAO {
 					con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
-						System.out.println("Hai inserito un id già assegnato a un altro dipendente");
-						Controller.AppareErroreDipendente();
+						System.out.println("Hai inserito un id già assegnato a un altra documentazione");
+						Controller.AppareMainGUI();
+						Controller.AppareErroreIDDocumentazione();
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
 					}
-					else if (e.getSQLState().equals("23503")){
-						System.out.println("Il centro inserito non esiste!");
-						Controller.AppareErroreCentroNonEsiste();
+					else if (e.getSQLState().equals("23503")) {
+						System.out.println("Quella tartaruga non esiste");
+						Controller.AppareMainGUI();
+						Controller.AppareErroreTartarugaNonEsiste();
 					}
-					else if (e.getSQLState().equals("23514")){
-						System.out.println("Il ruolo inserito non esiste!");
-						Controller.AppareErroreDipendenteRuolo();	
+					else if (e.getSQLState().equals("P0001")) {
+						System.out.println("Il Veterinario inserito non corrisponde a un veterinario presente nella sede corrispondente");
+						System.out.println("Oppure la data inserita non è valida (Deve essere SUCCESSIVA alla data di ammissione della tartaruga corrispondente)");
+						Controller.AppareMainGUI();
+						Controller.AppareErroreVeterinarioOrData();
 					}
 					else {
-						System.out.println("Errore!");
+						Controller.AppareMainGUI();
 						Controller.AppareErroreGenerico();
 					}
-						
 				}
 	}
 

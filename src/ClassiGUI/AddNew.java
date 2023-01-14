@@ -33,41 +33,60 @@ public class AddNew extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtCosaVuoiAggiungere = new JTextField();
-		txtCosaVuoiAggiungere.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
-			}
-		});
-		txtCosaVuoiAggiungere.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtCosaVuoiAggiungere.setText("Cosa Vuoi Aggiungere?");
-		txtCosaVuoiAggiungere.setBounds(62, 46, 257, 65);
-		contentPane.add(txtCosaVuoiAggiungere);
-		txtCosaVuoiAggiungere.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Nuova Sede");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
+				Controller.ScompareAddNew();
 				Controller.AppareSetSede();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(51, 259, 201, 93);
+		btnNewButton.setBounds(36, 177, 201, 93);
 		contentPane.add(btnNewButton);
 		
 		JButton NuovoDipendente = new JButton("Nuovo Dipendente");
 		NuovoDipendente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScopareAddNew();
+				Controller.ScompareAddNew();
 				Controller.AppareSetDipendente();
 			}
 		});
 		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		NuovoDipendente.setBounds(362, 261, 176, 93);
+		NuovoDipendente.setBounds(346, 177, 176, 93);
 		contentPane.add(NuovoDipendente);
+		
+		JButton btnNuovaTartaruga = new JButton("Nuova Tartaruga");
+		btnNuovaTartaruga.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ScompareAddNew();
+				Controller.AppareSetAmmissione();
+			}
+		});
+		btnNuovaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNuovaTartaruga.setBounds(646, 177, 176, 93);
+		contentPane.add(btnNuovaTartaruga);
+		
+		txtCosaVuoiAggiungere = new JTextField();
+		txtCosaVuoiAggiungere.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		txtCosaVuoiAggiungere.setText("Cosa Vuoi Aggiungere?");
+		txtCosaVuoiAggiungere.setEditable(false);
+		txtCosaVuoiAggiungere.setBounds(36, 31, 420, 63);
+		contentPane.add(txtCosaVuoiAggiungere);
+		txtCosaVuoiAggiungere.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("Nuova Cartella Clinica");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareSetDocumentazione();
+				Controller.ScompareAddNew();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1.setBounds(346, 347, 176, 93);
+		contentPane.add(btnNewButton_1);
 	}
 }

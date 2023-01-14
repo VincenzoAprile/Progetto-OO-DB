@@ -1,17 +1,31 @@
 package PackageController;
+import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiDAO.DipendenteDAO;
+import ClassiDAO.DocumentazioneDAO;
 import ClassiDAO.SedeDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.MainGUI;
+import ClassiGUI.SetAmmissione;
 import ClassiGUI.SetDipendente;
+import ClassiGUI.SetDocumentazione;
 import ClassiGUI.SetSede;
+import ClassiGUI.SetTartarugaFalse;
+import ClassiGUI.SetTartarugaTrue;
+import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.Dipendente;
+import ClassiTabelle.Documentazione;
 import ClassiTabelle.Sede;
 import Errori.ErroreDipendente;
-import Errori.ErroreDipendenteCentro;
+import Errori.ErroreCentroNonEsiste;
+import Errori.ErroreDataNonValida;
 import Errori.ErroreDipendenteRuolo;
 import Errori.ErroreGenerico;
+import Errori.ErroreIDAmmissione;
+import Errori.ErroreIDDocumentazione;
+import Errori.ErroreIDTartaruga;
 import Errori.ErroreSede;
+import Errori.ErroreTartarugaNonEsiste;
+import Errori.ErroreVeterinarioOrData;
 
 public class Controller {
 	static MainGUI Principale = new MainGUI();
@@ -21,8 +35,18 @@ public class Controller {
 	static ErroreSede ErroreSede1 = new ErroreSede();
 	static SetDipendente SetDipendente1 = new SetDipendente();
 	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
-	static ErroreDipendenteCentro ErroreDipendenteCentro1 = new ErroreDipendenteCentro();
+	static ErroreCentroNonEsiste ErroreCentroNonEsiste1 = new ErroreCentroNonEsiste();
 	static ErroreDipendenteRuolo ErroreDipendenteRuolo1 = new ErroreDipendenteRuolo();
+	static SetAmmissione SetAmmissione1 = new SetAmmissione();
+	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
+	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
+	static ErroreIDAmmissione ErroreIDAmmissione1 = new ErroreIDAmmissione();
+	static ErroreDataNonValida ErroreDataNonValida1 = new ErroreDataNonValida();
+	static ErroreIDTartaruga ErroreIDTartaruga1 = new ErroreIDTartaruga();
+	static SetDocumentazione SetDocumentazione1 = new SetDocumentazione();
+	static ErroreIDDocumentazione ErroreIDDocumentazione1 = new ErroreIDDocumentazione();
+	static ErroreVeterinarioOrData ErroreVeterinarioOrData1 = new ErroreVeterinarioOrData();
+	static ErroreTartarugaNonEsiste ErroreTartarugaNonEsiste1 = new ErroreTartarugaNonEsiste();
 	
 	
 	public static void main(String[] args) {
@@ -47,7 +71,7 @@ public class Controller {
 	public static void AppareAddNew(){
 		AddNew1.setVisible(true); 
 	}
-	public static void ScopareAddNew() {
+	public static void ScompareAddNew() {
 		AddNew1.setVisible(false);
 	}
 	
@@ -91,12 +115,12 @@ public class Controller {
 		ErroreDipendente1.setVisible(false);
 	}
 	
-	public static void AppareErroreDipendenteCentro() {
-		ErroreDipendenteCentro1.setVisible(true);
+	public static void AppareErroreCentroNonEsiste() {
+		ErroreCentroNonEsiste1.setVisible(true);
 	}
 	
-	public static void ScompareErroreDipendenteCentro() {
-		ErroreDipendenteCentro1.setVisible(false);
+	public static void ScompareErroreCentroNonEsiste() {
+		ErroreCentroNonEsiste1.setVisible(false);
 	}
 	
 	public static void AppareErroreDipendenteRuolo() {
@@ -105,6 +129,86 @@ public class Controller {
 	
 	public static void ScompareErroreDipendenteRuolo() {
 		ErroreDipendenteRuolo1.setVisible(false);
+	}
+	
+	public static void AppareSetAmmissione() {
+		SetAmmissione1.setVisible(true);
+	}
+	
+	public static void ScompareSetAmmissione() {
+		SetAmmissione1.setVisible(false);
+	}
+	
+	public static void AppareSetTartarugaTrue() {
+		SetTartarugaTrue1.setVisible(true);
+	}
+	
+	public static void ScompareSetTartarugaTrue() {
+		SetTartarugaTrue1.setVisible(false);
+	}
+	
+	public static void AppareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(true);
+	}
+	
+	public static void ScompareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(false);
+	}
+	
+	public static void AppareErroreIDAmmissione() {
+		ErroreIDAmmissione1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDAmmissione() {
+		ErroreIDAmmissione1.setVisible(false);
+	}
+	
+	public static void AppareErroreDataNonValida() {
+		ErroreDataNonValida1.setVisible(true);
+	}
+	
+	public static void ScompareErroreDataNonValida() {
+		ErroreDataNonValida1.setVisible(false);
+	}
+	
+	public static void AppareErroreIDTartaruga() {
+		ErroreIDTartaruga1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDTartaruga() {
+		ErroreIDTartaruga1.setVisible(false);
+	}
+	
+	public static void AppareSetDocumentazione() {
+		SetDocumentazione1.setVisible(true);
+	}
+	
+	public static void ScompareSetDocumentazione() {
+		SetDocumentazione1.setVisible(false);
+	}
+	
+	public static void AppareErroreIDDocumentazione() {
+		ErroreIDDocumentazione1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDDocumentazione() {
+		ErroreIDDocumentazione1.setVisible(false);
+	}
+	
+	public static void AppareErroreVeterinarioOrData() {
+		ErroreVeterinarioOrData1.setVisible(true);
+	}
+	
+	public static void ScompareErroreVeterinarioOrData() {
+		ErroreVeterinarioOrData1.setVisible(true);
+	}
+	
+	public static void AppareErroreTartarugaNonEsiste() {
+		ErroreTartarugaNonEsiste1.setVisible(true);
+	}
+	
+	public static void ScompareErroreTartarugaNonEsiste() {
+		ErroreTartarugaNonEsiste1.setVisible(false);
 	}
 	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
@@ -117,6 +221,30 @@ public class Controller {
 		DipendenteDAO.PushDipendente(foo);
 	}
 	
+	public static void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
+		AmmissioneTartarugaDAO.pushAmmissione(foo);
+	}
 	
+	public static void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
+		AmmissioneTartarugaDAO.pushTartaruga(foo);
+	}
+	
+	public static void PassaPerIlDocumentazioneDAO(Documentazione foo) {
+		DocumentazioneDAO.pushDocumentazione(foo);
+	}
+	
+	
+	
+	
+	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
+	
+	public static void ControllerPassaTartarugaTrue(AmmissioneTartaruga foo) {
+		SetTartarugaTrue.PassaASetTartarugaTrue(foo);
+	}
+	
+	public static void ControllerPassaTartarugaFalse(AmmissioneTartaruga foo) {
+		SetTartarugaFalse.PassaASetTartarugaFalse(foo);
+		
+	}
 	
 }

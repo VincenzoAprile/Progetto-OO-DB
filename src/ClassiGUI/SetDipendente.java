@@ -52,16 +52,39 @@ public class SetDipendente extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				temp.setCentro(Centro.getText());
-				temp.setCognome(Cognome.getText());
-				temp.setMatricola(Matricola.getText());
-				temp.setNome(Nome.getText());
-				temp.setRuolo(Ruolo.getText());
 				
-				Controller.ScompareSetDipendente();
-				Controller.AppareMainGUI();
+				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
+				if (Matricola.getText().equals("") || Nome.getText().equals("") || Cognome.getText().equals("") 
+				|| Ruolo.getText().equals("") || Centro.getText().equals("")) {
+					
+					Controller.ScompareSetDipendente();
+					Controller.AppareMainGUI();
+					Controller.AppareErroreGenerico();
+					
+					Matricola.setText("");
+					Nome.setText("");
+					Cognome.setText("");
+					Ruolo.setText("");
+					Centro.setText("");
+				}
+				else {
+					temp.setCentro(Centro.getText());
+					temp.setCognome(Cognome.getText());
+					temp.setMatricola(Matricola.getText());
+					temp.setNome(Nome.getText());
+					temp.setRuolo(Ruolo.getText());
 				
-				Controller.PassaPerIlDipendenteDAO(temp);
+					Controller.ScompareSetDipendente();
+					Controller.AppareMainGUI();
+				
+					Controller.PassaPerIlDipendenteDAO(temp);
+				
+					Matricola.setText("");
+					Nome.setText("");
+					Cognome.setText("");
+					Ruolo.setText("");
+					Centro.setText("");
+				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));

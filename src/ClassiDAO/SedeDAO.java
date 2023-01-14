@@ -39,6 +39,9 @@ public class SedeDAO {
 			else if (e.getSQLState().equals("02000")){
 				System.out.println("Operazione avvenuta con successo");
 			}
+			else {
+				Controller.AppareErroreGenerico();
+			}
 		}
 	
 		

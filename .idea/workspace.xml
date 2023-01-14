@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="48bf2d89-c2ec-470f-8c44-09476d6ea928" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiDAO/DipendenteDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiDAO/SedeDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/AddNew$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/AddNew$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/AddNew$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/AddNew.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/MainGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/MainGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/SetDipendente$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/SetDipendente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/SetSede$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiGUI/SetSede.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiTabelle/Dipendente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ClassiTabelle/Sede.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreDipendente$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreDipendente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreDipendenteRuolo$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreDipendenteRuolo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreGenerico$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreGenerico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreSede$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Errori/ErroreSede.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PackageController/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiDAO/AmmissioneTartarugaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiDAO/DipendenteDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiDAO/SedeDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/AddNew.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/MainGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/SetAmmissione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/SetDipendente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/SetSede.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/SetTartarugaFalse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiGUI/SetTartarugaTrue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiTabelle/AmmissioneTartaruga.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiTabelle/Dipendente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClassiTabelle/Sede.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreCentroNonEsiste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreDataNonValida.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreDipendente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreDipendenteRuolo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreGenerico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreIDAmmissione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreIDTartaruga.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Errori/ErroreSede.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PackageController/Controller.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2KCJ26GCLuE588YLEsMkSeFEIdu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/dell/Desktop/Progetto OO-BD/Programma OOBD",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48bf2d89-c2ec-470f-8c44-09476d6ea928" name="Changes" comment="" />
+      <created>1673472422927</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673472422927</updated>
+      <workItem from="1673472424850" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

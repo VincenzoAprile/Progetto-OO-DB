@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreDipendenteCentro extends JFrame {
+public class ErroreCentroNonEsiste extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtIlCentroInserito;
@@ -23,7 +23,7 @@ public class ErroreDipendenteCentro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ErroreDipendenteCentro() {
+	public ErroreCentroNonEsiste() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 831, 446);
 		contentPane = new JPanel();
@@ -44,7 +44,7 @@ public class ErroreDipendenteCentro extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreDipendenteCentro();
+				Controller.ScompareErroreCentroNonEsiste();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
