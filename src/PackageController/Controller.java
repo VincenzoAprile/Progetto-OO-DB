@@ -1,18 +1,20 @@
 package PackageController;
 import ClassiDAO.AmmissioneTartarugaDAO;
-
+import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
 import ClassiDAO.SedeDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.MainGUI;
 import ClassiGUI.SetAmmissione;
+import ClassiGUI.SetCartellaClinica;
 import ClassiGUI.SetDipendente;
 import ClassiGUI.SetDocumentazione;
 import ClassiGUI.SetSede;
 import ClassiGUI.SetTartarugaFalse;
 import ClassiGUI.SetTartarugaTrue;
 import ClassiTabelle.AmmissioneTartaruga;
+import ClassiTabelle.CartellaClinica;
 import ClassiTabelle.Dipendente;
 import ClassiTabelle.Documentazione;
 import ClassiTabelle.Sede;
@@ -20,11 +22,14 @@ import Errori.ErroreDipendente;
 import Errori.ErroreCentroNonEsiste;
 import Errori.ErroreDataNonValida;
 import Errori.ErroreDipendenteRuolo;
+import Errori.ErroreFloatCartellaClinica;
 import Errori.ErroreGenerico;
 import Errori.ErroreIDAmmissione;
+import Errori.ErroreIDCartellaClinica;
 import Errori.ErroreIDDocumentazione;
 import Errori.ErroreIDTartaruga;
 import Errori.ErroreSede;
+import Errori.ErroreStatoTartaruga;
 import Errori.ErroreTartarugaNonEsiste;
 import Errori.ErroreVeterinarioOrData;
 
@@ -48,18 +53,19 @@ public class Controller {
 	static ErroreIDDocumentazione ErroreIDDocumentazione1 = new ErroreIDDocumentazione();
 	static ErroreVeterinarioOrData ErroreVeterinarioOrData1 = new ErroreVeterinarioOrData();
 	static ErroreTartarugaNonEsiste ErroreTartarugaNonEsiste1 = new ErroreTartarugaNonEsiste();
-	
+	static SetCartellaClinica SetCartellaClinica1 = new SetCartellaClinica();
+	static ErroreIDCartellaClinica ErroreIDCartellaClinica1 = new ErroreIDCartellaClinica(); 
+	static ErroreFloatCartellaClinica ErroreFloatCartellaClinica1 = new ErroreFloatCartellaClinica();
+	static ErroreStatoTartaruga ErroreStatoTartaruga1 = new ErroreStatoTartaruga();
 	
 	public static void main(String[] args) {
 		
 		
 		AppareMainGUI();
 		
-	
-		
-		
 
 	}
+	
 	//CREZIONE METODI PER FAR APPARIRE E SCOMPARIRE I VARI PEZZI DI GUI
 	public static void AppareMainGUI(){
 		Principale.setVisible(true); 
@@ -212,6 +218,38 @@ public class Controller {
 		ErroreTartarugaNonEsiste1.setVisible(false);
 	}
 	
+	public static void AppareSetCartellaClinica() {
+		SetCartellaClinica1.setVisible(true);
+	}
+	
+	public static void ScompareSetCartellaClinica() {
+		SetCartellaClinica1.setVisible(false);
+	}
+	
+	public static void AppareErroreIDCartellaClinica() {
+		ErroreIDCartellaClinica1.setVisible(true);
+	}
+	
+	public static void ScompareErroreIDCartellaClinica() {
+		ErroreIDCartellaClinica1.setVisible(false);
+	}
+	
+	public static void AppareErroreFloatCartellaClinica() {
+		ErroreFloatCartellaClinica1.setVisible(true);
+	}
+	
+	public static void ScompareErroreFloatCartellaClinica() {
+		ErroreFloatCartellaClinica1.setVisible(false);
+	}
+	
+	public static void AppareErroreStatoTartaruga() {
+		ErroreStatoTartaruga1.setVisible(true);
+	}
+	
+	public static void ScompareErroreStatoTartaruga() {
+		ErroreStatoTartaruga1.setVisible(false);
+	}
+	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
 	public static void PassaPerIlSedeDAO(Sede foo) {
@@ -234,6 +272,9 @@ public class Controller {
 		DocumentazioneDAO.pushDocumentazione(foo);
 	}
 	
+	public static void PassaPerIlCartellaClinicaDAO(CartellaClinica foo) {
+		CartellaClinicaDAO.pushCartellaClinica(foo);
+	}
 	
 	
 	

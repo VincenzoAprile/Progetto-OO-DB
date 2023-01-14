@@ -128,6 +128,14 @@ public class SetDocumentazione extends JFrame {
 					
 					Controller.ScompareSetDocumentazione();
 					Controller.PassaPerIlDocumentazioneDAO(temp);
+					
+					Anno.setText("");
+					Mese.setText("");
+					Giorno.setText("");
+					Etichetta.setText("");
+					IDDocumentazione.setText("");
+					Luogo.setText("");
+					Veterinario.setText("");
 				}
 				
 				
