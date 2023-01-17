@@ -14,41 +14,41 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreDipendente extends JFrame {
+public class ErroreDimesioneVasca extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtGiEsisteUn;
+	private JTextField txtInUnoDelle;
 
 	
 	/**
 	 * Create the frame.
 	 */
-	public ErroreDipendente() {
+	public ErroreDimesioneVasca() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 642, 414);
+		setBounds(100, 100, 929, 548);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtGiEsisteUn = new JTextField();
-		txtGiEsisteUn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtGiEsisteUn.setText("Già esiste un dipendente con quell'id");
-		txtGiEsisteUn.setEditable(false);
-		txtGiEsisteUn.setBounds(58, 36, 419, 84);
-		contentPane.add(txtGiEsisteUn);
-		txtGiEsisteUn.setColumns(10);
+		txtInUnoDelle = new JTextField();
+		txtInUnoDelle.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		txtInUnoDelle.setEditable(false);
+		txtInUnoDelle.setText("In uno delle dimensioni della vasca hai inserito un dato non valido!");
+		txtInUnoDelle.setBounds(10, 10, 859, 86);
+		contentPane.add(txtInUnoDelle);
+		txtInUnoDelle.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ok");
+		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		btnNewButton.setBounds(204, 217, 140, 62);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNewButton.setBounds(323, 254, 187, 86);
 		contentPane.add(btnNewButton);
 	}
 

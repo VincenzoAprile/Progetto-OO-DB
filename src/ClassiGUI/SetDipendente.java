@@ -57,15 +57,11 @@ public class SetDipendente extends JFrame {
 				if (Matricola.getText().equals("") || Nome.getText().equals("") || Cognome.getText().equals("") 
 				|| Ruolo.getText().equals("") || Centro.getText().equals("")) {
 					
-					Controller.ScompareSetDipendente();
+					setVisible(false);
 					Controller.AppareMainGUI();
 					Controller.AppareErroreGenerico();
 					
-					Matricola.setText("");
-					Nome.setText("");
-					Cognome.setText("");
-					Ruolo.setText("");
-					Centro.setText("");
+					
 				}
 				else {
 					temp.setCentro(Centro.getText());
@@ -74,16 +70,13 @@ public class SetDipendente extends JFrame {
 					temp.setNome(Nome.getText());
 					temp.setRuolo(Ruolo.getText());
 				
-					Controller.ScompareSetDipendente();
+					setVisible(false);
+					
 					Controller.AppareMainGUI();
 				
 					Controller.PassaPerIlDipendenteDAO(temp);
 				
-					Matricola.setText("");
-					Nome.setText("");
-					Cognome.setText("");
-					Ruolo.setText("");
-					Centro.setText("");
+					
 				}
 			}
 		});

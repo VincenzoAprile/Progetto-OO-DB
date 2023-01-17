@@ -1,5 +1,6 @@
 package ClassiDAO;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import ClassiTabelle.Sede;
@@ -47,4 +48,25 @@ public class SedeDAO {
 		
 		
 	}
+
+	public static ArrayList ViewSedi() {
+		ArrayList<Sede> temp = new ArrayList<Sede>();
+		Sede sede1 = new Sede();
+		Sede sede2 = new Sede();
+		sede1.setContatti("boh");
+		sede1.setIDCentro("bah");
+		sede1.setIndirizzo("beh");
+		sede1.setNomeCentro("buh");
+		sede2.setContatti("qui");
+		sede2.setIDCentro("quo");
+		sede2.setIndirizzo("qua");
+		sede2.setNomeCentro("paperino");
+		
+		temp.add(sede1);
+		temp.add(sede2);
+		
+		return temp;
+	}
 }
+
+

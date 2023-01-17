@@ -52,11 +52,10 @@ public class SetTartarugaFalse extends JFrame {
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
 				if (Nome.getText().equals("") || Targhetta.getText().equals("")) {
 					Controller.AppareMainGUI();
-					Controller.ScompareSetTartarugaFalse();
+					setVisible(false);
 					Controller.AppareErroreGenerico();
-					AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(temp);
-					Nome.setText("");
-					Targhetta.setText("");
+					Controller.AmmissioneIndebita(temp);
+					
 				}
 				else {
 					temp.setNome(Nome.getText());
@@ -65,9 +64,7 @@ public class SetTartarugaFalse extends JFrame {
 					
 					Controller.PassaPerIlTartarugaDAO(temp);
 					
-					Controller.ScompareSetTartarugaFalse();
-					Nome.setText("");
-					Targhetta.setText("");
+					setVisible(false);
 				}
 			}
 		});

@@ -14,41 +14,42 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreDipendente extends JFrame {
+public class ErroreVascaTartaruga extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtGiEsisteUn;
+	private JTextField txtLaTarghettaO;
 
 	
+
 	/**
 	 * Create the frame.
 	 */
-	public ErroreDipendente() {
+	public ErroreVascaTartaruga() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 642, 414);
+		setBounds(100, 100, 918, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtGiEsisteUn = new JTextField();
-		txtGiEsisteUn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtGiEsisteUn.setText("Già esiste un dipendente con quell'id");
-		txtGiEsisteUn.setEditable(false);
-		txtGiEsisteUn.setBounds(58, 36, 419, 84);
-		contentPane.add(txtGiEsisteUn);
-		txtGiEsisteUn.setColumns(10);
+		txtLaTarghettaO = new JTextField();
+		txtLaTarghettaO.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txtLaTarghettaO.setText("La targhetta o l'id della vasca non sono stati inseriti correttamente");
+		txtLaTarghettaO.setEditable(false);
+		txtLaTarghettaO.setBounds(10, 10, 842, 96);
+		contentPane.add(txtLaTarghettaO);
+		txtLaTarghettaO.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ok");
+		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		btnNewButton.setBounds(204, 217, 140, 62);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNewButton.setBounds(320, 287, 206, 78);
 		contentPane.add(btnNewButton);
 	}
 

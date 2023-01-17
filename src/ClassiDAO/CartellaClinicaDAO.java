@@ -43,22 +43,22 @@ public class CartellaClinicaDAO {
 					}
 					else if (e.getSQLState().equals("23505")) {
 						System.out.println("Esiste già una cartella clinica con quell'id");
-						DocumentazioneDAO.CancellaDocumentazioneIndebita(boh.getDocumentazione());
+						Controller.DocumentazioneIndebita(boh.getDocumentazione());
 						Controller.AppareErroreIDCartellaClinica();
 					}
 					else if (e.getSQLState().equals("42703")) {
 						System.out.println("In Lunghezza, Larghezza e peso devi inserire dei valori validi!");
-						DocumentazioneDAO.CancellaDocumentazioneIndebita(boh.getDocumentazione());
+						Controller.DocumentazioneIndebita(boh.getDocumentazione());
 						Controller.AppareErroreFloatCartellaClinica();
 					}
 					else if (e.getSQLState().equals("23514")) {
 						System.out.println("Per favore nelle parti del corpo della tartaruga inserire solo espressioni valide");
-						DocumentazioneDAO.CancellaDocumentazioneIndebita(boh.getDocumentazione());
+						Controller.DocumentazioneIndebita(boh.getDocumentazione());
 						Controller.AppareErroreStatoTartaruga();
 					}
 					else {
 						System.out.println(e.getSQLState());
-						DocumentazioneDAO.CancellaDocumentazioneIndebita(boh.getDocumentazione());
+						Controller.DocumentazioneIndebita(boh.getDocumentazione());
 						Controller.AppareErroreGenerico();
 					}
 					

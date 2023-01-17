@@ -142,24 +142,12 @@ public class SetCartellaClinica extends JFrame {
 				if(Specie.getText().equals("") || IDCartellaClinica.getText().equals("") || Lunghezza.getText().equals("") || 
 				   Larghezza.getText().equals("") || Peso.getText().equals("")) {
 					
-					Controller.ScompareSetCartellaClinica();
+					setVisible(false);
 					Controller.AppareMainGUI();
 					Controller.AppareErroreGenerico();
 					
-					Specie.setText("");
-					IDCartellaClinica.setText("");
-					Becco.setText("");
-					Coda.setText("");
-					Collo.setText("");
-					Larghezza.setText("");
-					Lunghezza.setText("");
-					Peso.setText("");
-					Naso.setText("");
-					Occhi.setText("");
-					Pinne.setText("");
-					Testa.setText("");
 					
-					DocumentazioneDAO.CancellaDocumentazioneIndebita(Documentazione);
+					Controller.DocumentazioneIndebita(Documentazione);
 				}
 				else {
 					temp.setBecco(Becco.getText());
@@ -176,23 +164,12 @@ public class SetCartellaClinica extends JFrame {
 					temp.setTesta(Testa.getText());
 					temp.setDocumentazione(Documentazione);
 					
-					Controller.ScompareSetCartellaClinica();
+					setVisible(false);
 					Controller.AppareMainGUI();
 					
 					Controller.PassaPerIlCartellaClinicaDAO(temp);
 					
-					Specie.setText("");
-					IDCartellaClinica.setText("");
-					Becco.setText("");
-					Coda.setText("");
-					Collo.setText("");
-					Larghezza.setText("");
-					Lunghezza.setText("");
-					Peso.setText("");
-					Naso.setText("");
-					Occhi.setText("");
-					Pinne.setText("");
-					Testa.setText("");
+					
 				}
 			}
 		});
