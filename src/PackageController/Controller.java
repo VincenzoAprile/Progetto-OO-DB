@@ -42,6 +42,9 @@ import Errori.ErroreVeterinarioOrData;
 
 public class Controller {
 	
+	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
+	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
+	
 	//IL MAIN FA PARTIRE IL PROGRAMMA
 	public static void main(String[] args) {
 		
@@ -103,12 +106,18 @@ public class Controller {
 	}
 	
 	public static void AppareSetTartarugaTrue() {
-		SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
 		SetTartarugaTrue1.setVisible(true);
 	}
 	
+	public static void ScompareSetTartarugaTrue() {
+		SetTartarugaTrue1.setVisible(false);
+	}
+	
+	public static void ScompareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(false);
+	}
+	
 	public static void AppareSetTartarugaFalse() {
-		SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
 		SetTartarugaFalse1.setVisible(true);
 	}
 	

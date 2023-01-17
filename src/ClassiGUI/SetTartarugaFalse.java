@@ -56,6 +56,9 @@ public class SetTartarugaFalse extends JFrame {
 					Controller.AppareErroreGenerico();
 					Controller.AmmissioneIndebita(temp);
 					
+					Nome.setText("");
+					Targhetta.setText("");
+					
 				}
 				else {
 					temp.setNome(Nome.getText());
@@ -65,6 +68,9 @@ public class SetTartarugaFalse extends JFrame {
 					Controller.PassaPerIlTartarugaDAO(temp);
 					
 					setVisible(false);
+					
+					Nome.setText("");
+					Targhetta.setText("");
 				}
 			}
 		});
