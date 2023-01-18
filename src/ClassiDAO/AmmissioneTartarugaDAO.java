@@ -42,7 +42,7 @@ public class AmmissioneTartarugaDAO {
 						Controller.ScompareSetTartarugaFalse();
 						Controller.ScompareSetTartarugaTrue();
 						Controller.AppareMainGUI();
-						Controller.AppareErroreIDAmmissione();
+						Controller.AppareErroreSpecifico("Già esiste un'ammissione con quell'id!");
 					}
 					else if (e.getSQLState().equals("23503")) {
 						System.out.println(e.getSQLState());
@@ -51,7 +51,7 @@ public class AmmissioneTartarugaDAO {
 						Controller.ScompareSetTartarugaFalse();
 						Controller.ScompareSetTartarugaTrue();
 						Controller.AppareMainGUI();
-						Controller.AppareErroreCentroNonEsiste();
+						Controller.AppareErroreSpecifico("Il centro inserito non esiste!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");	
@@ -62,7 +62,7 @@ public class AmmissioneTartarugaDAO {
 						Controller.ScompareSetTartarugaFalse();
 						Controller.ScompareSetTartarugaTrue();
 						Controller.AppareMainGUI();
-						Controller.AppareErroreDataNonValida();
+						Controller.AppareErroreSpecifico("Data inserita non valida!");
 					}
 					else {
 						Controller.ScompareSetTartarugaFalse();
@@ -78,7 +78,7 @@ public class AmmissioneTartarugaDAO {
 
 		
 		String query1 = "INSERT INTO TARTARUGA"
-				+ " VALUES ('"+boh.getNome()+"','"+boh.getTarghetta()+"','"+boh.getIDAmmissione()+"');"; 
+				+ " VALUES ('"+boh.getNome()+"','"+boh.getIDTartaruga()+"','"+boh.getTarghetta()+"','"+boh.getIDAmmissione()+"');"; 
 				//DEFINIZIONE DELLA QUERY
 				try {
 					Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
@@ -109,12 +109,14 @@ public class AmmissioneTartarugaDAO {
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");	
 					}
-					
-					else {
-						e.printStackTrace();
-						Controller.AppareErroreGenerico();
+					else if(e.getSQLState().equals("P0001")) {
+						System.out.println("La targhetta è già presente nel database");
+						Controller.AppareErroreTarghettaEsistente();
 						AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(boh);
-						
+					}
+					else {
+						System.out.println(e.getSQLState());
+						AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(boh);
 					}
 				}
 		
@@ -150,7 +152,7 @@ public class AmmissioneTartarugaDAO {
 	
 	public static String CercaNomeTartaruga (String boh) { 
 
-		String query = "SELECT Nome FROM Tartaruga WHERE Targhetta = '"+boh+"';"; 
+		String query = "SELECT Nome FROM Tartaruga WHERE Targhetta = '"+boh+"' GROUP BY Nome;"; 
 		try {
 			Class.forName("org.postgresql.Driver"); 
 		} catch (ClassNotFoundException e) {

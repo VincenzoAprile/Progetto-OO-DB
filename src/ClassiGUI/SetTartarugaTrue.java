@@ -23,8 +23,8 @@ public class SetTartarugaTrue extends JFrame {
 
 	static AmmissioneTartaruga temp = new AmmissioneTartaruga();
 	private JTextField txtVecchiaTarghettaNuova;
-	private JTextField VecchiaTarghetta;
-	private JTextField NuovaTarghetta;
+	private JTextField Targhetta;
+	private JTextField IDTartaruga;
 	
 	public static void PassaASetTartarugaTrue(AmmissioneTartaruga boh) {
 		temp = boh;
@@ -44,23 +44,23 @@ public class SetTartarugaTrue extends JFrame {
 		
 		txtVecchiaTarghettaNuova = new JTextField();
 		txtVecchiaTarghettaNuova.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txtVecchiaTarghettaNuova.setText("Vecchia targhetta                      Nuova targhetta");
+		txtVecchiaTarghettaNuova.setText("   Targhetta                                 ID_Tartaruga");
 		txtVecchiaTarghettaNuova.setEditable(false);
 		txtVecchiaTarghettaNuova.setBounds(10, 10, 803, 59);
 		contentPane.add(txtVecchiaTarghettaNuova);
 		txtVecchiaTarghettaNuova.setColumns(10);
 		
-		VecchiaTarghetta = new JTextField();
-		VecchiaTarghetta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		VecchiaTarghetta.setBounds(26, 141, 193, 59);
-		contentPane.add(VecchiaTarghetta);
-		VecchiaTarghetta.setColumns(10);
+		Targhetta = new JTextField();
+		Targhetta.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Targhetta.setBounds(26, 141, 193, 59);
+		contentPane.add(Targhetta);
+		Targhetta.setColumns(10);
 		
-		NuovaTarghetta = new JTextField();
-		NuovaTarghetta.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		NuovaTarghetta.setBounds(368, 141, 212, 59);
-		contentPane.add(NuovaTarghetta);
-		NuovaTarghetta.setColumns(10);
+		IDTartaruga = new JTextField();
+		IDTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		IDTartaruga.setBounds(368, 141, 212, 59);
+		contentPane.add(IDTartaruga);
+		IDTartaruga.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -68,32 +68,34 @@ public class SetTartarugaTrue extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
-				if (VecchiaTarghetta.getText().equals("") || NuovaTarghetta.getText().equals("")) {
+				if (Targhetta.getText().equals("") || IDTartaruga.getText().equals("")) {
 					Controller.AppareMainGUI();
 					setVisible(false);
 					Controller.AppareErroreGenerico();
 					Controller.AmmissioneIndebita(temp);
 					
-					VecchiaTarghetta.setText("");
-					NuovaTarghetta.setText("");
+					Targhetta.setText("");
+					IDTartaruga.setText("");
 				}
 				else {
-					temp.setTarghetta(NuovaTarghetta.getText());
-					temp.setNome(AmmissioneTartarugaDAO.CercaNomeTartaruga(VecchiaTarghetta.getText()));
+					temp.setTarghetta(Targhetta.getText());
+					temp.setIDTartaruga(IDTartaruga.getText());
+					temp.setNome(AmmissioneTartarugaDAO.CercaNomeTartaruga(Targhetta.getText()));
 					
 					Controller.AppareMainGUI();
 					
 					if (temp.getNome() == null) {
 						Controller.AmmissioneIndebita(temp);  //CERCANOMETARTARUGA RESTITUISCE NULL SE NON TROVA NIENTE O FA ERRORE
-						Controller.AppareErroreGenerico();
+						Controller.AppareErroreTarghettaNonTrovata();
+						System.out.println("La targhetta inserita non esiste nel database");
 					}
 					else {
 						Controller.PassaPerIlTartarugaDAO(temp);
 					}
 					setVisible(false);
 					
-					VecchiaTarghetta.setText("");
-					NuovaTarghetta.setText("");
+					Targhetta.setText("");
+					IDTartaruga.setText("");
 				}
 			}
 		});

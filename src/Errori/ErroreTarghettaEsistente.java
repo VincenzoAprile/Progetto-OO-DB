@@ -5,29 +5,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import PackageController.Controller;
-
 import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreIDCartellaClinica extends JFrame {
+public class ErroreTarghettaEsistente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEsisteGiUna;
 
-
-
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public ErroreIDCartellaClinica() {
+	public ErroreTarghettaEsistente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 892, 523);
+		setBounds(100, 100, 883, 478);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -35,10 +31,10 @@ public class ErroreIDCartellaClinica extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtEsisteGiUna = new JTextField();
-		txtEsisteGiUna.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtEsisteGiUna.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		txtEsisteGiUna.setText("Esiste già una tartaruga con quella targhetta nel database\r\n");
 		txtEsisteGiUna.setEditable(false);
-		txtEsisteGiUna.setText("Esiste già una cartella clinica con quell'id");
-		txtEsisteGiUna.setBounds(32, 32, 790, 145);
+		txtEsisteGiUna.setBounds(30, 26, 793, 75);
 		contentPane.add(txtEsisteGiUna);
 		txtEsisteGiUna.setColumns(10);
 		
@@ -50,7 +46,8 @@ public class ErroreIDCartellaClinica extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(292, 324, 257, 84);
+		btnNewButton.setBounds(326, 283, 209, 75);
 		contentPane.add(btnNewButton);
 	}
+
 }

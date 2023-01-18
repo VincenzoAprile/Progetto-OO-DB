@@ -37,18 +37,18 @@ public class DipendenteDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un altro dipendente");
-						Controller.AppareErroreDipendente();
+						Controller.AppareErroreSpecifico("Già esiste un dipendente con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
 					}
 					else if (e.getSQLState().equals("23503")){
 						System.out.println("Il centro inserito non esiste!");
-						Controller.AppareErroreCentroNonEsiste();
+						Controller.AppareErroreSpecifico("Il centro inserito non esiste!");
 					}
 					else if (e.getSQLState().equals("23514")){
 						System.out.println("Il ruolo inserito non esiste!");
-						Controller.AppareErroreDipendenteRuolo();	
+						Controller.AppareErroreSpecifico("Il ruolo inserito non esiste!");	
 					}
 					else {
 						System.out.println("Errore!");

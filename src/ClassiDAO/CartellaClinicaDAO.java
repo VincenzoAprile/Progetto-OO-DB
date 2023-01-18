@@ -44,12 +44,12 @@ public class CartellaClinicaDAO {
 					else if (e.getSQLState().equals("23505")) {
 						System.out.println("Esiste già una cartella clinica con quell'id");
 						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreIDCartellaClinica();
+						Controller.AppareErroreSpecifico("Esiste già una cartella clinica con quell'id!");
 					}
 					else if (e.getSQLState().equals("42703")) {
 						System.out.println("In Lunghezza, Larghezza e peso devi inserire dei valori validi!");
 						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreFloatCartellaClinica();
+						Controller.AppareErroreSpecifico("Per Lunghezza, Larghezza e Peso inserire valori validi! (int o float CON IL PUNTO)");
 					}
 					else if (e.getSQLState().equals("23514")) {
 						System.out.println("Per favore nelle parti del corpo della tartaruga inserire solo espressioni valide");

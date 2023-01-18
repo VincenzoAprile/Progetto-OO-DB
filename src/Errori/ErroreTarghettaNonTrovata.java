@@ -10,35 +10,35 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import PackageController.Controller;
 
-public class ErroreDipendenteRuolo extends JFrame {
+public class ErroreTarghettaNonTrovata extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtIlRuoloInserito;
+	private JTextField txtLaTarghettaNon;
 
 	
+
 	/**
 	 * Create the frame.
 	 */
-	public ErroreDipendenteRuolo() {
+	public ErroreTarghettaNonTrovata() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 645, 525);
+		setBounds(100, 100, 873, 516);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtIlRuoloInserito = new JTextField();
-		txtIlRuoloInserito.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		txtIlRuoloInserito.setText("Il ruolo inserito non esiste");
-		txtIlRuoloInserito.setEditable(false);
-		txtIlRuoloInserito.setBounds(62, 96, 470, 117);
-		contentPane.add(txtIlRuoloInserito);
-		txtIlRuoloInserito.setColumns(10);
+		txtLaTarghettaNon = new JTextField();
+		txtLaTarghettaNon.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtLaTarghettaNon.setText("La targhetta non esiste nel database");
+		txtLaTarghettaNon.setEditable(false);
+		txtLaTarghettaNon.setBounds(21, 21, 762, 93);
+		contentPane.add(txtLaTarghettaNon);
+		txtLaTarghettaNon.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ok\r\n");
+		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -46,7 +46,7 @@ public class ErroreDipendenteRuolo extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(247, 278, 119, 73);
+		btnNewButton.setBounds(294, 329, 215, 93);
 		contentPane.add(btnNewButton);
 	}
 }

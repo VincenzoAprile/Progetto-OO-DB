@@ -8,6 +8,7 @@ public class AmmissioneTartaruga {
 	private String Centro;
 	private String Nome;
 	private String Targhetta;
+	private String IDTartaruga;
 	
 	
 	//SETTER
@@ -36,6 +37,10 @@ public class AmmissioneTartaruga {
 		this.Targhetta = Targhetta;
 	}
 	
+	public void setIDTartaruga(String IDTartaruga) {
+		this.IDTartaruga = IDTartaruga;
+	}
+	
 	//GETTER
 	
 	public String getRiammissione() {
@@ -60,6 +65,10 @@ public class AmmissioneTartaruga {
 	
 	public String getTarghetta() {
 		return Targhetta;
+	}
+	
+	public String getIDTartaruga() {
+		return IDTartaruga;
 	}
 
 }

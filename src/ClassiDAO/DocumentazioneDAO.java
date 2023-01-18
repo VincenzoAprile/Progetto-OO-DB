@@ -40,7 +40,7 @@ public class DocumentazioneDAO {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un altra documentazione");
 						Controller.AppareMainGUI();
-						Controller.AppareErroreIDDocumentazione();
+						Controller.AppareErroreSpecifico("Esiste già una documentazione con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");

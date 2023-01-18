@@ -42,7 +42,7 @@ public class VascaDAO {
 					}
 					else if (e.getSQLState().equals("42703")) {
 						System.out.println("Hai inserito nelle dimensioni vasca un valore non valido");
-						Controller.AppareErroreDimesioneVasca();
+						Controller.AppareErroreSpecifico("In uno delle dimensioni della vasca hai inserito un dato non valido!");
 					}
 					else {
 						System.out.println(e.getSQLState());
