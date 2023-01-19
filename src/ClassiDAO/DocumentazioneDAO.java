@@ -50,7 +50,7 @@ public class DocumentazioneDAO {
 					else if (e.getSQLState().equals("23503")) {
 						System.out.println("Quella tartaruga non esiste");
 						Controller.AppareMainGUI();
-						Controller.AppareErroreTartarugaNonEsiste();
+						Controller.AppareErroreSpecifico("La tartaruga inserita non esiste!");
 					}
 					else if (e.getSQLState().equals("P0001")) {
 						System.out.println("Il Veterinario inserito non corrisponde a un veterinario presente nella sede corrispondente");

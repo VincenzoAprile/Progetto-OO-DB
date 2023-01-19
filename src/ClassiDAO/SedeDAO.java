@@ -35,7 +35,7 @@ public class SedeDAO {
 		} catch (SQLException e) {
 			if (e.getSQLState().equals("23505")) {
 				System.out.println("Hai inserito un id già assegnato a un altro centro");
-				Controller.AppareErroreSede();
+				Controller.AppareErroreSpecifico("Già esiste una sede con quell'ID!");
 			}
 			else if (e.getSQLState().equals("02000")){
 				System.out.println("Operazione avvenuta con successo");

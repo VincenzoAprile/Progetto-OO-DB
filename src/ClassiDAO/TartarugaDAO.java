@@ -73,7 +73,7 @@ public class TartarugaDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a altra tartaruga");
-						Controller.AppareErroreIDTartaruga();
+						Controller.AppareErroreSpecifico("Già esiste una tartaruga con quell'id!");
 						AmmissioneDAO.CancellaAmmissioneIndebita(boh);
 						
 					}
@@ -83,7 +83,7 @@ public class TartarugaDAO {
 					}
 					else if(e.getSQLState().equals("P0001")) {
 						System.out.println("La targhetta è già presente nel database");
-						Controller.AppareErroreTarghettaEsistente();
+						Controller.AppareErroreSpecifico("Esiste già una tartaruga con quella targhetta nel database!");
 						AmmissioneDAO.CancellaAmmissioneIndebita(boh);
 					}
 					else {
