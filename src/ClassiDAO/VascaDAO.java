@@ -6,17 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import ClassiGUI.SetCartellaClinica;
-import ClassiTabelle.Documentazione;
+import ClassiTabelle.Vasca;
 import PackageController.Controller;
 
-public class DocumentazioneDAO {
-	
-	public static void pushDocumentazione(Documentazione boh) {
-		
-		String query = "INSERT INTO DOCUMENTAZIONE VALUES "
-					+ "('"+boh.getVeterinario()+"','"+boh.getLuogoDiRitrovamento()+"','"+boh.getData()+"','"+boh.getIDDocumentazione()+"','"
-					+boh.getEtichetta()+"');";
+public class VascaDAO {
+	public static void pushVasca(Vasca boh) {
+		String query = "INSERT INTO VASCA VALUES ('"+boh.getCodiceVasca()+"','"+boh.getTipo()+"',"+boh.getLunghezza()+","+
+						boh.getLarghezza()+","+boh.getProfondità()+");";
 				//DEFINIZIONE DELLA QUERY
 				try {
 					Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
@@ -38,35 +34,28 @@ public class DocumentazioneDAO {
 					con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
-						System.out.println("Hai inserito un id già assegnato a un altra documentazione");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("Esiste già una documentazione con quell'id!");
+						System.out.println("Hai inserito un id già assegnato a un'altra vasca");
+						Controller.AppareErroreIDVasca();
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
-						Controller.AppareSetCartellaClinica();
-						SetCartellaClinica.setDocumentazione(boh.getIDDocumentazione());
 					}
-					else if (e.getSQLState().equals("23503")) {
-						System.out.println("Quella tartaruga non esiste");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreTartarugaNonEsiste();
-					}
-					else if (e.getSQLState().equals("P0001")) {
-						System.out.println("Il Veterinario inserito non corrisponde a un veterinario presente nella sede corrispondente");
-						System.out.println("Oppure la data inserita non è valida (Deve essere SUCCESSIVA alla data di ammissione della tartaruga corrispondente)");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreVeterinarioOrData();
+					else if (e.getSQLState().equals("42703")) {
+						System.out.println("Hai inserito nelle dimensioni vasca un valore non valido");
+						Controller.AppareErroreSpecifico("In uno delle dimensioni della vasca hai inserito un dato non valido!");
 					}
 					else {
-						Controller.AppareMainGUI();
-						Controller.AppareErroreGenerico();
+						System.out.println(e.getSQLState());
 					}
 				}
+			
+				
 	}
-	
-	public static void CancellaDocumentazioneIndebita (String IDDocumentazione) {
-		String query1 = "DELETE FROM Documentazione WHERE ID_Documentazione = '"+IDDocumentazione+"';";
+
+	public static void assegnaVascaTartaruga(String Vasca, String Targhetta) {
+		
+		String query = "INSERT INTO VASCHE_TARTARUGHE VALUES ('"
+				+Vasca+"','"+Targhetta+"');";
 		//DEFINIZIONE DELLA QUERY
 		try {
 			Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
@@ -81,14 +70,22 @@ public class DocumentazioneDAO {
 
 			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  //PER STABILIRE LA CONNESSIONE CON IL DATABASE
 			Statement statement = con.createStatement();    //PER INIZIARE UNA SERIE DI QUERY
-			statement.executeQuery(query1);  //PER ESEGUIRE UNA QUERY
+			statement.executeQuery(query);  //PER ESEGUIRE UNA QUERY
 			
 			
 			statement.close();
 			con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
 		} catch (SQLException e) {
-			e.getStackTrace();
+			if (e.getSQLState().equals("02000")){
+				System.out.println("Operazione avvenuta con successo");
+			}
+			else if (e.getSQLState().equals("23503")) {
+				System.out.println("La targhetta o l'id della vasca non sono stati inseriti correttamente");
+				Controller.AppareErroreVascaTartaruga();
+			}
+			else {
+				System.out.println(e.getSQLState());
+			}
 		}
 	}
-
 }

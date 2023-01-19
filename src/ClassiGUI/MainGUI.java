@@ -54,10 +54,22 @@ public class MainGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Controller.AppareAddNew();
-				Controller.ScopareMainGUI();
+				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(69, 295, 243, 73);
+		btnNewButton.setBounds(58, 271, 243, 73);
 		contentPane.add(btnNewButton);
+		
+		JButton btnAssegnaUnaVasca = new JButton("Assegna una vasca a una tartaruga");
+		btnAssegnaUnaVasca.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareVascaTartaruga();
+				setVisible(false);
+			}
+		});
+		btnAssegnaUnaVasca.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAssegnaUnaVasca.setBounds(421, 271, 346, 73);
+		contentPane.add(btnAssegnaUnaVasca);
 	}
 }

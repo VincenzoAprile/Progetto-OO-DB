@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ClassiDAO.AmmissioneTartarugaDAO;
+import ClassiDAO.AmmissioneDAO;
 import ClassiTabelle.AmmissioneTartaruga;
 import PackageController.Controller;
 
@@ -25,6 +25,7 @@ public class SetTartarugaFalse extends JFrame {
 	private JTextField txtNomeTarghetta;
 	private JTextField Nome;
 	private JTextField Targhetta;
+	private JTextField IDTartaruga;
 
 	public static void PassaASetTartarugaFalse(AmmissioneTartaruga boh) {
 		temp = boh;
@@ -50,24 +51,30 @@ public class SetTartarugaFalse extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
-				if (Nome.getText().equals("") || Targhetta.getText().equals("")) {
+				if (Nome.getText().equals("") || Targhetta.getText().equals("") || IDTartaruga.getText().equals("")) {
 					Controller.AppareMainGUI();
-					Controller.ScompareSetTartarugaFalse();
+					setVisible(false);
 					Controller.AppareErroreGenerico();
-					AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(temp);
+					Controller.AmmissioneIndebita(temp);
+					
 					Nome.setText("");
 					Targhetta.setText("");
+					IDTartaruga.setText("");
+					
 				}
 				else {
 					temp.setNome(Nome.getText());
 					temp.setTarghetta(Targhetta.getText());
+					temp.setIDTartaruga(IDTartaruga.getText());
 					Controller.AppareMainGUI();
 					
 					Controller.PassaPerIlTartarugaDAO(temp);
 					
-					Controller.ScompareSetTartarugaFalse();
+					setVisible(false);
+					
 					Nome.setText("");
 					Targhetta.setText("");
+					IDTartaruga.setText("");
 				}
 			}
 		});
@@ -77,7 +84,7 @@ public class SetTartarugaFalse extends JFrame {
 		txtNomeTarghetta = new JTextField();
 		txtNomeTarghetta.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		txtNomeTarghetta.setEditable(false);
-		txtNomeTarghetta.setText("Nome           Targhetta");
+		txtNomeTarghetta.setText("Nome           Targhetta                  ID_Tartaruga");
 		txtNomeTarghetta.setBounds(33, 30, 581, 64);
 		contentPane.add(txtNomeTarghetta);
 		txtNomeTarghetta.setColumns(10);
@@ -91,6 +98,11 @@ public class SetTartarugaFalse extends JFrame {
 		Targhetta.setBounds(181, 132, 173, 64);
 		contentPane.add(Targhetta);
 		Targhetta.setColumns(10);
+		
+		IDTartaruga = new JTextField();
+		IDTartaruga.setBounds(408, 132, 221, 64);
+		contentPane.add(IDTartaruga);
+		IDTartaruga.setColumns(10);
 	}
 
 }

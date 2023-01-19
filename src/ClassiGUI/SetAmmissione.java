@@ -20,12 +20,14 @@ public class SetAmmissione extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtRiammessoDataDi;
-	private JTextField Data;
 	private JTextField IDAmmissione;
 	private JTextField Centro;
 	private JRadioButton Riammissione;
 
 	AmmissioneTartaruga temp = new AmmissioneTartaruga();
+	private JTextField Mese;
+	private JTextField Anno;
+	private JTextField Giorno;
 	
 	/**
 	 * Create the frame.
@@ -52,12 +54,6 @@ public class SetAmmissione extends JFrame {
 		Riammissione.setBounds(6, 132, 179, 52);
 		contentPane.add(Riammissione);
 		
-		Data = new JTextField();
-		Data.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		Data.setBounds(261, 132, 214, 52);
-		contentPane.add(Data);
-		Data.setColumns(10);
-		
 		IDAmmissione = new JTextField();
 		IDAmmissione.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		IDAmmissione.setBounds(586, 135, 185, 52);
@@ -76,17 +72,24 @@ public class SetAmmissione extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
-				if (Centro.getText().equals("") || IDAmmissione.getText().equals("") || Centro.getText().equals("")) {
-					Controller.ScompareSetAmmissione();
+				if (Centro.getText().equals("") || IDAmmissione.getText().equals("") || Anno.getText().equals("") || 
+					Mese.getText().equals("") || Giorno.getText().equals("")) {
+					
+					setVisible(false);
 					Controller.AppareMainGUI();
 					Controller.AppareErroreGenerico();
 					
-					Centro.setText("");
-					IDAmmissione.setText("");
-					Data.setText("");
+					
 				}
 				else {
-					temp.setDataDiAmmissione(Data.getText());
+					if (Mese.getText().length() == 1) {
+						Mese.setText("0"+Mese.getText());
+					}                                          //QUESTI DUE IF CORREGGONO IL FORMATO DEL MESE E DEL GIORNO IN CASO SIA STATO
+					if (Giorno.getText().length() == 1) {      //INSERITO COME ESEMPIO: 3 AL POSTO DI 03 
+						Giorno.setText("0"+Giorno.getText());
+					}
+					
+					temp.setDataDiAmmissione(Anno.getText()+"-"+Mese.getText()+"-"+Giorno.getText());
 					temp.setIDAmmssione(IDAmmissione.getText());
 					temp.setCentro(Centro.getText());
 					
@@ -94,25 +97,18 @@ public class SetAmmissione extends JFrame {
 					if (Riammissione.isSelected()) {
 						temp.setRiammissione("TRUE");
 						Controller.ControllerPassaTartarugaTrue(temp);
-						Controller.ScompareSetAmmissione();
+						setVisible(false);
 						Controller.AppareSetTartarugaTrue();
 						Controller.PassaPerIlAmmissioneDAO(temp);
 						
-						Centro.setText("");
-						IDAmmissione.setText("");
-						Data.setText("");
-						Riammissione.doClick();
 					}
 					else {
 						temp.setRiammissione("FALSE");
 						Controller.ControllerPassaTartarugaFalse(temp);
-						Controller.ScompareSetAmmissione();
+						setVisible(false);
 						Controller.AppareSetTartarugaFalse();
 						Controller.PassaPerIlAmmissioneDAO(temp);
 						
-						Centro.setText("");
-						IDAmmissione.setText("");
-						Data.setText("");
 					}
 				}
 			}
@@ -120,5 +116,20 @@ public class SetAmmissione extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBounds(343, 331, 205, 74);
 		contentPane.add(btnNewButton);
+		
+		Mese = new JTextField();
+		Mese.setBounds(261, 204, 170, 52);
+		contentPane.add(Mese);
+		Mese.setColumns(10);
+		
+		Anno = new JTextField();
+		Anno.setBounds(261, 266, 170, 52);
+		contentPane.add(Anno);
+		Anno.setColumns(10);
+		
+		Giorno = new JTextField();
+		Giorno.setBounds(261, 132, 170, 52);
+		contentPane.add(Giorno);
+		Giorno.setColumns(10);
 	}
 }

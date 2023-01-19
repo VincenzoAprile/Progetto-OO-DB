@@ -5,16 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import PackageController.Controller;
-
 import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreIDDocumentazione extends JFrame {
+public class ErroreTarghettaEsistente extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEsisteGiUna;
@@ -24,9 +21,9 @@ public class ErroreIDDocumentazione extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ErroreIDDocumentazione() {
+	public ErroreTarghettaEsistente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 861, 503);
+		setBounds(100, 100, 883, 478);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -34,10 +31,10 @@ public class ErroreIDDocumentazione extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtEsisteGiUna = new JTextField();
-		txtEsisteGiUna.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		txtEsisteGiUna.setText("Esiste Già una Documentazione con quell'id");
+		txtEsisteGiUna.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		txtEsisteGiUna.setText("Esiste già una tartaruga con quella targhetta nel database\r\n");
 		txtEsisteGiUna.setEditable(false);
-		txtEsisteGiUna.setBounds(30, 27, 733, 113);
+		txtEsisteGiUna.setBounds(30, 26, 793, 75);
 		contentPane.add(txtEsisteGiUna);
 		txtEsisteGiUna.setColumns(10);
 		
@@ -45,11 +42,11 @@ public class ErroreIDDocumentazione extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreIDDocumentazione();
+				setVisible(false);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButton.setBounds(299, 291, 196, 88);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNewButton.setBounds(326, 283, 209, 75);
 		contentPane.add(btnNewButton);
 	}
 

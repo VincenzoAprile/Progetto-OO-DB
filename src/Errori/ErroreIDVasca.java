@@ -14,41 +14,42 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ErroreDipendente extends JFrame {
+public class ErroreIDVasca extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtGiEsisteUn;
+	private JTextField txtGiEsisteUna;
 
 	
+
 	/**
 	 * Create the frame.
 	 */
-	public ErroreDipendente() {
+	public ErroreIDVasca() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 642, 414);
+		setBounds(100, 100, 929, 522);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtGiEsisteUn = new JTextField();
-		txtGiEsisteUn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtGiEsisteUn.setText("Già esiste un dipendente con quell'id");
-		txtGiEsisteUn.setEditable(false);
-		txtGiEsisteUn.setBounds(58, 36, 419, 84);
-		contentPane.add(txtGiEsisteUn);
-		txtGiEsisteUn.setColumns(10);
+		txtGiEsisteUna = new JTextField();
+		txtGiEsisteUna.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtGiEsisteUna.setText("Già esiste una vasca con quell'id");
+		txtGiEsisteUna.setEditable(false);
+		txtGiEsisteUna.setBounds(10, 10, 852, 111);
+		contentPane.add(txtGiEsisteUna);
+		txtGiEsisteUna.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ok");
+		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreDipendente();
+				setVisible(false);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 34));
-		btnNewButton.setBounds(204, 217, 140, 62);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNewButton.setBounds(342, 321, 168, 68);
 		contentPane.add(btnNewButton);
 	}
 

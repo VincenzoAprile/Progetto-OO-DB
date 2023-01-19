@@ -6,14 +6,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ClassiDAO.SedeDAO;
 import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 import javax.swing.JTextField;
 import java.awt.Font;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.JList;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JFormattedTextField;
 
 public class SetSede extends JFrame {
 
@@ -25,12 +35,14 @@ public class SetSede extends JFrame {
 	private JTextField TextIDCentro;
 
 	private Sede temp = new Sede();
+	private JButton btnNewButton_1;
+	ArrayList<Sede> prova = new ArrayList<Sede>();
 	/**
 	 * Create the frame.
 	 */
 	public SetSede() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 756, 494);
+		setBounds(100, 100, 866, 530);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -73,14 +85,10 @@ public class SetSede extends JFrame {
 				//L'IF VERIFICA CHE NON CI SIANO CASELLE LASCIATE VUOTE
 				if (TextIndirizzo.getText().equals("") || TextContatti.getText().equals("")
 				|| TextNomeCentro.getText().equals("") || TextIDCentro.getText().equals("")) {
-					Controller.ScompareSetSede();
+					setVisible(false);
 					Controller.AppareMainGUI();
 					Controller.AppareErroreGenerico();
 					
-					TextIndirizzo.setText("");
-					TextContatti.setText("");
-					TextNomeCentro.setText("");
-					TextIDCentro.setText("");
 				}
 				else {
 					temp.setContatti(TextContatti.getText());
@@ -88,21 +96,29 @@ public class SetSede extends JFrame {
 					temp.setIndirizzo(TextIndirizzo.getText());
 					temp.setNomeCentro(TextNomeCentro.getText());
 				
-					Controller.ScompareSetSede();
+					setVisible(false);
 					Controller.AppareMainGUI();
 				
 					Controller.PassaPerIlSedeDAO(temp);
 				
-					TextIndirizzo.setText("");
-					TextContatti.setText("");
-					TextNomeCentro.setText("");
-					TextIDCentro.setText("");
 				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnNewButton.setBounds(223, 295, 254, 87);
+		btnNewButton.setBounds(30, 289, 254, 87);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Fammi vedere gli attuali centri");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(456, 308, 327, 51);
+		contentPane.add(btnNewButton_1);
+		
+		
 	}
-
 }

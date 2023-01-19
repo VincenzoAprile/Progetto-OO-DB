@@ -37,7 +37,7 @@ public class AddNew extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareAddNew();
+				setVisible(false);
 				Controller.AppareSetSede();
 			}
 		});
@@ -49,19 +49,19 @@ public class AddNew extends JFrame {
 		NuovoDipendente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareAddNew();
+				setVisible(false);
 				Controller.AppareSetDipendente();
 			}
 		});
 		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		NuovoDipendente.setBounds(346, 177, 176, 93);
+		NuovoDipendente.setBounds(346, 177, 201, 93);
 		contentPane.add(NuovoDipendente);
 		
 		JButton btnNuovaTartaruga = new JButton("Nuova Tartaruga");
 		btnNuovaTartaruga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareAddNew();
+				setVisible(false);
 				Controller.AppareSetAmmissione();
 			}
 		});
@@ -82,11 +82,23 @@ public class AddNew extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Controller.AppareSetDocumentazione();
-				Controller.ScompareAddNew();
+				setVisible(false);
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(346, 347, 176, 93);
+		btnNewButton_1.setBounds(36, 334, 201, 93);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Nuova Vasca");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Controller.AppareNewVasca();
+			}
+		});
+		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1_1.setBounds(346, 334, 201, 93);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

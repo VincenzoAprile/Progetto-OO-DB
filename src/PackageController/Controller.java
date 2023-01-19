@@ -1,143 +1,88 @@
 package PackageController;
-import ClassiDAO.AmmissioneTartarugaDAO;
-
+import ClassiDAO.AmmissioneDAO;
+import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
 import ClassiDAO.SedeDAO;
+import ClassiDAO.TartarugaDAO;
+import ClassiDAO.VascaDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.MainGUI;
+import ClassiGUI.NewVasca;
 import ClassiGUI.SetAmmissione;
+import ClassiGUI.SetCartellaClinica;
 import ClassiGUI.SetDipendente;
 import ClassiGUI.SetDocumentazione;
 import ClassiGUI.SetSede;
 import ClassiGUI.SetTartarugaFalse;
 import ClassiGUI.SetTartarugaTrue;
+import ClassiGUI.VascaTartaruga;
 import ClassiTabelle.AmmissioneTartaruga;
+import ClassiTabelle.CartellaClinica;
 import ClassiTabelle.Dipendente;
 import ClassiTabelle.Documentazione;
 import ClassiTabelle.Sede;
-import Errori.ErroreDipendente;
-import Errori.ErroreCentroNonEsiste;
-import Errori.ErroreDataNonValida;
-import Errori.ErroreDipendenteRuolo;
+import ClassiTabelle.Vasca;
 import Errori.ErroreGenerico;
-import Errori.ErroreIDAmmissione;
-import Errori.ErroreIDDocumentazione;
 import Errori.ErroreIDTartaruga;
+import Errori.ErroreIDVasca;
 import Errori.ErroreSede;
+import Errori.ErroreSpecifico;
+import Errori.ErroreStatoTartaruga;
+import Errori.ErroreTarghettaEsistente;
+import Errori.ErroreTarghettaNonTrovata;
 import Errori.ErroreTartarugaNonEsiste;
+import Errori.ErroreVascaTartaruga;
 import Errori.ErroreVeterinarioOrData;
 
 public class Controller {
-	static MainGUI Principale = new MainGUI();
-	static AddNew AddNew1 = new AddNew();
-	static SetSede SetSede1 = new SetSede();
-	static ErroreGenerico ErroreGenerico1 = new ErroreGenerico();
-	static ErroreSede ErroreSede1 = new ErroreSede();
-	static SetDipendente SetDipendente1 = new SetDipendente();
-	static ErroreDipendente ErroreDipendente1 = new ErroreDipendente();
-	static ErroreCentroNonEsiste ErroreCentroNonEsiste1 = new ErroreCentroNonEsiste();
-	static ErroreDipendenteRuolo ErroreDipendenteRuolo1 = new ErroreDipendenteRuolo();
-	static SetAmmissione SetAmmissione1 = new SetAmmissione();
-	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
+	
 	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
-	static ErroreIDAmmissione ErroreIDAmmissione1 = new ErroreIDAmmissione();
-	static ErroreDataNonValida ErroreDataNonValida1 = new ErroreDataNonValida();
-	static ErroreIDTartaruga ErroreIDTartaruga1 = new ErroreIDTartaruga();
-	static SetDocumentazione SetDocumentazione1 = new SetDocumentazione();
-	static ErroreIDDocumentazione ErroreIDDocumentazione1 = new ErroreIDDocumentazione();
-	static ErroreVeterinarioOrData ErroreVeterinarioOrData1 = new ErroreVeterinarioOrData();
-	static ErroreTartarugaNonEsiste ErroreTartarugaNonEsiste1 = new ErroreTartarugaNonEsiste();
+	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
 	
-	
+	//IL MAIN FA PARTIRE IL PROGRAMMA
 	public static void main(String[] args) {
 		
 		
 		AppareMainGUI();
 		
-	
-		
-		
 
 	}
-	//CREZIONE METODI PER FAR APPARIRE E SCOMPARIRE I VARI PEZZI DI GUI
-	public static void AppareMainGUI(){
-		Principale.setVisible(true); 
-	}
 	
-	public static void ScopareMainGUI() {
-		Principale.setVisible(false);
+	//CREZIONE METODI PER FAR APPARIRE I VARI PEZZI DI GUI
+	public static void AppareMainGUI(){
+		MainGUI MainGUI1 = new MainGUI();
+		MainGUI1.setVisible(true); 
 	}
 	
 	public static void AppareAddNew(){
+		AddNew AddNew1 = new AddNew();
 		AddNew1.setVisible(true); 
-	}
-	public static void ScompareAddNew() {
-		AddNew1.setVisible(false);
 	}
 	
 	public static void AppareSetSede() {
+		SetSede SetSede1 = new SetSede();
 		SetSede1.setVisible(true);
 	}
 	
-	public static void ScompareSetSede() {
-		SetSede1.setVisible(false);
-	}
-	
 	public static void AppareErroreGenerico() {
+		ErroreGenerico ErroreGenerico1 = new ErroreGenerico ();
 		ErroreGenerico1.setVisible(true);
 	}
 	
-	public static void ScompareErroreGenerico() {
-		ErroreGenerico1.setVisible(false);
-	}
-	
-	public static void ScompareErroreSede() {
-		ErroreSede1.setVisible(false);
-	}
-	
 	public static void AppareErroreSede() {
+		ErroreSede ErroreSede1 = new ErroreSede(); 
 		ErroreSede1.setVisible(true);
 	}
 	
 	public static void AppareSetDipendente() {
+		SetDipendente SetDipendente1 = new SetDipendente();
 		SetDipendente1.setVisible(true);
 	}
 	
-	public static void ScompareSetDipendente() {
-		SetDipendente1.setVisible(false);
-	}
-	
-	public static void AppareErroreDipendente() {
-		ErroreDipendente1.setVisible(true);
-	}
-	
-	public static void ScompareErroreDipendente() {
-		ErroreDipendente1.setVisible(false);
-	}
-	
-	public static void AppareErroreCentroNonEsiste() {
-		ErroreCentroNonEsiste1.setVisible(true);
-	}
-	
-	public static void ScompareErroreCentroNonEsiste() {
-		ErroreCentroNonEsiste1.setVisible(false);
-	}
-	
-	public static void AppareErroreDipendenteRuolo() {
-		ErroreDipendenteRuolo1.setVisible(true);
-	}
-	
-	public static void ScompareErroreDipendenteRuolo() {
-		ErroreDipendenteRuolo1.setVisible(false);
-	}
-	
 	public static void AppareSetAmmissione() {
+		SetAmmissione SetAmmissione1 = new SetAmmissione();
 		SetAmmissione1.setVisible(true);
-	}
-	
-	public static void ScompareSetAmmissione() {
-		SetAmmissione1.setVisible(false);
 	}
 	
 	public static void AppareSetTartarugaTrue() {
@@ -148,68 +93,80 @@ public class Controller {
 		SetTartarugaTrue1.setVisible(false);
 	}
 	
-	public static void AppareSetTartarugaFalse() {
-		SetTartarugaFalse1.setVisible(true);
-	}
-	
 	public static void ScompareSetTartarugaFalse() {
 		SetTartarugaFalse1.setVisible(false);
 	}
 	
-	public static void AppareErroreIDAmmissione() {
-		ErroreIDAmmissione1.setVisible(true);
-	}
-	
-	public static void ScompareErroreIDAmmissione() {
-		ErroreIDAmmissione1.setVisible(false);
-	}
-	
-	public static void AppareErroreDataNonValida() {
-		ErroreDataNonValida1.setVisible(true);
-	}
-	
-	public static void ScompareErroreDataNonValida() {
-		ErroreDataNonValida1.setVisible(false);
+	public static void AppareSetTartarugaFalse() {
+		SetTartarugaFalse1.setVisible(true);
 	}
 	
 	public static void AppareErroreIDTartaruga() {
+		ErroreIDTartaruga ErroreIDTartaruga1 = new ErroreIDTartaruga();
 		ErroreIDTartaruga1.setVisible(true);
 	}
 	
-	public static void ScompareErroreIDTartaruga() {
-		ErroreIDTartaruga1.setVisible(false);
-	}
-	
 	public static void AppareSetDocumentazione() {
+		SetDocumentazione SetDocumentazione1 = new SetDocumentazione();
 		SetDocumentazione1.setVisible(true);
 	}
 	
-	public static void ScompareSetDocumentazione() {
-		SetDocumentazione1.setVisible(false);
-	}
-	
-	public static void AppareErroreIDDocumentazione() {
-		ErroreIDDocumentazione1.setVisible(true);
-	}
-	
-	public static void ScompareErroreIDDocumentazione() {
-		ErroreIDDocumentazione1.setVisible(false);
-	}
-	
 	public static void AppareErroreVeterinarioOrData() {
-		ErroreVeterinarioOrData1.setVisible(true);
-	}
-	
-	public static void ScompareErroreVeterinarioOrData() {
+		ErroreVeterinarioOrData ErroreVeterinarioOrData1 = new ErroreVeterinarioOrData();
 		ErroreVeterinarioOrData1.setVisible(true);
 	}
 	
 	public static void AppareErroreTartarugaNonEsiste() {
+		ErroreTartarugaNonEsiste ErroreTartarugaNonEsiste1 = new ErroreTartarugaNonEsiste();
 		ErroreTartarugaNonEsiste1.setVisible(true);
 	}
 	
-	public static void ScompareErroreTartarugaNonEsiste() {
-		ErroreTartarugaNonEsiste1.setVisible(false);
+	public static void AppareSetCartellaClinica() {
+		SetCartellaClinica SetCartellaClinica1 = new SetCartellaClinica();
+		SetCartellaClinica1.setVisible(true);
+	}
+	
+	public static void AppareErroreStatoTartaruga() {
+		ErroreStatoTartaruga ErroreStatoTartaruga1 = new ErroreStatoTartaruga();
+		ErroreStatoTartaruga1.setVisible(true);
+	}
+	
+	public static void AppareNewVasca() {
+		NewVasca NewVasca1 = new NewVasca();
+		NewVasca1.setVisible(true);
+	}
+	
+	public static void AppareErroreIDVasca() {
+		ErroreIDVasca ErroreIDVasca1 = new ErroreIDVasca();
+		ErroreIDVasca1.setVisible(true);
+	}
+	
+	public static void AppareVascaTartaruga() {
+		VascaTartaruga VascaTartaruga1 = new VascaTartaruga();
+		VascaTartaruga1.setVisible(true);
+	}
+	
+	public static void AppareErroreVascaTartaruga() {
+		ErroreVascaTartaruga ErroreVascaTartaruga1 = new ErroreVascaTartaruga();
+		ErroreVascaTartaruga1.setVisible(true);
+	}
+	
+	public static void AppareErroreTarghettaNonTrovata() {
+		ErroreTarghettaNonTrovata ErroreTarghettaNonTrovata1 = new ErroreTarghettaNonTrovata();
+		ErroreTarghettaNonTrovata1.setVisible(true);
+	}
+	
+	public static void AppareErroreTarghettaEsistente() {
+		ErroreTarghettaEsistente ErroreTarghettaEsistente1 = new ErroreTarghettaEsistente();
+		ErroreTarghettaEsistente1.setVisible(true);
+	}
+	
+	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
+	 * E MOSTRA AUTOMATICAMENTE UNA SCHERMATA CHE LO VISUALIZZA
+	 * @param String UN MESSAGGIO DI ERRORE*/
+	public static void AppareErroreSpecifico(String foo) {
+		ErroreSpecifico ErroreSpecifico1 = new ErroreSpecifico(foo);
+		ErroreSpecifico1.setVisible(true);
 	}
 	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
@@ -223,17 +180,28 @@ public class Controller {
 	}
 	
 	public static void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
-		AmmissioneTartarugaDAO.pushAmmissione(foo);
+		AmmissioneDAO.pushAmmissione(foo);
 	}
 	
 	public static void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
-		AmmissioneTartarugaDAO.pushTartaruga(foo);
+		TartarugaDAO.pushTartaruga(foo);
 	}
 	
 	public static void PassaPerIlDocumentazioneDAO(Documentazione foo) {
 		DocumentazioneDAO.pushDocumentazione(foo);
 	}
 	
+	public static void PassaPerIlCartellaClinicaDAO(CartellaClinica foo) {
+		CartellaClinicaDAO.pushCartellaClinica(foo);
+	}
+	
+	public static void PassaPerIlVascaDAO(Vasca foo) {
+		VascaDAO.pushVasca(foo);
+	}
+	
+	public static void PassaPerIlVascaTartarugaDAO(String V, String T) {
+		VascaDAO.assegnaVascaTartaruga(V, T);
+	}
 	
 	
 	
@@ -248,4 +216,18 @@ public class Controller {
 		
 	}
 	
+	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI
+	
+	public static void AmmissioneIndebita(AmmissioneTartaruga foo) {
+		AmmissioneDAO.CancellaAmmissioneIndebita(foo);
+	}
+	
+	public static void DocumentazioneIndebita(String foo) {
+		DocumentazioneDAO.CancellaDocumentazioneIndebita(foo);
+	}
+	
+	//TROVA IL NOME DELLA TARTARUGA	
+	public static String TrovaNomeTartaruga(String foo) {
+		return TartarugaDAO.CercaNomeTartaruga(foo);
+	}
 }

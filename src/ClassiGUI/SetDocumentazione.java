@@ -100,17 +100,11 @@ public class SetDocumentazione extends JFrame {
 				   Etichetta.getText().equals("") || IDDocumentazione.getText().equals("") || Luogo.getText().equals("") || 
 				   Veterinario.getText().equals("")) {
 						
-					Controller.ScompareSetDocumentazione();
+					setVisible(false);
 					Controller.AppareMainGUI();
 					Controller.AppareErroreGenerico();
 					
-					Anno.setText("");
-					Mese.setText("");
-					Giorno.setText("");
-					Etichetta.setText("");
-					IDDocumentazione.setText("");
-					Luogo.setText("");
-					Veterinario.setText("");
+					
 				}
 				else {
 					if (Mese.getText().length() == 1) {
@@ -126,8 +120,9 @@ public class SetDocumentazione extends JFrame {
 					temp.setLuogoDiRitrovamento(Luogo.getText());
 					temp.setVeterinario(Veterinario.getText());
 					
-					Controller.ScompareSetDocumentazione();
+					setVisible(false);
 					Controller.PassaPerIlDocumentazioneDAO(temp);
+					
 				}
 				
 				

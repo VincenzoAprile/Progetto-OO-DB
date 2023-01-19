@@ -3,9 +3,9 @@ package ClassiTabelle;
 public class CartellaClinica {
 	
 	private String Specie;
-	private float Lunghezza;
-	private float Larghezza;
-	private float Peso;
+	private String Lunghezza;
+	private String Larghezza;
+	private String Peso;
 	private String Occhi;
 	private String Testa;
 	private String Naso;
@@ -24,26 +24,26 @@ public class CartellaClinica {
 	}
 	
 	
-	public float getLunghezza() {
+	public String getLunghezza() {
 		return Lunghezza;
 	}
-	public void setLunghezza(float lunghezza) {
+	public void setLunghezza(String lunghezza) {
 		Lunghezza = lunghezza;
 	}
 	
 	
-	public float getLarghezza() {
+	public String getLarghezza() {
 		return Larghezza;
 	}
-	public void setLarghezza(float larghezza) {
+	public void setLarghezza(String larghezza) {
 		Larghezza = larghezza;
 	}
 	
 	
-	public float getPeso() {
+	public String getPeso() {
 		return Peso;
 	}
-	public void setPeso(float peso) {
+	public void setPeso(String peso) {
 		Peso = peso;
 	}
 	

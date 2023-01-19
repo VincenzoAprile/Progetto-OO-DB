@@ -54,7 +54,7 @@ public class ErroreVeterinarioOrData extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ScompareErroreVeterinarioOrData();
+				setVisible(false);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
