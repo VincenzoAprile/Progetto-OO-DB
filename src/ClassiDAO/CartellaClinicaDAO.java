@@ -54,7 +54,7 @@ public class CartellaClinicaDAO {
 					else if (e.getSQLState().equals("23514")) {
 						System.out.println("Per favore nelle parti del corpo della tartaruga inserire solo espressioni valide");
 						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreStatoTartaruga();
+						Controller.AppareErroreSpecifico("Ogni parte della tartaruga deve essere associata ad uno stato! ");
 					}
 					else {
 						System.out.println(e.getSQLState());

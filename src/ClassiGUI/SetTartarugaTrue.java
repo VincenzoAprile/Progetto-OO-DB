@@ -87,7 +87,7 @@ public class SetTartarugaTrue extends JFrame {
 					
 					if (temp.getNome() == null) {
 						Controller.AmmissioneIndebita(temp);  //CERCANOMETARTARUGA RESTITUISCE NULL SE NON TROVA NIENTE O FA ERRORE
-						Controller.AppareErroreTarghettaNonTrovata();
+						Controller.AppareErroreSpecifico("La targhetta non esiste nel database!");
 						System.out.println("La targhetta inserita non esiste nel database");
 					}
 					else {

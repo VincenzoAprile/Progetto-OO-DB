@@ -35,7 +35,7 @@ public class VascaDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un'altra vasca");
-						Controller.AppareErroreIDVasca();
+						Controller.AppareErroreSpecifico("Già esiste una vasca con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
@@ -81,7 +81,7 @@ public class VascaDAO {
 			}
 			else if (e.getSQLState().equals("23503")) {
 				System.out.println("La targhetta o l'id della vasca non sono stati inseriti correttamente");
-				Controller.AppareErroreVascaTartaruga();
+				Controller.AppareErroreSpecifico("La targhetta o l'id della vasca non sono stati inseriti correttamente!");
 			}
 			else {
 				System.out.println(e.getSQLState());

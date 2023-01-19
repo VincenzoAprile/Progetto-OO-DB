@@ -1,5 +1,7 @@
 package PackageController;
 import ClassiDAO.AmmissioneDAO;
+
+
 import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
@@ -24,15 +26,7 @@ import ClassiTabelle.Documentazione;
 import ClassiTabelle.Sede;
 import ClassiTabelle.Vasca;
 import Errori.ErroreGenerico;
-import Errori.ErroreIDTartaruga;
-import Errori.ErroreIDVasca;
-import Errori.ErroreSede;
 import Errori.ErroreSpecifico;
-import Errori.ErroreStatoTartaruga;
-import Errori.ErroreTarghettaEsistente;
-import Errori.ErroreTarghettaNonTrovata;
-import Errori.ErroreTartarugaNonEsiste;
-import Errori.ErroreVascaTartaruga;
 import Errori.ErroreVeterinarioOrData;
 
 public class Controller {
@@ -70,11 +64,6 @@ public class Controller {
 		ErroreGenerico1.setVisible(true);
 	}
 	
-	public static void AppareErroreSede() {
-		ErroreSede ErroreSede1 = new ErroreSede(); 
-		ErroreSede1.setVisible(true);
-	}
-	
 	public static void AppareSetDipendente() {
 		SetDipendente SetDipendente1 = new SetDipendente();
 		SetDipendente1.setVisible(true);
@@ -101,10 +90,6 @@ public class Controller {
 		SetTartarugaFalse1.setVisible(true);
 	}
 	
-	public static void AppareErroreIDTartaruga() {
-		ErroreIDTartaruga ErroreIDTartaruga1 = new ErroreIDTartaruga();
-		ErroreIDTartaruga1.setVisible(true);
-	}
 	
 	public static void AppareSetDocumentazione() {
 		SetDocumentazione SetDocumentazione1 = new SetDocumentazione();
@@ -116,29 +101,16 @@ public class Controller {
 		ErroreVeterinarioOrData1.setVisible(true);
 	}
 	
-	public static void AppareErroreTartarugaNonEsiste() {
-		ErroreTartarugaNonEsiste ErroreTartarugaNonEsiste1 = new ErroreTartarugaNonEsiste();
-		ErroreTartarugaNonEsiste1.setVisible(true);
-	}
 	
 	public static void AppareSetCartellaClinica() {
 		SetCartellaClinica SetCartellaClinica1 = new SetCartellaClinica();
 		SetCartellaClinica1.setVisible(true);
 	}
 	
-	public static void AppareErroreStatoTartaruga() {
-		ErroreStatoTartaruga ErroreStatoTartaruga1 = new ErroreStatoTartaruga();
-		ErroreStatoTartaruga1.setVisible(true);
-	}
 	
 	public static void AppareNewVasca() {
 		NewVasca NewVasca1 = new NewVasca();
 		NewVasca1.setVisible(true);
-	}
-	
-	public static void AppareErroreIDVasca() {
-		ErroreIDVasca ErroreIDVasca1 = new ErroreIDVasca();
-		ErroreIDVasca1.setVisible(true);
 	}
 	
 	public static void AppareVascaTartaruga() {
@@ -146,20 +118,7 @@ public class Controller {
 		VascaTartaruga1.setVisible(true);
 	}
 	
-	public static void AppareErroreVascaTartaruga() {
-		ErroreVascaTartaruga ErroreVascaTartaruga1 = new ErroreVascaTartaruga();
-		ErroreVascaTartaruga1.setVisible(true);
-	}
 	
-	public static void AppareErroreTarghettaNonTrovata() {
-		ErroreTarghettaNonTrovata ErroreTarghettaNonTrovata1 = new ErroreTarghettaNonTrovata();
-		ErroreTarghettaNonTrovata1.setVisible(true);
-	}
-	
-	public static void AppareErroreTarghettaEsistente() {
-		ErroreTarghettaEsistente ErroreTarghettaEsistente1 = new ErroreTarghettaEsistente();
-		ErroreTarghettaEsistente1.setVisible(true);
-	}
 	
 	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
 	 * E MOSTRA AUTOMATICAMENTE UNA SCHERMATA CHE LO VISUALIZZA
