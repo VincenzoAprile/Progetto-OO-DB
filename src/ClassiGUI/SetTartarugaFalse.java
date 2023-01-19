@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ClassiDAO.AmmissioneTartarugaDAO;
+import ClassiDAO.AmmissioneDAO;
 import ClassiTabelle.AmmissioneTartaruga;
 import PackageController.Controller;
 

@@ -1,9 +1,10 @@
 package PackageController;
-import ClassiDAO.AmmissioneTartarugaDAO;
+import ClassiDAO.AmmissioneDAO;
 import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
 import ClassiDAO.SedeDAO;
+import ClassiDAO.TartarugaDAO;
 import ClassiDAO.VascaDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.MainGUI;
@@ -179,11 +180,11 @@ public class Controller {
 	}
 	
 	public static void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
-		AmmissioneTartarugaDAO.pushAmmissione(foo);
+		AmmissioneDAO.pushAmmissione(foo);
 	}
 	
 	public static void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
-		AmmissioneTartarugaDAO.pushTartaruga(foo);
+		TartarugaDAO.pushTartaruga(foo);
 	}
 	
 	public static void PassaPerIlDocumentazioneDAO(Documentazione foo) {
@@ -218,11 +219,15 @@ public class Controller {
 	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI
 	
 	public static void AmmissioneIndebita(AmmissioneTartaruga foo) {
-		AmmissioneTartarugaDAO.CancellaAmmissioneIndebita(foo);
+		AmmissioneDAO.CancellaAmmissioneIndebita(foo);
 	}
 	
 	public static void DocumentazioneIndebita(String foo) {
 		DocumentazioneDAO.CancellaDocumentazioneIndebita(foo);
 	}
 	
+	//TROVA IL NOME DELLA TARTARUGA	
+	public static String TrovaNomeTartaruga(String foo) {
+		return TartarugaDAO.CercaNomeTartaruga(foo);
+	}
 }

@@ -15,7 +15,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import ClassiDAO.AmmissioneTartarugaDAO;
+import ClassiDAO.AmmissioneDAO;
+import ClassiDAO.TartarugaDAO;
 
 public class SetTartarugaTrue extends JFrame {
 
@@ -80,7 +81,7 @@ public class SetTartarugaTrue extends JFrame {
 				else {
 					temp.setTarghetta(Targhetta.getText());
 					temp.setIDTartaruga(IDTartaruga.getText());
-					temp.setNome(AmmissioneTartarugaDAO.CercaNomeTartaruga(Targhetta.getText()));
+					temp.setNome(Controller.TrovaNomeTartaruga(Targhetta.getText()));
 					
 					Controller.AppareMainGUI();
 					
