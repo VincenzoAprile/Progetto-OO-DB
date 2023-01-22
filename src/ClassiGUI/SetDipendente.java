@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
 
 public class SetDipendente extends JFrame {
 
@@ -22,10 +23,11 @@ public class SetDipendente extends JFrame {
 	private JTextField Matricola;
 	private JTextField Nome;
 	private JTextField Cognome;
-	private JTextField Ruolo;
 	private JTextField Centro;
+	private JComboBox Ruolo;
 	
 	private Dipendente temp = new Dipendente();
+	private String Ruoli [] = {"", "Medico Veterinario", "Ricercatore", "Operatore", "Tecnico di laboratorio"};
 
 
 	/**
@@ -55,7 +57,7 @@ public class SetDipendente extends JFrame {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
 				if (Matricola.getText().equals("") || Nome.getText().equals("") || Cognome.getText().equals("") 
-				|| Ruolo.getText().equals("") || Centro.getText().equals("")) {
+				|| Ruolo.getItemAt(Ruolo.getSelectedIndex()).equals("") || Centro.getText().equals("")) {
 					
 					setVisible(false);
 					Controller.AppareMainGUI();
@@ -68,7 +70,7 @@ public class SetDipendente extends JFrame {
 					temp.setCognome(Cognome.getText());
 					temp.setMatricola(Matricola.getText());
 					temp.setNome(Nome.getText());
-					temp.setRuolo(Ruolo.getText());
+					temp.setRuolo((String) Ruolo.getItemAt(Ruolo.getSelectedIndex()));
 				
 					setVisible(false);
 					
@@ -81,7 +83,7 @@ public class SetDipendente extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(275, 303, 222, 76);
+		btnNewButton.setBounds(297, 298, 222, 76);
 		contentPane.add(btnNewButton);
 		
 		Matricola = new JTextField();
@@ -99,14 +101,35 @@ public class SetDipendente extends JFrame {
 		Cognome.setBounds(381, 145, 118, 45);
 		contentPane.add(Cognome);
 		
-		Ruolo = new JTextField();
-		Ruolo.setColumns(10);
-		Ruolo.setBounds(550, 145, 118, 45);
-		contentPane.add(Ruolo);
-		
 		Centro = new JTextField();
 		Centro.setColumns(10);
 		Centro.setBounds(716, 145, 118, 45);
 		contentPane.add(Centro);
+		
+		JButton btnNewButton_1 = new JButton("Visualizza le sedi");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewSedi();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(10, 298, 183, 76);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Visualizza i dipendenti");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewDipendenti();
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_2.setBounds(583, 302, 236, 72);
+		contentPane.add(btnNewButton_2);
+		
+		Ruolo = new JComboBox(Ruoli);
+		Ruolo.setBounds(534, 145, 144, 45);
+		contentPane.add(Ruolo);
 	}
 }

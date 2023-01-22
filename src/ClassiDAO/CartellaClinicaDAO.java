@@ -16,7 +16,7 @@ public class CartellaClinicaDAO {
 		
 		String query1 = "INSERT INTO CARTELLA_CLINICA VALUES ('"  
 				+boh.getSpecie()+"',"+boh.getLunghezza()+","+boh.getLarghezza()+","+boh.getPeso()+",'"+boh.getOcchi()+"','"
-				+boh.getOcchi()+"','"+boh.getNaso()+"','"+boh.getBecco()+"','"+boh.getCollo()+"','"+boh.getPinne()+"','"+boh.getCoda()
+				+boh.getTesta()+"','"+boh.getNaso()+"','"+boh.getBecco()+"','"+boh.getCollo()+"','"+boh.getPinne()+"','"+boh.getCoda()
 				+"','"+boh.getIDCartellaClinica()+"','"+boh.getDocumentazione()+"');";
 				//DEFINIZIONE DELLA QUERY
 				try {

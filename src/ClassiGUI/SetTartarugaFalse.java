@@ -26,6 +26,7 @@ public class SetTartarugaFalse extends JFrame {
 	private JTextField Nome;
 	private JTextField Targhetta;
 	private JTextField IDTartaruga;
+	private JButton btnNewButton_1;
 
 	public static void PassaASetTartarugaFalse(AmmissioneTartaruga boh) {
 		temp = boh;
@@ -78,7 +79,7 @@ public class SetTartarugaFalse extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(350, 271, 173, 70);
+		btnNewButton.setBounds(108, 294, 173, 70);
 		contentPane.add(btnNewButton);
 		
 		txtNomeTarghetta = new JTextField();
@@ -103,6 +104,17 @@ public class SetTartarugaFalse extends JFrame {
 		IDTartaruga.setBounds(408, 132, 221, 64);
 		contentPane.add(IDTartaruga);
 		IDTartaruga.setColumns(10);
+		
+		btnNewButton_1 = new JButton("Ammissioni e Tartarughe");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewAmmissioniTartarughe();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(497, 287, 336, 70);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

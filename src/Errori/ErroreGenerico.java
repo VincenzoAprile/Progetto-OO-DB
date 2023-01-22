@@ -46,6 +46,7 @@ public class ErroreGenerico extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		txtQualcosaAndato = new JTextField();
+		txtQualcosaAndato.setEditable(false);
 		txtQualcosaAndato.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		txtQualcosaAndato.setText("Qualcosa è andato storto!");
 		txtQualcosaAndato.setBounds(99, 94, 468, 101);

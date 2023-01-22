@@ -46,7 +46,7 @@ public class SetDocumentazione extends JFrame {
 		txtVeterinarioidLuogoDi = new JTextField();
 		txtVeterinarioidLuogoDi.setEditable(false);
 		txtVeterinarioidLuogoDi.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		txtVeterinarioidLuogoDi.setText("Veterinario(ID)     Luogo di Ritrovamento      Data      ID Documentazione     Targhetta Della Tartaruga\r\n");
+		txtVeterinarioidLuogoDi.setText("Veterinario(ID)     Luogo di Ritrovamento      Data      ID Documentazione        ID Della Tartaruga\r\n");
 		txtVeterinarioidLuogoDi.setBounds(10, 10, 906, 55);
 		contentPane.add(txtVeterinarioidLuogoDi);
 		txtVeterinarioidLuogoDi.setColumns(10);

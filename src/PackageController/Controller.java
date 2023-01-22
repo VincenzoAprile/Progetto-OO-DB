@@ -1,7 +1,6 @@
 package PackageController;
 import ClassiDAO.AmmissioneDAO;
-
-
+import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
@@ -28,6 +27,9 @@ import ClassiTabelle.Vasca;
 import Errori.ErroreGenerico;
 import Errori.ErroreSpecifico;
 import Errori.ErroreVeterinarioOrData;
+import VisualizzaStatoDataBase.AllAmmissioniTartarughe;
+import VisualizzaStatoDataBase.AllDipendenti;
+import VisualizzaStatoDataBase.AllSede;
 
 public class Controller {
 	
@@ -39,6 +41,7 @@ public class Controller {
 		
 		
 		AppareMainGUI();
+		
 		
 
 	}
@@ -188,5 +191,21 @@ public class Controller {
 	//TROVA IL NOME DELLA TARTARUGA	
 	public static String TrovaNomeTartaruga(String foo) {
 		return TartarugaDAO.CercaNomeTartaruga(foo);
+	}
+	
+	//METODI PER VISUALIZZARE LE TABELLE AGGIORNATE
+	public static void ViewSedi() {
+		AllSede boh = new AllSede(SedeDAO.ViewSedi());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewDipendenti() {
+		AllDipendenti boh = new AllDipendenti(DipendenteDAO.ViewDipendenti());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewAmmissioniTartarughe() {
+		AllAmmissioniTartarughe boh = new AllAmmissioniTartarughe(AmmissioneTartarugaDAO.ViewAmmissioniTartarughe());
+		boh.setVisible(true);
 	}
 }

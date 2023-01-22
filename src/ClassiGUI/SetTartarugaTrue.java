@@ -26,6 +26,7 @@ public class SetTartarugaTrue extends JFrame {
 	private JTextField txtVecchiaTarghettaNuova;
 	private JTextField Targhetta;
 	private JTextField IDTartaruga;
+	private JButton btnNewButton_1;
 	
 	public static void PassaASetTartarugaTrue(AmmissioneTartaruga boh) {
 		temp = boh;
@@ -101,7 +102,12 @@ public class SetTartarugaTrue extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(338, 301, 139, 59);
+		btnNewButton.setBounds(80, 286, 139, 59);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Ammissione e Tartarughe");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(368, 286, 298, 59);
+		contentPane.add(btnNewButton_1);
 	}
 }
