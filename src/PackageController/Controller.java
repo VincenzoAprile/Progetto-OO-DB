@@ -1,9 +1,11 @@
 package PackageController;
 import ClassiDAO.AmmissioneDAO;
+
 import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
+import ClassiDAO.DocumentazioniCartelleClinicheDAO;
 import ClassiDAO.SedeDAO;
 import ClassiDAO.TartarugaDAO;
 import ClassiDAO.VascaDAO;
@@ -29,7 +31,10 @@ import Errori.ErroreSpecifico;
 import Errori.ErroreVeterinarioOrData;
 import VisualizzaStatoDataBase.AllAmmissioniTartarughe;
 import VisualizzaStatoDataBase.AllDipendenti;
+import VisualizzaStatoDataBase.AllDocumentazioniCartellaClinica;
 import VisualizzaStatoDataBase.AllSede;
+import VisualizzaStatoDataBase.AllVasche;
+import VisualizzaStatoDataBase.TartarugheSenzaVasca;
 
 public class Controller {
 	
@@ -161,8 +166,8 @@ public class Controller {
 		VascaDAO.pushVasca(foo);
 	}
 	
-	public static void PassaPerIlVascaTartarugaDAO(String V, String T) {
-		VascaDAO.assegnaVascaTartaruga(V, T);
+	public static void PassaPerIlVascaTartarugaDAO(String Vasca, String Tartaruga) {
+		VascaDAO.assegnaVascaTartaruga(Vasca, Tartaruga);
 	}
 	
 	
@@ -206,6 +211,21 @@ public class Controller {
 	
 	public static void ViewAmmissioniTartarughe() {
 		AllAmmissioniTartarughe boh = new AllAmmissioniTartarughe(AmmissioneTartarugaDAO.ViewAmmissioniTartarughe());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewDocumentazioniCartelleCliniche() {
+		AllDocumentazioniCartellaClinica boh = new AllDocumentazioniCartellaClinica(DocumentazioniCartelleClinicheDAO.AllDocumentazioniCartelleCliniche());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewVasche() {
+		AllVasche boh = new AllVasche(VascaDAO.AllVasche());
+		boh.setVisible(true);
+	}
+	
+	public static void TartarugheSenzaVasca() {
+		TartarugheSenzaVasca boh = new TartarugheSenzaVasca(TartarugaDAO.TartarugheSenzaVasca());
 		boh.setVisible(true);
 	}
 }

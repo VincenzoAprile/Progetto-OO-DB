@@ -11,10 +11,10 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import ClassiTabelle.Dipendente;
+import ClassiTabelle.Vasca;
 import java.awt.Window.Type;
 
-public class AllDipendenti extends JFrame {
+public class AllVasche extends JFrame {
 
 	private JTable table;
 
@@ -23,27 +23,27 @@ public class AllDipendenti extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AllDipendenti(ArrayList<Dipendente> temp) {
+	public AllVasche(ArrayList<Vasca> temp) {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 912, 542);
+		setBounds(100, 100, 656, 432);
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);
 		
-		model.addColumn("Matricola");
-		model.addColumn("Nome");
-		model.addColumn("Cognome");
-		model.addColumn("Ruolo");
-		model.addColumn("ID Centro");
+		model.addColumn("ID Vasca");
+		model.addColumn("Tipo");
+		model.addColumn("Lunghezza");
+		model.addColumn("Larghezza");
+		model.addColumn("Profondità");
 		
 		for (int i = 0; i < temp.size(); i++ ) {
 			String[] boh = new String [5];
-			boh[0] = temp.get(i).getMatricola();
-			boh[1] = temp.get(i).getNome();
-			boh[2] = temp.get(i).getCognome();
-			boh[3] = temp.get(i).getRuolo();
-			boh[4] = temp.get(i).getCentro();
+			boh[0] = temp.get(i).getCodiceVasca();
+			boh[1] = temp.get(i).getTipo();
+			boh[2] = temp.get(i).getLunghezza();
+			boh[3] = temp.get(i).getLarghezza();
+			boh[4] = temp.get(i).getProfondità();
 			
 			model.addRow(boh);
 		}

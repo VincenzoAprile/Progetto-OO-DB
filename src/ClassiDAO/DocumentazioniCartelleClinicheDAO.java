@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import ClassiTabelle.AmmissioneTartaruga;
-import ClassiTabelle.Sede;
+import ClassiTabelle.DocumentazioniCartelleCliniche;
 
-public class AmmissioneTartarugaDAO {
+public class DocumentazioniCartelleClinicheDAO {
 	
-	public static ArrayList ViewAmmissioniTartarughe() {
-		ArrayList<AmmissioneTartaruga> dapassare = new ArrayList<AmmissioneTartaruga>();
+	public static ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
+		ArrayList<DocumentazioniCartelleCliniche> dapassare = new ArrayList<DocumentazioniCartelleCliniche>();
 		
-		String query = "SELECT * FROM AMMISSIONE JOIN TARTARUGA ON FKAmmissione = ID_Ammissione ORDER BY Data_di_ammissione"; 
+		String query = "SELECT ID_Documentazione, FK_Tartaruga, ID_CartellaClinica "
+				+ "FROM DOCUMENTAZIONE JOIN CARTELLA_CLINICA ON Documentazione = ID_Documentazione"; 
 		try {
 			Class.forName("org.postgresql.Driver"); 
 		} catch (ClassNotFoundException e) {
@@ -33,20 +34,10 @@ public class AmmissioneTartarugaDAO {
 			ResultSet result = statement.executeQuery(query);  
 			
 			while (result.next()) {
-				AmmissioneTartaruga temp = new AmmissioneTartaruga();
-				if(result.getBoolean(1) == true) {
-					temp.setRiammissione("Sì");
-				}
-				else {
-					temp.setRiammissione("No");
-				}
-				
-				temp.setDataDiAmmissione(result.getString(2));
-				temp.setIDAmmissione(result.getString(3));
-				temp.setCentro(result.getString(4));
-				temp.setNome(result.getString(5));
-				temp.setIDTartaruga(result.getString(6));
-				temp.setTarghetta(result.getString(7));
+				DocumentazioniCartelleCliniche temp = new DocumentazioniCartelleCliniche();
+				temp.setIDDocumentazione(result.getString(1));
+				temp.setIDTartaruga(result.getString(2));
+				temp.setIDCartellaClinica(result.getString(3));
 				dapassare.add(temp);
 				
 			}

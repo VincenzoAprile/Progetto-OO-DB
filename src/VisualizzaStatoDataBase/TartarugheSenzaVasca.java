@@ -11,39 +11,34 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import ClassiTabelle.Dipendente;
+import ClassiTabelle.Tartaruga;
 import java.awt.Window.Type;
 
-public class AllDipendenti extends JFrame {
+public class TartarugheSenzaVasca extends JFrame {
 
 	private JTable table;
 
-	
 
 	/**
 	 * Create the frame.
 	 */
-	public AllDipendenti(ArrayList<Dipendente> temp) {
+	public TartarugheSenzaVasca(ArrayList<Tartaruga> temp) {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 912, 542);
+		setBounds(100, 100, 655, 375);
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);
 		
-		model.addColumn("Matricola");
 		model.addColumn("Nome");
-		model.addColumn("Cognome");
-		model.addColumn("Ruolo");
-		model.addColumn("ID Centro");
+		model.addColumn("IDTartaruga");
+		model.addColumn("Targhetta");
 		
 		for (int i = 0; i < temp.size(); i++ ) {
-			String[] boh = new String [5];
-			boh[0] = temp.get(i).getMatricola();
-			boh[1] = temp.get(i).getNome();
-			boh[2] = temp.get(i).getCognome();
-			boh[3] = temp.get(i).getRuolo();
-			boh[4] = temp.get(i).getCentro();
+			String[] boh = new String [3];
+			boh[0] = temp.get(i).getNome();
+			boh[1] = temp.get(i).getIDTartaruga();
+			boh[2] = temp.get(i).getTarghetta();
 			
 			model.addRow(boh);
 		}

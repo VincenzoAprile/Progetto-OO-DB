@@ -26,6 +26,7 @@ public class NewVasca extends JFrame {
 	private JTextField Profondità;
 	
 	private Vasca temp = new Vasca();
+	private JButton btnNewButton_1;
 
 	
 
@@ -104,8 +105,19 @@ public class NewVasca extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(323, 359, 161, 67);
+		btnNewButton.setBounds(522, 353, 161, 67);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Vasche");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewVasche();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(42, 330, 186, 91);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

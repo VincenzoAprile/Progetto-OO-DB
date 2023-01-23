@@ -46,6 +46,7 @@ public class SetCartellaClinica extends JFrame {
 	private JComboBox Pinne;
 	private JTextField txtCoda;
 	private JComboBox Coda;
+	private JButton btnNewButton_1;
 	public String getDocumentazione() {
 		return Documentazione;
 	}
@@ -226,5 +227,15 @@ public class SetCartellaClinica extends JFrame {
 		Coda = new JComboBox(Stati);
 		Coda.setBounds(90, 374, 172, 39);
 		contentPane.add(Coda);
+		
+		btnNewButton_1 = new JButton("ID Documentazioni e cartelle");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewDocumentazioniCartelleCliniche();
+			}
+		});
+		btnNewButton_1.setBounds(680, 196, 185, 78);
+		contentPane.add(btnNewButton_1);
 	}
 }

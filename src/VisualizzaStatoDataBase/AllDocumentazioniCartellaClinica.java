@@ -2,6 +2,7 @@ package VisualizzaStatoDataBase;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Window.Type;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -11,10 +12,9 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import ClassiTabelle.Dipendente;
-import java.awt.Window.Type;
+import ClassiTabelle.DocumentazioniCartelleCliniche;
 
-public class AllDipendenti extends JFrame {
+public class AllDocumentazioniCartellaClinica extends JFrame {
 
 	private JTable table;
 
@@ -23,28 +23,23 @@ public class AllDipendenti extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AllDipendenti(ArrayList<Dipendente> temp) {
+	public AllDocumentazioniCartellaClinica(ArrayList<DocumentazioniCartelleCliniche> temp) {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 912, 542);
+		setBounds(100, 100, 620, 399);
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);
 		
-		model.addColumn("Matricola");
-		model.addColumn("Nome");
-		model.addColumn("Cognome");
-		model.addColumn("Ruolo");
-		model.addColumn("ID Centro");
+		model.addColumn("ID Tartaruga");
+		model.addColumn("ID Documentazione");
+		model.addColumn("ID Cartella Clinica");
 		
 		for (int i = 0; i < temp.size(); i++ ) {
-			String[] boh = new String [5];
-			boh[0] = temp.get(i).getMatricola();
-			boh[1] = temp.get(i).getNome();
-			boh[2] = temp.get(i).getCognome();
-			boh[3] = temp.get(i).getRuolo();
-			boh[4] = temp.get(i).getCentro();
-			
+			String[] boh = new String [3];
+			boh[0] = temp.get(i).getIDTartaruga();
+			boh[1] = temp.get(i).getIDDocumentazione();
+			boh[2] = temp.get(i).getIDCartellaClinica();
 			model.addRow(boh);
 		}
 		
@@ -55,7 +50,6 @@ public class AllDipendenti extends JFrame {
 		
 		JScrollPane pane = new JScrollPane(table);
         getContentPane().add(pane, BorderLayout.CENTER);
-		
 	}
 
 }
