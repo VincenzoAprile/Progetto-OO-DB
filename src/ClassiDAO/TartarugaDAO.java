@@ -99,9 +99,48 @@ public class TartarugaDAO {
 
 	public static ArrayList<Tartaruga> TartarugheSenzaVasca(){
 		
-ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
+		ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
 		
 		String query = "SELECT * FROM Tartarughe_Senza_Vasca;"; 
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				Tartaruga temp = new Tartaruga();
+				temp.setNome(result.getString(1));
+				temp.setIDTartaruga(result.getString(2));
+				temp.setTarghetta(result.getString(3));
+				temp.setFKAmmissione(result.getString(4));
+				dapassare.add(temp);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
+	}
+	
+	public static ArrayList<Tartaruga> TartarugheDiUnCentro(String boh){
+		
+		ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
+		
+		String query = "SELECT * FROM Tartarughe_Di_Un_Centro WHERE ID_Centro = '"+boh+"';"; 
 		try {
 			Class.forName("org.postgresql.Driver"); 
 		} catch (ClassNotFoundException e) {

@@ -10,6 +10,7 @@ import ClassiDAO.SedeDAO;
 import ClassiDAO.TartarugaDAO;
 import ClassiDAO.VascaDAO;
 import ClassiGUI.AddNew;
+import ClassiGUI.AmmissioniCartelle;
 import ClassiGUI.MainGUI;
 import ClassiGUI.NewVasca;
 import ClassiGUI.SetAmmissione;
@@ -20,6 +21,7 @@ import ClassiGUI.SetSede;
 import ClassiGUI.SetTartarugaFalse;
 import ClassiGUI.SetTartarugaTrue;
 import ClassiGUI.VascaTartaruga;
+import ClassiGUI.SeeSediTartarughe;
 import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.CartellaClinica;
 import ClassiTabelle.Dipendente;
@@ -29,10 +31,12 @@ import ClassiTabelle.Vasca;
 import Errori.ErroreGenerico;
 import Errori.ErroreSpecifico;
 import Errori.ErroreVeterinarioOrData;
+import VisualizzaStatoDataBase.AllAmmissione;
 import VisualizzaStatoDataBase.AllAmmissioniTartarughe;
 import VisualizzaStatoDataBase.AllDipendenti;
 import VisualizzaStatoDataBase.AllDocumentazioniCartellaClinica;
 import VisualizzaStatoDataBase.AllSede;
+import VisualizzaStatoDataBase.AllTartarughe;
 import VisualizzaStatoDataBase.AllVasche;
 import VisualizzaStatoDataBase.TartarugheSenzaVasca;
 
@@ -126,6 +130,15 @@ public class Controller {
 		VascaTartaruga1.setVisible(true);
 	}
 	
+	public static void AppareSeeSediTartarughe() {
+		SeeSediTartarughe SeeSediTartarughe1 = new SeeSediTartarughe();
+		SeeSediTartarughe1.setVisible(true);
+	}
+	
+	public static void AppareAmmissioniCartelle(String foo) {
+		AmmissioniCartelle AmmissioniCartelle1 = new AmmissioniCartelle(foo);
+		AmmissioniCartelle1.setVisible(true);
+	}
 	
 	
 	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
@@ -169,7 +182,6 @@ public class Controller {
 	public static void PassaPerIlVascaTartarugaDAO(String Vasca, String Tartaruga) {
 		VascaDAO.assegnaVascaTartaruga(Vasca, Tartaruga);
 	}
-	
 	
 	
 	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
@@ -228,4 +240,15 @@ public class Controller {
 		TartarugheSenzaVasca boh = new TartarugheSenzaVasca(TartarugaDAO.TartarugheSenzaVasca());
 		boh.setVisible(true);
 	}
+	
+	public static void ViewTartarugheCentro(String foo) {
+		AllTartarughe boh = new AllTartarughe(TartarugaDAO.TartarugheDiUnCentro(foo));
+		boh.setVisible(true);
+	}
+	
+	public static void AmmissioniTarghetta(String foo) {
+		AllAmmissione boh = new AllAmmissione(AmmissioneDAO.AmmissionePerTarghetta(foo));
+		boh.setVisible(true);
+	}
+
 }

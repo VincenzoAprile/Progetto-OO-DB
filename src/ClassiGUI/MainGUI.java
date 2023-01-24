@@ -57,7 +57,7 @@ public class MainGUI extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(58, 271, 243, 73);
+		btnNewButton.setBounds(55, 186, 243, 73);
 		contentPane.add(btnNewButton);
 		
 		JButton btnAssegnaUnaVasca = new JButton("Assegna una vasca a una tartaruga");
@@ -69,7 +69,19 @@ public class MainGUI extends JFrame {
 			}
 		});
 		btnAssegnaUnaVasca.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAssegnaUnaVasca.setBounds(421, 271, 346, 73);
+		btnAssegnaUnaVasca.setBounds(424, 186, 346, 73);
 		contentPane.add(btnAssegnaUnaVasca);
+		
+		JButton btnNewButton_1 = new JButton("Visualizza Tartarughe\r\n");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareSeeSediTartarughe();
+				setVisible(false);
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(55, 386, 243, 73);
+		contentPane.add(btnNewButton_1);
 	}
 }
