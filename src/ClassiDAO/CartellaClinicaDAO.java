@@ -2,11 +2,14 @@ package ClassiDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import ClassiTabelle.CartellaClinica;
+import ClassiTabelle.Dipendente;
 import PackageController.Controller;
 
 public class CartellaClinicaDAO {
@@ -64,6 +67,54 @@ public class CartellaClinicaDAO {
 					
 				}
 		
+	}
+	
+	public static ArrayList <CartellaClinica> CartelleDiAmmissione(String boh){
+		
+ArrayList<CartellaClinica> dapassare = new ArrayList<CartellaClinica>();
+		
+		String query = "SELECT * FROM Cartelle_Di_Una_Ammissione WHERE ID_Ammissione = '"+boh+"';";
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				CartellaClinica temp = new CartellaClinica();
+				temp.setSpecie(result.getString(1));
+				temp.setLunghezza(result.getString(2));
+				temp.setLarghezza(result.getString(3));
+				temp.setPeso(result.getString(4));
+				temp.setOcchi(result.getString(5));
+				temp.setTesta(result.getString(6));
+				temp.setNaso(result.getString(7));
+				temp.setBecco(result.getString(8));
+				temp.setCollo(result.getString(9));
+				temp.setPinne(result.getString(10));
+				temp.setCoda(result.getString(11));
+				temp.setIDCartellaClinica(result.getString(12));
+				temp.setDocumentazione(result.getString(13));
+				dapassare.add(temp);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
 	}
 
 }
