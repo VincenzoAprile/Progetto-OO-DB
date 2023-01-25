@@ -36,7 +36,7 @@ public class SetSede extends JFrame {
 
 	private Sede temp = new Sede();
 	private JButton btnNewButton_1;
-	ArrayList<Sede> prova = new ArrayList<Sede>();
+	
 	/**
 	 * Create the frame.
 	 */
@@ -112,7 +112,7 @@ public class SetSede extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Controller.ViewSedi();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));

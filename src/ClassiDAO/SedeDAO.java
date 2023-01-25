@@ -50,22 +50,41 @@ public class SedeDAO {
 	}
 
 	public static ArrayList ViewSedi() {
-		ArrayList<Sede> temp = new ArrayList<Sede>();
-		Sede sede1 = new Sede();
-		Sede sede2 = new Sede();
-		sede1.setContatti("boh");
-		sede1.setIDCentro("bah");
-		sede1.setIndirizzo("beh");
-		sede1.setNomeCentro("buh");
-		sede2.setContatti("qui");
-		sede2.setIDCentro("quo");
-		sede2.setIndirizzo("qua");
-		sede2.setNomeCentro("paperino");
+		ArrayList<Sede> dapassare = new ArrayList<Sede>();
 		
-		temp.add(sede1);
-		temp.add(sede2);
+		String query = "SELECT * FROM CENTRO_TARTARUGHE_MARINE"; 
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				Sede temp = new Sede();
+				temp.setIndirizzo(result.getString(1));
+				temp.setContatti(result.getString(2));
+				temp.setNomeCentro(result.getString(3));
+				temp.setIDCentro(result.getString(4));
+				dapassare.add(temp);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		return temp;
+		return dapassare;
 	}
 }
 

@@ -28,6 +28,7 @@ public class SetDocumentazione extends JFrame {
 	private JTextField Etichetta;
 	
 	Documentazione temp = new Documentazione();
+	private JButton btnNewButton_2;
 
 	
 
@@ -46,7 +47,7 @@ public class SetDocumentazione extends JFrame {
 		txtVeterinarioidLuogoDi = new JTextField();
 		txtVeterinarioidLuogoDi.setEditable(false);
 		txtVeterinarioidLuogoDi.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		txtVeterinarioidLuogoDi.setText("Veterinario(ID)     Luogo di Ritrovamento      Data      ID Documentazione     Targhetta Della Tartaruga\r\n");
+		txtVeterinarioidLuogoDi.setText("Veterinario(ID)     Luogo di Ritrovamento      Data      ID Documentazione        ID Della Tartaruga\r\n");
 		txtVeterinarioidLuogoDi.setBounds(10, 10, 906, 55);
 		contentPane.add(txtVeterinarioidLuogoDi);
 		txtVeterinarioidLuogoDi.setColumns(10);
@@ -129,7 +130,28 @@ public class SetDocumentazione extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(364, 417, 167, 51);
+		btnNewButton.setBounds(653, 417, 167, 51);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Dipendenti");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewDipendenti();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(10, 385, 130, 48);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("ID Documentazioni e cartelle cliniche");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewDocumentazioniCartelleCliniche();
+			}
+		});
+		btnNewButton_2.setBounds(200, 385, 210, 65);
+		contentPane.add(btnNewButton_2);
 	}
 }

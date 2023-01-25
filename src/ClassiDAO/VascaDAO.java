@@ -2,10 +2,13 @@ package ClassiDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import ClassiTabelle.DocumentazioniCartelleCliniche;
 import ClassiTabelle.Vasca;
 import PackageController.Controller;
 
@@ -52,10 +55,10 @@ public class VascaDAO {
 				
 	}
 
-	public static void assegnaVascaTartaruga(String Vasca, String Targhetta) {
+	public static void assegnaVascaTartaruga(String Vasca, String IDTartaruga) {
 		
 		String query = "INSERT INTO VASCHE_TARTARUGHE VALUES ('"
-				+Vasca+"','"+Targhetta+"');";
+				+Vasca+"','"+IDTartaruga+"');";
 		//DEFINIZIONE DELLA QUERY
 		try {
 			Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
@@ -87,5 +90,45 @@ public class VascaDAO {
 				System.out.println(e.getSQLState());
 			}
 		}
+	}
+
+	public static ArrayList<Vasca> AllVasche(){
+		
+		ArrayList<Vasca> dapassare = new ArrayList<Vasca>();
+		
+		String query = "SELECT * FROM VASCA"; 
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				Vasca temp = new Vasca();
+				temp.setCodiceVasca(result.getString(1));
+				temp.setTipo(result.getString(2));
+				temp.setLunghezza(result.getString(3));
+				temp.setLarghezza(result.getString(4));
+				temp.setProfondità(result.getString(5));
+				dapassare.add(temp);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
 	}
 }

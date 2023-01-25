@@ -2,11 +2,14 @@ package ClassiDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import ClassiTabelle.Dipendente;
+import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 public class DipendenteDAO {
@@ -56,6 +59,45 @@ public class DipendenteDAO {
 					}
 						
 				}
+	}
+	
+	public static ArrayList ViewDipendenti() {
+		ArrayList<Dipendente> dapassare = new ArrayList<Dipendente>();
+		
+		String query = "SELECT * FROM PERSONALE"; 
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				Dipendente temp = new Dipendente();
+				temp.setMatricola(result.getString(1));
+				temp.setNome(result.getString(2));
+				temp.setCognome(result.getString(3));
+				temp.setRuolo(result.getString(4));
+				temp.setCentro(result.getString(5));
+				dapassare.add(temp);
+				
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
 	}
 
 }

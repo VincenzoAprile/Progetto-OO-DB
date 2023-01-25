@@ -28,6 +28,7 @@ public class SetAmmissione extends JFrame {
 	private JTextField Mese;
 	private JTextField Anno;
 	private JTextField Giorno;
+	private JButton btnNewButton_1;
 	
 	/**
 	 * Create the frame.
@@ -90,7 +91,7 @@ public class SetAmmissione extends JFrame {
 					}
 					
 					temp.setDataDiAmmissione(Anno.getText()+"-"+Mese.getText()+"-"+Giorno.getText());
-					temp.setIDAmmssione(IDAmmissione.getText());
+					temp.setIDAmmissione(IDAmmissione.getText());
 					temp.setCentro(Centro.getText());
 					
 					
@@ -114,7 +115,7 @@ public class SetAmmissione extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(343, 331, 205, 74);
+		btnNewButton.setBounds(116, 349, 205, 74);
 		contentPane.add(btnNewButton);
 		
 		Mese = new JTextField();
@@ -131,5 +132,16 @@ public class SetAmmissione extends JFrame {
 		Giorno.setBounds(261, 132, 170, 52);
 		contentPane.add(Giorno);
 		Giorno.setColumns(10);
+		
+		btnNewButton_1 = new JButton("Ammissioni e Tartarughe");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewAmmissioniTartarughe();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(544, 349, 304, 74);
+		contentPane.add(btnNewButton_1);
 	}
 }

@@ -1,14 +1,16 @@
 package PackageController;
 import ClassiDAO.AmmissioneDAO;
 
-
+import ClassiDAO.AmmissioneTartarugaDAO;
 import ClassiDAO.CartellaClinicaDAO;
 import ClassiDAO.DipendenteDAO;
 import ClassiDAO.DocumentazioneDAO;
+import ClassiDAO.DocumentazioniCartelleClinicheDAO;
 import ClassiDAO.SedeDAO;
 import ClassiDAO.TartarugaDAO;
 import ClassiDAO.VascaDAO;
 import ClassiGUI.AddNew;
+import ClassiGUI.AmmissioniCartelle;
 import ClassiGUI.MainGUI;
 import ClassiGUI.NewVasca;
 import ClassiGUI.SetAmmissione;
@@ -19,6 +21,7 @@ import ClassiGUI.SetSede;
 import ClassiGUI.SetTartarugaFalse;
 import ClassiGUI.SetTartarugaTrue;
 import ClassiGUI.VascaTartaruga;
+import ClassiGUI.SeeSediTartarughe;
 import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.CartellaClinica;
 import ClassiTabelle.Dipendente;
@@ -28,6 +31,14 @@ import ClassiTabelle.Vasca;
 import Errori.ErroreGenerico;
 import Errori.ErroreSpecifico;
 import Errori.ErroreVeterinarioOrData;
+import VisualizzaStatoDataBase.AllAmmissione;
+import VisualizzaStatoDataBase.AllAmmissioniTartarughe;
+import VisualizzaStatoDataBase.AllDipendenti;
+import VisualizzaStatoDataBase.AllDocumentazioniCartellaClinica;
+import VisualizzaStatoDataBase.AllSede;
+import VisualizzaStatoDataBase.AllTartarughe;
+import VisualizzaStatoDataBase.AllVasche;
+import VisualizzaStatoDataBase.TartarugheSenzaVasca;
 
 public class Controller {
 	
@@ -39,6 +50,7 @@ public class Controller {
 		
 		
 		AppareMainGUI();
+		
 		
 
 	}
@@ -118,6 +130,15 @@ public class Controller {
 		VascaTartaruga1.setVisible(true);
 	}
 	
+	public static void AppareSeeSediTartarughe() {
+		SeeSediTartarughe SeeSediTartarughe1 = new SeeSediTartarughe();
+		SeeSediTartarughe1.setVisible(true);
+	}
+	
+	public static void AppareAmmissioniCartelle(String foo) {
+		AmmissioniCartelle AmmissioniCartelle1 = new AmmissioniCartelle(foo);
+		AmmissioniCartelle1.setVisible(true);
+	}
 	
 	
 	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
@@ -158,10 +179,9 @@ public class Controller {
 		VascaDAO.pushVasca(foo);
 	}
 	
-	public static void PassaPerIlVascaTartarugaDAO(String V, String T) {
-		VascaDAO.assegnaVascaTartaruga(V, T);
+	public static void PassaPerIlVascaTartarugaDAO(String Vasca, String Tartaruga) {
+		VascaDAO.assegnaVascaTartaruga(Vasca, Tartaruga);
 	}
-	
 	
 	
 	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
@@ -189,4 +209,46 @@ public class Controller {
 	public static String TrovaNomeTartaruga(String foo) {
 		return TartarugaDAO.CercaNomeTartaruga(foo);
 	}
+	
+	//METODI PER VISUALIZZARE LE TABELLE AGGIORNATE
+	public static void ViewSedi() {
+		AllSede boh = new AllSede(SedeDAO.ViewSedi());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewDipendenti() {
+		AllDipendenti boh = new AllDipendenti(DipendenteDAO.ViewDipendenti());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewAmmissioniTartarughe() {
+		AllAmmissioniTartarughe boh = new AllAmmissioniTartarughe(AmmissioneTartarugaDAO.ViewAmmissioniTartarughe());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewDocumentazioniCartelleCliniche() {
+		AllDocumentazioniCartellaClinica boh = new AllDocumentazioniCartellaClinica(DocumentazioniCartelleClinicheDAO.AllDocumentazioniCartelleCliniche());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewVasche() {
+		AllVasche boh = new AllVasche(VascaDAO.AllVasche());
+		boh.setVisible(true);
+	}
+	
+	public static void TartarugheSenzaVasca() {
+		TartarugheSenzaVasca boh = new TartarugheSenzaVasca(TartarugaDAO.TartarugheSenzaVasca());
+		boh.setVisible(true);
+	}
+	
+	public static void ViewTartarugheCentro(String foo) {
+		AllTartarughe boh = new AllTartarughe(TartarugaDAO.TartarugheDiUnCentro(foo));
+		boh.setVisible(true);
+	}
+	
+	public static void AmmissioniTarghetta(String foo) {
+		AllAmmissione boh = new AllAmmissione(AmmissioneDAO.AmmissionePerTarghetta(foo));
+		boh.setVisible(true);
+	}
+
 }

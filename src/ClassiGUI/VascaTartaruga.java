@@ -20,6 +20,8 @@ public class VascaTartaruga extends JFrame {
 	private JTextField txtTarghettaDellaTartaruga;
 	private JTextField Targhetta;
 	private JTextField IDVasca;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 
 	
 
@@ -37,7 +39,7 @@ public class VascaTartaruga extends JFrame {
 		
 		txtTarghettaDellaTartaruga = new JTextField();
 		txtTarghettaDellaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		txtTarghettaDellaTartaruga.setText("    ID Vasca                     Targhetta della Tartaruga ");
+		txtTarghettaDellaTartaruga.setText("    ID Vasca                           ID Tartaruga");
 		txtTarghettaDellaTartaruga.setEditable(false);
 		txtTarghettaDellaTartaruga.setBounds(10, 26, 825, 82);
 		contentPane.add(txtTarghettaDellaTartaruga);
@@ -74,7 +76,29 @@ public class VascaTartaruga extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(360, 358, 168, 62);
+		btnNewButton.setBounds(667, 347, 168, 62);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Vasche");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.ViewVasche();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_1.setBounds(49, 318, 186, 91);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("Tartarughe senza Vasca");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.TartarugheSenzaVasca();
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_2.setBounds(310, 318, 274, 91);
+		contentPane.add(btnNewButton_2);
 	}
 }

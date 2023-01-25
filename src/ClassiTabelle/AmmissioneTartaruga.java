@@ -21,7 +21,7 @@ public class AmmissioneTartaruga {
 		this.DataDiAmmissione = DataDiAmmissione;
 	}
 	
-	public void setIDAmmssione(String IDAmmissione) {
+	public void setIDAmmissione(String IDAmmissione) {
 		this.IDAmmissione = IDAmmissione;
 	}
 	
