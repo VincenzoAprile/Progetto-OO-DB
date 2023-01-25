@@ -33,6 +33,7 @@ import Errori.ErroreSpecifico;
 import Errori.ErroreVeterinarioOrData;
 import VisualizzaStatoDataBase.AllAmmissione;
 import VisualizzaStatoDataBase.AllAmmissioniTartarughe;
+import VisualizzaStatoDataBase.AllCartelleCliniche;
 import VisualizzaStatoDataBase.AllDipendenti;
 import VisualizzaStatoDataBase.AllDocumentazioniCartellaClinica;
 import VisualizzaStatoDataBase.AllSede;
@@ -248,6 +249,12 @@ public class Controller {
 	
 	public static void AmmissioniTarghetta(String foo) {
 		AllAmmissione boh = new AllAmmissione(AmmissioneDAO.AmmissionePerTarghetta(foo));
+		boh.setVisible(true);
+	}
+	
+	public static void CartelleDiAmmissione(String foo) {
+		
+		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO.CartelleDiAmmissione(foo));
 		boh.setVisible(true);
 	}
 

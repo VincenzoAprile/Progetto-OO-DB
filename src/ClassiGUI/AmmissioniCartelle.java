@@ -18,6 +18,8 @@ public class AmmissioniCartelle extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPerVedereLe;
+	private JTextField IDAmmissione;
+	private JTextField txtInserisciLidAmmissione;
 
 	
 
@@ -51,6 +53,29 @@ public class AmmissioniCartelle extends JFrame {
 		});
 		btnNewButton.setBounds(32, 228, 152, 57);
 		contentPane.add(btnNewButton);
+		
+		IDAmmissione = new JTextField();
+		IDAmmissione.setBounds(525, 119, 182, 45);
+		contentPane.add(IDAmmissione);
+		IDAmmissione.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("Visualizza Cartelle");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.CartelleDiAmmissione(IDAmmissione.getText());
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton_1.setBounds(536, 228, 152, 57);
+		contentPane.add(btnNewButton_1);
+		
+		txtInserisciLidAmmissione = new JTextField();
+		txtInserisciLidAmmissione.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		txtInserisciLidAmmissione.setText("Inserisci l'ID Ammissione\r\n");
+		txtInserisciLidAmmissione.setEditable(false);
+		txtInserisciLidAmmissione.setBounds(400, 39, 307, 51);
+		contentPane.add(txtInserisciLidAmmissione);
+		txtInserisciLidAmmissione.setColumns(10);
 	}
-
 }
