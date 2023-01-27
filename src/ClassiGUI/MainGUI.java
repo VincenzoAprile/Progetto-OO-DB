@@ -83,5 +83,29 @@ public class MainGUI extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.setBounds(55, 386, 243, 73);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Statistiche Mensili");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareStatMensili();
+				setVisible(false);
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_2.setBounds(424, 386, 162, 62);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_2_1 = new JButton("Statistiche Annuali");
+		btnNewButton_2_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareStatAnnuali();
+				setVisible(false);
+			}
+		});
+		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_2_1.setBounds(656, 386, 162, 62);
+		contentPane.add(btnNewButton_2_1);
 	}
 }

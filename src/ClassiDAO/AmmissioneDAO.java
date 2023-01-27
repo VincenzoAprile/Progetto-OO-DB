@@ -147,8 +147,75 @@ public class AmmissioneDAO {
 		return dapassare;
 	}
 	
+	public static String StatisticaAmmissioniAnnue(String Anno) {
+		
+		String dapassare = null;
+		
+		String query = "SELECT * FROM Numero_Tartarughe_Ammesse_Anno('"+Anno+"');";
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				dapassare = result.getString(1);
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
+		
+	}
 	
+	public static String StatisticheAmmissioniMensili(String Mese, String Anno) {
+
+		
+		String dapassare = null;
+		
+		String query = "SELECT * FROM Numero_Tartarughe_Ammesse_Anno_Mese('"+Anno+"','"+Mese+"');";
+		try {
+			Class.forName("org.postgresql.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); 
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  
+			Statement statement = con.createStatement();  
+			ResultSet result = statement.executeQuery(query);  
+			
+			while (result.next()) {
+				dapassare = result.getString(1);
+			}
+			result.close();
+			statement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dapassare;
+		
 	
+	}
 }
 
 

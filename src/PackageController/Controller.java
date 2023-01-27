@@ -20,6 +20,9 @@ import ClassiGUI.SetDocumentazione;
 import ClassiGUI.SetSede;
 import ClassiGUI.SetTartarugaFalse;
 import ClassiGUI.SetTartarugaTrue;
+import ClassiGUI.StatAmmissioni;
+import ClassiGUI.StatAnnuali;
+import ClassiGUI.StatMensili;
 import ClassiGUI.VascaTartaruga;
 import ClassiGUI.SeeSediTartarughe;
 import ClassiTabelle.AmmissioneTartaruga;
@@ -141,6 +144,21 @@ public class Controller {
 		AmmissioniCartelle1.setVisible(true);
 	}
 	
+	public static void AppareStatAnnuali() {
+		StatAnnuali StatAnnuali1 = new StatAnnuali();
+		StatAnnuali1.setVisible(true);
+	}
+	
+	public static void AppareStatMensili() {
+		StatMensili StatMensili1 = new StatMensili();
+		StatMensili1.setVisible(true);
+	}
+	
+	public static void AppareStatAmmissioni(String foo) {
+		StatAmmissioni StatAmmissioni1 = new StatAmmissioni(foo);
+		StatAmmissioni1.setVisible(true);
+	}
+	
 	
 	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
 	 * E MOSTRA AUTOMATICAMENTE UNA SCHERMATA CHE LO VISUALIZZA
@@ -184,6 +202,13 @@ public class Controller {
 		VascaDAO.assegnaVascaTartaruga(Vasca, Tartaruga);
 	}
 	
+	public static void StatAmmissioniAnnueDAO(String foo) {
+		AppareStatAmmissioni(AmmissioneDAO.StatisticaAmmissioniAnnue(foo));
+	}
+	
+	public static void StatAmmissioniMensiliDAO(String foo, String boo) {
+		AppareStatAmmissioni(AmmissioneDAO.StatisticheAmmissioniMensili(foo, boo));
+	}
 	
 	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
 	
@@ -253,7 +278,6 @@ public class Controller {
 	}
 	
 	public static void CartelleDiAmmissione(String foo) {
-		
 		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO.CartelleDiAmmissione(foo));
 		boh.setVisible(true);
 	}
