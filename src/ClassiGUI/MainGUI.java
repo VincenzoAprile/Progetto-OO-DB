@@ -107,5 +107,17 @@ public class MainGUI extends JFrame {
 		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_2_1.setBounds(656, 386, 162, 62);
 		contentPane.add(btnNewButton_2_1);
+		
+		JButton btnNewButton_3 = new JButton("Cancella Qualcosa");
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.AppareDelete();
+				setVisible(false);
+			}
+		});
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_3.setBounds(424, 49, 346, 70);
+		contentPane.add(btnNewButton_3);
 	}
 }

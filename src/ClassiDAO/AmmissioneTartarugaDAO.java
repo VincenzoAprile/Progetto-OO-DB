@@ -59,5 +59,33 @@ public class AmmissioneTartarugaDAO {
 		
 		return dapassare;
 	}
+	
+	public static void DeleteAmmissioneTartaruga (String boh) {
+		
+		String query1 = "DELETE FROM AMMISSIONE WHERE ID_AMMISSIONE = "
+				+"(SELECT ID_AMMISSIONE FROM AMMISSIONE JOIN TARTARUGA ON FKAmmissione = ID_Ammissione WHERE ID_Tartaruga = '"+boh+"')";
+		//DEFINIZIONE DELLA QUERY
+		try {
+			Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); //DEFINIZIONE DELLA CLASSE PER INSERIRE USER, PASSWORD E SSL
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  //PER STABILIRE LA CONNESSIONE CON IL DATABASE
+			Statement statement = con.createStatement();    //PER INIZIARE UNA SERIE DI QUERY
+			statement.executeQuery(query1);  //PER ESEGUIRE UNA QUERY
+			
+			
+			statement.close();
+			con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
+		} catch (SQLException e) {
+			e.getStackTrace();
+		}
+	}
 
 }

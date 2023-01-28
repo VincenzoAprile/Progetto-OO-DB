@@ -55,7 +55,18 @@ public class StatAnnuali extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(57, 312, 214, 62);
+		btnNewButton.setBounds(130, 312, 214, 62);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Visualizza Cartelle Cliniche");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.CartelleDiUnAnno(Anno.getText());
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1.setBounds(468, 315, 349, 56);
+		contentPane.add(btnNewButton_1);
 	}
 }

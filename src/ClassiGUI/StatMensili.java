@@ -21,6 +21,7 @@ public class StatMensili extends JFrame {
 	private JTextField txtInserireAnno;
 	private JTextField Mese;
 	private JTextField Anno;
+	private JButton btnNewButton_1;
 
 	
 
@@ -85,6 +86,17 @@ public class StatMensili extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBounds(60, 340, 223, 62);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Cartelle Cliniche");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Controller.CartelleDiUnMese(Mese.getText(), Anno.getText());
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1.setBounds(431, 340, 235, 62);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

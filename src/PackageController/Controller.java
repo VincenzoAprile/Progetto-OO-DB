@@ -11,6 +11,7 @@ import ClassiDAO.TartarugaDAO;
 import ClassiDAO.VascaDAO;
 import ClassiGUI.AddNew;
 import ClassiGUI.AmmissioniCartelle;
+import ClassiGUI.Delete;
 import ClassiGUI.MainGUI;
 import ClassiGUI.NewVasca;
 import ClassiGUI.SetAmmissione;
@@ -159,6 +160,11 @@ public class Controller {
 		StatAmmissioni1.setVisible(true);
 	}
 	
+	public static void AppareDelete() {
+		Delete Delete1 = new Delete();
+		Delete1.setVisible(true);
+	}
+	
 	
 	/**IL METODO ERRORE SPECIFICO PRENDE COME INPUT UNA STRINGA DA VISUALIZZARE COME ERRORE 
 	 * E MOSTRA AUTOMATICAMENTE UNA SCHERMATA CHE LO VISUALIZZA
@@ -167,6 +173,10 @@ public class Controller {
 		ErroreSpecifico ErroreSpecifico1 = new ErroreSpecifico(foo);
 		ErroreSpecifico1.setVisible(true);
 	}
+	
+	
+	//-------------------------------------------------------------------------------------------------------------------------------------------
+	
 	
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
@@ -210,6 +220,10 @@ public class Controller {
 		AppareStatAmmissioni(AmmissioneDAO.StatisticheAmmissioniMensili(foo, boo));
 	}
 	
+	
+	//-----------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
 	//METODO PER PASSARE NEI SETTARTARUGA FALSE\TRUE
 	
 	public static void ControllerPassaTartarugaTrue(AmmissioneTartaruga foo) {
@@ -221,7 +235,11 @@ public class Controller {
 		
 	}
 	
-	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
+	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI E PER LA DELETE
 	
 	public static void AmmissioneIndebita(AmmissioneTartaruga foo) {
 		AmmissioneDAO.CancellaAmmissioneIndebita(foo);
@@ -231,10 +249,34 @@ public class Controller {
 		DocumentazioneDAO.CancellaDocumentazioneIndebita(foo);
 	}
 	
+	public static void CancellaAmmissioneTartaruga(String foo) {
+		AmmissioneTartarugaDAO.DeleteAmmissioneTartaruga(foo);
+	}
+	
+	public static void CancellaDocumentazioneCartellaClinica(String foo) {
+		DocumentazioniCartelleClinicheDAO.DeleteDocumentazioneCartellaClinica(foo);
+	}
+	
+	public static void CancellaDipendente(String foo) {
+		DipendenteDAO.DeleteDipendente(foo);
+	}
+	
+	public static void CancellaSede(String foo) {
+		SedeDAO.DeleteSede(foo);
+	}
+	
+	
+	//-----------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
 	//TROVA IL NOME DELLA TARTARUGA	
 	public static String TrovaNomeTartaruga(String foo) {
 		return TartarugaDAO.CercaNomeTartaruga(foo);
 	}
+	
+	
+	//----------------------------------------------------------------------------------------------------------------------------------------------------
+	
 	
 	//METODI PER VISUALIZZARE LE TABELLE AGGIORNATE
 	public static void ViewSedi() {
@@ -279,6 +321,16 @@ public class Controller {
 	
 	public static void CartelleDiAmmissione(String foo) {
 		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO.CartelleDiAmmissione(foo));
+		boh.setVisible(true);
+	}
+	
+	public static void CartelleDiUnAnno(String foo) {
+		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO.StatAnnuali(foo));
+		boh.setVisible(true);
+	}
+	
+	public static void CartelleDiUnMese(String Mese, String Anno) {
+		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO.StatMensili(Mese, Anno));
 		boh.setVisible(true);
 	}
 
