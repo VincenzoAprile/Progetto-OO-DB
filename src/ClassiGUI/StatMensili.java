@@ -15,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class StatMensili extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtInserireMese;
@@ -75,11 +77,11 @@ public class StatMensili extends JFrame {
 					if(arraychar[0] == '0') {
 						char end = arraychar[1];
 						String Month = String.valueOf(end);
-						Controller.StatAmmissioniMensiliDAO(Month, Anno.getText());
+						controller.StatAmmissioniMensiliDAO(Month, Anno.getText());
 					}
 				}
 				else {
-					Controller.StatAmmissioniMensiliDAO(Mese.getText(), Anno.getText());
+					controller.StatAmmissioniMensiliDAO(Mese.getText(), Anno.getText());
 				}
 			}
 		});
@@ -91,7 +93,7 @@ public class StatMensili extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CartelleDiUnMese(Mese.getText(), Anno.getText());
+				controller.CartelleDiUnMese(Mese.getText(), Anno.getText());
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));

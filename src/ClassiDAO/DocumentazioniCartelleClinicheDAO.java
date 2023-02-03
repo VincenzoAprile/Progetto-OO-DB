@@ -13,7 +13,7 @@ import ClassiTabelle.DocumentazioniCartelleCliniche;
 
 public class DocumentazioniCartelleClinicheDAO {
 	
-	public static ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
+	public ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
 		ArrayList<DocumentazioniCartelleCliniche> dapassare = new ArrayList<DocumentazioniCartelleCliniche>();
 		
 		String query = "SELECT ID_Documentazione, FK_Tartaruga, ID_CartellaClinica "
@@ -51,7 +51,7 @@ public class DocumentazioniCartelleClinicheDAO {
 		return dapassare;
 	}
 	
-	public static void DeleteDocumentazioneCartellaClinica(String boh) {
+	public void DeleteDocumentazioneCartellaClinica(String boh) {
 		
 		String query1 = "DELETE FROM DOCUMENTAZIONE WHERE ID_Documentazione = "
 				+"(SELECT ID_Documentazione FROM Documentazione JOIN CARTELLA_CLINICA ON Documentazione = ID_Documentazione "

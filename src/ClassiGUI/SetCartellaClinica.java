@@ -19,6 +19,8 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 
 public class SetCartellaClinica extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtSpecieLunghezzaLarghezza;
@@ -110,11 +112,11 @@ public class SetCartellaClinica extends JFrame {
 				   Larghezza.getText().equals("") || Peso.getText().equals("")) {
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 					
-					Controller.DocumentazioneIndebita(Documentazione);
+					controller.DocumentazioneIndebita(Documentazione);
 				}
 				else {
 					temp.setBecco((String) Becco.getItemAt(Becco.getSelectedIndex()));
@@ -132,9 +134,9 @@ public class SetCartellaClinica extends JFrame {
 					temp.setDocumentazione(Documentazione);
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					
-					Controller.PassaPerIlCartellaClinicaDAO(temp);
+					controller.PassaPerIlCartellaClinicaDAO(temp);
 					
 					
 				}
@@ -232,7 +234,7 @@ public class SetCartellaClinica extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewDocumentazioniCartelleCliniche();
+				controller.ViewDocumentazioniCartelleCliniche();
 			}
 		});
 		btnNewButton_1.setBounds(680, 196, 185, 78);

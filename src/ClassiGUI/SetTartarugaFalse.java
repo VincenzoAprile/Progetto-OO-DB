@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 
 public class SetTartarugaFalse extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	
@@ -53,10 +55,10 @@ public class SetTartarugaFalse extends JFrame {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
 				if (Nome.getText().equals("") || Targhetta.getText().equals("") || IDTartaruga.getText().equals("")) {
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
-					Controller.AppareErroreGenerico();
-					Controller.AmmissioneIndebita(temp);
+					controller.AppareErroreGenerico();
+					controller.AmmissioneIndebita(temp);
 					
 					Nome.setText("");
 					Targhetta.setText("");
@@ -67,9 +69,9 @@ public class SetTartarugaFalse extends JFrame {
 					temp.setNome(Nome.getText());
 					temp.setTarghetta(Targhetta.getText());
 					temp.setIDTartaruga(IDTartaruga.getText());
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					
-					Controller.PassaPerIlTartarugaDAO(temp);
+					controller.PassaPerIlTartarugaDAO(temp);
 					
 					setVisible(false);
 					
@@ -109,7 +111,7 @@ public class SetTartarugaFalse extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewAmmissioniTartarughe();
+				controller.ViewAmmissioniTartarughe();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));

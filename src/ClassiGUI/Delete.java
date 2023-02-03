@@ -19,6 +19,8 @@ public class Delete extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtInserireLidDelloggetto;
 	private JTextField ID;
+	
+	Controller controller = Controller.GetIstanza();
 
 	
 
@@ -51,8 +53,8 @@ public class Delete extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CancellaSede(ID.getText());
-				Controller.AppareMainGUI();
+				controller.CancellaSede(ID.getText());
+				controller.AppareMainGUI();
 				setVisible(false);
 			}
 		});
@@ -64,8 +66,8 @@ public class Delete extends JFrame {
 		btnDipendente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CancellaDipendente(ID.getText());
-				Controller.AppareMainGUI();
+				controller.CancellaDipendente(ID.getText());
+				controller.AppareMainGUI();
 				setVisible(false);
 			}
 		});
@@ -77,8 +79,8 @@ public class Delete extends JFrame {
 		btnTartaruga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CancellaAmmissioneTartaruga(ID.getText());
-				Controller.AppareMainGUI();
+				controller.CancellaAmmissioneTartaruga(ID.getText());
+				controller.AppareMainGUI();
 				setVisible(false);
 			}
 		});
@@ -90,8 +92,8 @@ public class Delete extends JFrame {
 		btnCartellaClinica.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CancellaDocumentazioneCartellaClinica(ID.getText());
-				Controller.AppareMainGUI();
+				controller.CancellaDocumentazioneCartellaClinica(ID.getText());
+				controller.AppareMainGUI();
 				setVisible(false);
 			}
 		});

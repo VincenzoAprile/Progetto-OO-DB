@@ -16,6 +16,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SetDocumentazione extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtVeterinarioidLuogoDi;
@@ -102,8 +104,8 @@ public class SetDocumentazione extends JFrame {
 				   Veterinario.getText().equals("")) {
 						
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 					
 				}
@@ -122,7 +124,7 @@ public class SetDocumentazione extends JFrame {
 					temp.setVeterinario(Veterinario.getText());
 					
 					setVisible(false);
-					Controller.PassaPerIlDocumentazioneDAO(temp);
+					controller.PassaPerIlDocumentazioneDAO(temp);
 					
 				}
 				
@@ -137,7 +139,7 @@ public class SetDocumentazione extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewDipendenti();
+				controller.ViewDipendenti();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -148,7 +150,7 @@ public class SetDocumentazione extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewDocumentazioniCartelleCliniche();
+				controller.ViewDocumentazioniCartelleCliniche();
 			}
 		});
 		btnNewButton_2.setBounds(200, 385, 210, 65);

@@ -30,6 +30,8 @@ public class SetAmmissione extends JFrame {
 	private JTextField Giorno;
 	private JButton btnNewButton_1;
 	
+	Controller controller = new Controller();
+	
 	/**
 	 * Create the frame.
 	 */
@@ -77,8 +79,8 @@ public class SetAmmissione extends JFrame {
 					Mese.getText().equals("") || Giorno.getText().equals("")) {
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 					
 				}
@@ -97,18 +99,18 @@ public class SetAmmissione extends JFrame {
 					
 					if (Riammissione.isSelected()) {
 						temp.setRiammissione("TRUE");
-						Controller.ControllerPassaTartarugaTrue(temp);
+						controller.ControllerPassaTartarugaTrue(temp);
 						setVisible(false);
-						Controller.AppareSetTartarugaTrue();
-						Controller.PassaPerIlAmmissioneDAO(temp);
+						controller.AppareSetTartarugaTrue();
+						controller.PassaPerIlAmmissioneDAO(temp);
 						
 					}
 					else {
 						temp.setRiammissione("FALSE");
-						Controller.ControllerPassaTartarugaFalse(temp);
+						controller.ControllerPassaTartarugaFalse(temp);
 						setVisible(false);
-						Controller.AppareSetTartarugaFalse();
-						Controller.PassaPerIlAmmissioneDAO(temp);
+						controller.AppareSetTartarugaFalse();
+						controller.PassaPerIlAmmissioneDAO(temp);
 						
 					}
 				}
@@ -137,7 +139,7 @@ public class SetAmmissione extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewAmmissioniTartarughe();
+				controller.ViewAmmissioniTartarughe();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));

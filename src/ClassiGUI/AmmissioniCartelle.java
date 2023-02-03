@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 
 public class AmmissioniCartelle extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtPerVedereLe;
@@ -48,7 +50,7 @@ public class AmmissioniCartelle extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AmmissioniTarghetta(boh);
+				controller.AmmissioniTarghetta(boh);
 			}
 		});
 		btnNewButton.setBounds(32, 228, 152, 57);
@@ -63,7 +65,7 @@ public class AmmissioniCartelle extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CartelleDiAmmissione(IDAmmissione.getText());
+				controller.CartelleDiAmmissione(IDAmmissione.getText());
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));

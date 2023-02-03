@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import PackageController.Controller;
+import PackageController.Main;
 
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -20,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainGUI extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtQuestaLa;
@@ -53,7 +56,7 @@ public class MainGUI extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareAddNew();
+				controller.AppareAddNew();
 				setVisible(false);
 			}
 		});
@@ -64,7 +67,7 @@ public class MainGUI extends JFrame {
 		btnAssegnaUnaVasca.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareVascaTartaruga();
+				controller.AppareVascaTartaruga();
 				setVisible(false);
 			}
 		});
@@ -76,7 +79,7 @@ public class MainGUI extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareSeeSediTartarughe();
+				controller.AppareSeeSediTartarughe();
 				setVisible(false);
 			}
 		});
@@ -88,7 +91,7 @@ public class MainGUI extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareStatMensili();
+				controller.AppareStatMensili();
 				setVisible(false);
 			}
 		});
@@ -100,7 +103,7 @@ public class MainGUI extends JFrame {
 		btnNewButton_2_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareStatAnnuali();
+				controller.AppareStatAnnuali();
 				setVisible(false);
 			}
 		});
@@ -112,7 +115,7 @@ public class MainGUI extends JFrame {
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareDelete();
+				controller.AppareDelete();
 				setVisible(false);
 			}
 		});

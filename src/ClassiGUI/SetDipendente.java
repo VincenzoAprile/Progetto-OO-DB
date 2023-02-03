@@ -17,6 +17,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 
 public class SetDipendente extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtMatricolaNomeCognome;
@@ -60,8 +62,8 @@ public class SetDipendente extends JFrame {
 				|| Ruolo.getItemAt(Ruolo.getSelectedIndex()).equals("") || Centro.getText().equals("")) {
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 					
 				}
@@ -74,9 +76,9 @@ public class SetDipendente extends JFrame {
 				
 					setVisible(false);
 					
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 				
-					Controller.PassaPerIlDipendenteDAO(temp);
+					controller.PassaPerIlDipendenteDAO(temp);
 				
 					
 				}
@@ -110,7 +112,7 @@ public class SetDipendente extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewSedi();
+				controller.ViewSedi();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -121,7 +123,7 @@ public class SetDipendente extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewDipendenti();
+				controller.ViewDipendenti();
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));

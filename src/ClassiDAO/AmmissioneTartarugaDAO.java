@@ -10,10 +10,12 @@ import java.util.Properties;
 
 import ClassiTabelle.AmmissioneTartaruga;
 import ClassiTabelle.Sede;
+import PackageController.Controller;
 
 public class AmmissioneTartarugaDAO {
+	Controller controller = Controller.GetIstanza();
 	
-	public static ArrayList ViewAmmissioniTartarughe() {
+	public ArrayList<AmmissioneTartaruga> ViewAmmissioniTartarughe() {
 		ArrayList<AmmissioneTartaruga> dapassare = new ArrayList<AmmissioneTartaruga>();
 		
 		String query = "SELECT * FROM AMMISSIONE JOIN TARTARUGA ON FKAmmissione = ID_Ammissione ORDER BY Data_di_ammissione"; 
@@ -60,7 +62,7 @@ public class AmmissioneTartarugaDAO {
 		return dapassare;
 	}
 	
-	public static void DeleteAmmissioneTartaruga (String boh) {
+	public void DeleteAmmissioneTartaruga (String boh) {
 		
 		String query1 = "DELETE FROM AMMISSIONE WHERE ID_AMMISSIONE = "
 				+"(SELECT ID_AMMISSIONE FROM AMMISSIONE JOIN TARTARUGA ON FKAmmissione = ID_Ammissione WHERE ID_Tartaruga = '"+boh+"')";

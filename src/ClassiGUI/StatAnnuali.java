@@ -15,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class StatAnnuali extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtInserireLanno;
@@ -51,7 +53,7 @@ public class StatAnnuali extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.StatAmmissioniAnnueDAO(Anno.getText());
+				controller.StatAmmissioniAnnueDAO(Anno.getText());
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -62,7 +64,7 @@ public class StatAnnuali extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.CartelleDiUnAnno(Anno.getText());
+				controller.CartelleDiUnAnno(Anno.getText());
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));

@@ -13,7 +13,10 @@ import ClassiTabelle.Vasca;
 import PackageController.Controller;
 
 public class VascaDAO {
-	public static void pushVasca(Vasca boh) {
+	
+	Controller controller = Controller.GetIstanza();
+	
+	public void pushVasca(Vasca boh) {
 		String query = "INSERT INTO VASCA VALUES ('"+boh.getCodiceVasca()+"','"+boh.getTipo()+"',"+boh.getLunghezza()+","+
 						boh.getLarghezza()+","+boh.getProfondità()+");";
 				//DEFINIZIONE DELLA QUERY
@@ -38,14 +41,14 @@ public class VascaDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un'altra vasca");
-						Controller.AppareErroreSpecifico("Già esiste una vasca con quell'id!");
+						controller.AppareErroreSpecifico("Già esiste una vasca con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
 					}
 					else if (e.getSQLState().equals("42703")) {
 						System.out.println("Hai inserito nelle dimensioni vasca un valore non valido");
-						Controller.AppareErroreSpecifico("In uno delle dimensioni della vasca hai inserito un dato non valido!");
+						controller.AppareErroreSpecifico("In uno delle dimensioni della vasca hai inserito un dato non valido!");
 					}
 					else {
 						System.out.println(e.getSQLState());
@@ -55,7 +58,7 @@ public class VascaDAO {
 				
 	}
 
-	public static void assegnaVascaTartaruga(String Vasca, String IDTartaruga) {
+	public void assegnaVascaTartaruga(String Vasca, String IDTartaruga) {
 		
 		String query = "INSERT INTO VASCHE_TARTARUGHE VALUES ('"
 				+Vasca+"','"+IDTartaruga+"');";
@@ -84,7 +87,7 @@ public class VascaDAO {
 			}
 			else if (e.getSQLState().equals("23503")) {
 				System.out.println("La targhetta o l'id della vasca non sono stati inseriti correttamente");
-				Controller.AppareErroreSpecifico("La targhetta o l'id della vasca non sono stati inseriti correttamente!");
+				controller.AppareErroreSpecifico("La targhetta o l'id della vasca non sono stati inseriti correttamente!");
 			}
 			else {
 				System.out.println(e.getSQLState());
@@ -92,7 +95,7 @@ public class VascaDAO {
 		}
 	}
 
-	public static ArrayList<Vasca> AllVasche(){
+	public ArrayList<Vasca> AllVasche(){
 		
 		ArrayList<Vasca> dapassare = new ArrayList<Vasca>();
 		

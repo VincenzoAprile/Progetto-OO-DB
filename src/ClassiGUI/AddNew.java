@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class AddNew extends JFrame {
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtCosaVuoiAggiungere;
@@ -38,7 +39,7 @@ public class AddNew extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Controller.AppareSetSede();
+				controller.AppareSetSede();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -50,7 +51,7 @@ public class AddNew extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Controller.AppareSetDipendente();
+				controller.AppareSetDipendente();
 			}
 		});
 		NuovoDipendente.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -62,7 +63,7 @@ public class AddNew extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Controller.AppareSetAmmissione();
+				controller.AppareSetAmmissione();
 			}
 		});
 		btnNuovaTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -81,7 +82,7 @@ public class AddNew extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareSetDocumentazione();
+				controller.AppareSetDocumentazione();
 				setVisible(false);
 			}
 		});
@@ -94,7 +95,7 @@ public class AddNew extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Controller.AppareNewVasca();
+				controller.AppareNewVasca();
 			}
 		});
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));

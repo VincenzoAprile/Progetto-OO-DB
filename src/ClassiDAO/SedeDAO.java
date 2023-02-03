@@ -7,7 +7,10 @@ import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 public class SedeDAO {
-	public static void PushSede (Sede boh) {
+	
+	Controller controller = Controller.GetIstanza();
+	
+	public void PushSede (Sede boh) {
 		
 		
 		
@@ -35,13 +38,13 @@ public class SedeDAO {
 		} catch (SQLException e) {
 			if (e.getSQLState().equals("23505")) {
 				System.out.println("Hai inserito un id già assegnato a un altro centro");
-				Controller.AppareErroreSpecifico("Già esiste una sede con quell'ID!");
+				controller.AppareErroreSpecifico("Già esiste una sede con quell'ID!");
 			}
 			else if (e.getSQLState().equals("02000")){
 				System.out.println("Operazione avvenuta con successo");
 			}
 			else {
-				Controller.AppareErroreGenerico();
+				controller.AppareErroreGenerico();
 			}
 		}
 	
@@ -49,7 +52,7 @@ public class SedeDAO {
 		
 	}
 
-	public static ArrayList ViewSedi() {
+	public ArrayList<Sede> ViewSedi() {
 		ArrayList<Sede> dapassare = new ArrayList<Sede>();
 		
 		String query = "SELECT * FROM CENTRO_TARTARUGHE_MARINE"; 
@@ -87,7 +90,7 @@ public class SedeDAO {
 		return dapassare;
 	}
 	
-	public static void DeleteSede(String boh) {
+	public void DeleteSede(String boh) {
 		String query1 = "DELETE FROM CENTRO_TARTARUGHE_MARINE WHERE ID_Centro = '"+boh+"';";
 		//DEFINIZIONE DELLA QUERY
 		try {

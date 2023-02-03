@@ -26,6 +26,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JFormattedTextField;
 
 public class SetSede extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtIndirizzoContattiNomecentro;
@@ -86,8 +88,8 @@ public class SetSede extends JFrame {
 				if (TextIndirizzo.getText().equals("") || TextContatti.getText().equals("")
 				|| TextNomeCentro.getText().equals("") || TextIDCentro.getText().equals("")) {
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 				}
 				else {
@@ -97,9 +99,9 @@ public class SetSede extends JFrame {
 					temp.setNomeCentro(TextNomeCentro.getText());
 				
 					setVisible(false);
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 				
-					Controller.PassaPerIlSedeDAO(temp);
+					controller.PassaPerIlSedeDAO(temp);
 				
 				}
 			}
@@ -112,7 +114,7 @@ public class SetSede extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewSedi();
+				controller.ViewSedi();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));

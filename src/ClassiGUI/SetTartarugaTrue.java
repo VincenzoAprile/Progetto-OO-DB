@@ -19,6 +19,8 @@ import ClassiDAO.AmmissioneDAO;
 import ClassiDAO.TartarugaDAO;
 
 public class SetTartarugaTrue extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 
@@ -71,10 +73,10 @@ public class SetTartarugaTrue extends JFrame {
 				
 				//L'IF CONTROLLA CHE NON CI SIANO CASELLE LASCIATE VUOTE
 				if (Targhetta.getText().equals("") || IDTartaruga.getText().equals("")) {
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
-					Controller.AppareErroreGenerico();
-					Controller.AmmissioneIndebita(temp);
+					controller.AppareErroreGenerico();
+					controller.AmmissioneIndebita(temp);
 					
 					Targhetta.setText("");
 					IDTartaruga.setText("");
@@ -82,17 +84,17 @@ public class SetTartarugaTrue extends JFrame {
 				else {
 					temp.setTarghetta(Targhetta.getText());
 					temp.setIDTartaruga(IDTartaruga.getText());
-					temp.setNome(Controller.TrovaNomeTartaruga(Targhetta.getText()));
+					temp.setNome(controller.TrovaNomeTartaruga(Targhetta.getText()));
 					
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					
 					if (temp.getNome() == null) {
-						Controller.AmmissioneIndebita(temp);  //CERCANOMETARTARUGA RESTITUISCE NULL SE NON TROVA NIENTE O FA ERRORE
-						Controller.AppareErroreSpecifico("La targhetta non esiste nel database!");
+						controller.AmmissioneIndebita(temp);  //CERCANOMETARTARUGA RESTITUISCE NULL SE NON TROVA NIENTE O FA ERRORE
+						controller.AppareErroreSpecifico("La targhetta non esiste nel database!");
 						System.out.println("La targhetta inserita non esiste nel database");
 					}
 					else {
-						Controller.PassaPerIlTartarugaDAO(temp);
+						controller.PassaPerIlTartarugaDAO(temp);
 					}
 					setVisible(false);
 					

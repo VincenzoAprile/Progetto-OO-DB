@@ -27,6 +27,8 @@ public class NewVasca extends JFrame {
 	
 	private Vasca temp = new Vasca();
 	private JButton btnNewButton_1;
+	
+	Controller controller = Controller.GetIstanza();
 
 	
 
@@ -83,9 +85,9 @@ public class NewVasca extends JFrame {
 				if(CodiceVasca.getText().equals("")  || Larghezza.getText().equals("")  || Lunghezza.getText().equals("")  || 
 				   Profondità.getText().equals("")  || Tipo.getText().equals("")) {
 				   
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
-					Controller.AppareErroreGenerico();
+					controller.AppareErroreGenerico();
 					
 					
 				}
@@ -96,10 +98,10 @@ public class NewVasca extends JFrame {
 					temp.setProfondità(Profondità.getText());
 					temp.setTipo(Tipo.getText());
 					
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
 					
-					Controller.PassaPerIlVascaDAO(temp);
+					controller.PassaPerIlVascaDAO(temp);
 					
 				}
 			}
@@ -112,7 +114,7 @@ public class NewVasca extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewVasche();
+				controller.ViewVasche();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));

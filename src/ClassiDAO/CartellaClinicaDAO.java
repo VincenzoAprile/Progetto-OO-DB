@@ -13,7 +13,9 @@ import ClassiTabelle.Dipendente;
 import PackageController.Controller;
 
 public class CartellaClinicaDAO {
-	public static void pushCartellaClinica (CartellaClinica boh) {
+	Controller controller = Controller.GetIstanza();
+	
+	public void pushCartellaClinica (CartellaClinica boh) {
 		
 
 		
@@ -46,30 +48,30 @@ public class CartellaClinicaDAO {
 					}
 					else if (e.getSQLState().equals("23505")) {
 						System.out.println("Esiste già una cartella clinica con quell'id");
-						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreSpecifico("Esiste già una cartella clinica con quell'id!");
+						controller.DocumentazioneIndebita(boh.getDocumentazione());
+						controller.AppareErroreSpecifico("Esiste già una cartella clinica con quell'id!");
 					}
 					else if (e.getSQLState().equals("42703")) {
 						System.out.println("In Lunghezza, Larghezza e peso devi inserire dei valori validi!");
-						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreSpecifico("Per Lunghezza, Larghezza e Peso inserire valori validi! (int o float CON IL PUNTO)");
+						controller.DocumentazioneIndebita(boh.getDocumentazione());
+						controller.AppareErroreSpecifico("Per Lunghezza, Larghezza e Peso inserire valori validi! (int o float CON IL PUNTO)");
 					}
 					else if (e.getSQLState().equals("23514")) {
 						System.out.println("Per favore nelle parti del corpo della tartaruga inserire solo espressioni valide");
-						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreSpecifico("Ogni parte della tartaruga deve essere associata ad uno stato! ");
+						controller.DocumentazioneIndebita(boh.getDocumentazione());
+						controller.AppareErroreSpecifico("Ogni parte della tartaruga deve essere associata ad uno stato! ");
 					}
 					else {
 						System.out.println(e.getSQLState());
-						Controller.DocumentazioneIndebita(boh.getDocumentazione());
-						Controller.AppareErroreGenerico();
+						controller.DocumentazioneIndebita(boh.getDocumentazione());
+						controller.AppareErroreGenerico();
 					}
 					
 				}
 		
 	}
 	
-	public static ArrayList <CartellaClinica> CartelleDiAmmissione(String boh){
+	public ArrayList <CartellaClinica> CartelleDiAmmissione(String boh){
 		
 		ArrayList<CartellaClinica> dapassare = new ArrayList<CartellaClinica>();
 		
@@ -117,7 +119,7 @@ public class CartellaClinicaDAO {
 		return dapassare;
 	}
 	
-	public static ArrayList<CartellaClinica> StatAnnuali(String boh){
+	public ArrayList<CartellaClinica> StatAnnuali(String boh){
 
 		ArrayList<CartellaClinica> dapassare = new ArrayList<CartellaClinica>();
 		
@@ -167,7 +169,7 @@ public class CartellaClinicaDAO {
 		return dapassare;
 	}
 	
-	public static ArrayList<CartellaClinica> StatMensili (String Mese, String Anno){
+	public ArrayList<CartellaClinica> StatMensili (String Mese, String Anno){
 		
 		ArrayList<CartellaClinica> dapassare = new ArrayList<CartellaClinica>();
 		

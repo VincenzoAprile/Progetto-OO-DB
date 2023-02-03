@@ -13,8 +13,9 @@ import ClassiTabelle.AmmissioneTartaruga;
 import PackageController.Controller;
 
 public class AmmissioneDAO {
+	Controller controller = Controller.GetIstanza();
 	
-	public static void pushAmmissione(AmmissioneTartaruga boh) {
+	public void pushAmmissione(AmmissioneTartaruga boh) {
 		
 		String query1 = "INSERT INTO AMMISSIONE"
 				+ " VALUES ("+boh.getRiammissione()+",'"+boh.getDataDiAmmissione()+"','"+boh.getIDAmmissione()+"','"+boh.getCentro()+"');"; 
@@ -39,21 +40,21 @@ public class AmmissioneDAO {
 					con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
-						System.out.println("Hai inserito un id già assegnato a un altro dipendente");
+						System.out.println("Hai inserito un id già assegnato a un altra ammissione");
 						
-						Controller.ScompareSetTartarugaFalse();
-						Controller.ScompareSetTartarugaTrue();
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("Già esiste un'ammissione con quell'id!");
+						controller.ScompareSetTartarugaFalse();
+						controller.ScompareSetTartarugaTrue();
+						controller.AppareMainGUI();
+						controller.AppareErroreSpecifico("Già esiste un'ammissione con quell'id!");
 					}
 					else if (e.getSQLState().equals("23503")) {
 						System.out.println(e.getSQLState());
 						System.out.println("Il centro inserito non esiste");
 						
-						Controller.ScompareSetTartarugaFalse();
-						Controller.ScompareSetTartarugaTrue();
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("Il centro inserito non esiste!");
+						controller.ScompareSetTartarugaFalse();
+						controller.ScompareSetTartarugaTrue();
+						controller.AppareMainGUI();
+						controller.AppareErroreSpecifico("Il centro inserito non esiste!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");	
@@ -61,21 +62,21 @@ public class AmmissioneDAO {
 					else if (e.getSQLState().equals("22007")){
 						System.out.println("Data Non Valida");
 						
-						Controller.ScompareSetTartarugaFalse();
-						Controller.ScompareSetTartarugaTrue();
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("Data inserita non valida!");
+						controller.ScompareSetTartarugaFalse();
+						controller.ScompareSetTartarugaTrue();
+						controller.AppareMainGUI();
+						controller.AppareErroreSpecifico("Data inserita non valida!");
 					}
 					else {
-						Controller.ScompareSetTartarugaFalse();
-						Controller.ScompareSetTartarugaTrue();
-						Controller.AppareMainGUI();
-						Controller.AppareErroreGenerico();
+						controller.ScompareSetTartarugaFalse();
+						controller.ScompareSetTartarugaTrue();
+						controller.AppareMainGUI();
+						controller.AppareErroreGenerico();
 					}
 				}
 	}
 	
-	public static void CancellaAmmissioneIndebita(AmmissioneTartaruga boh) {
+	public void CancellaAmmissioneIndebita(AmmissioneTartaruga boh) {
 		
 		String query1 = "DELETE FROM AMMISSIONE WHERE ID_AMMISSIONE = '"+ boh.getIDAmmissione()+"';";
 				//DEFINIZIONE DELLA QUERY
@@ -103,7 +104,7 @@ public class AmmissioneDAO {
 		
 	}
 	
-	public static ArrayList<Ammissione> AmmissionePerTarghetta(String boh){
+	public ArrayList<Ammissione> AmmissionePerTarghetta(String boh){
 		
 		ArrayList<Ammissione> dapassare = new ArrayList<Ammissione>();
 		
@@ -147,7 +148,7 @@ public class AmmissioneDAO {
 		return dapassare;
 	}
 	
-	public static String StatisticaAmmissioniAnnue(String Anno) {
+	public String StatisticaAmmissioniAnnue(String Anno) {
 		
 		String dapassare = null;
 		
@@ -181,7 +182,7 @@ public class AmmissioneDAO {
 		
 	}
 	
-	public static String StatisticheAmmissioniMensili(String Mese, String Anno) {
+	public String StatisticheAmmissioniMensili(String Mese, String Anno) {
 
 		
 		String dapassare = null;

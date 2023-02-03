@@ -13,7 +13,9 @@ import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 public class DipendenteDAO {
-	public static void PushDipendente (Dipendente boh) {
+	Controller controller = Controller.GetIstanza();
+	
+	public void PushDipendente (Dipendente boh) {
 		
 		
 		String query = "INSERT INTO PERSONALE"
@@ -40,28 +42,28 @@ public class DipendenteDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un altro dipendente");
-						Controller.AppareErroreSpecifico("Già esiste un dipendente con quell'id!");
+						controller.AppareErroreSpecifico("Già esiste un dipendente con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
 					}
 					else if (e.getSQLState().equals("23503")){
 						System.out.println("Il centro inserito non esiste!");
-						Controller.AppareErroreSpecifico("Il centro inserito non esiste!");
+						controller.AppareErroreSpecifico("Il centro inserito non esiste!");
 					}
 					else if (e.getSQLState().equals("23514")){
 						System.out.println("Il ruolo inserito non esiste!");
-						Controller.AppareErroreSpecifico("Il ruolo inserito non esiste!");	
+						controller.AppareErroreSpecifico("Il ruolo inserito non esiste!");	
 					}
 					else {
 						System.out.println("Errore!");
-						Controller.AppareErroreGenerico();
+						controller.AppareErroreGenerico();
 					}
 						
 				}
 	}
 	
-	public static ArrayList ViewDipendenti() {
+	public ArrayList<Dipendente> ViewDipendenti() {
 		ArrayList<Dipendente> dapassare = new ArrayList<Dipendente>();
 		
 		String query = "SELECT * FROM PERSONALE"; 
@@ -100,7 +102,7 @@ public class DipendenteDAO {
 		return dapassare;
 	}
 	
-	public static void DeleteDipendente (String boh) {
+	public void DeleteDipendente (String boh) {
 
 		String query1 = "DELETE FROM PERSONALE WHERE Matricola = '"+boh+"';";
 		//DEFINIZIONE DELLA QUERY

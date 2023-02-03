@@ -15,6 +15,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
 public class SeeSediTartarughe extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField IDSede;
@@ -38,7 +40,7 @@ public class SeeSediTartarughe extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewSedi();
+				controller.ViewSedi();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -54,7 +56,7 @@ public class SeeSediTartarughe extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewTartarugheCentro(IDSede.getText());
+				controller.ViewTartarugheCentro(IDSede.getText());
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -65,7 +67,7 @@ public class SeeSediTartarughe extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.AppareAmmissioniCartelle(Targhetta.getText());
+				controller.AppareAmmissioniCartelle(Targhetta.getText());
 				setVisible(false);
 			}
 		});
