@@ -19,13 +19,17 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class MainGUI extends JFrame {
 	
 	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
-	private JTextField txtQuestaLa;
 
 	
 
@@ -33,8 +37,12 @@ public class MainGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainGUI() {
+		setTitle("Schermata Principale");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/Textures/Tartaruga frame.jpg")));
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.CYAN);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -42,85 +50,93 @@ public class MainGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtQuestaLa = new JTextField();
-		txtQuestaLa.setBackground(Color.CYAN);
-		txtQuestaLa.setEditable(false);
-		txtQuestaLa.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtQuestaLa.setText("Questa è la schermata principale\r\n");
-		txtQuestaLa.setBounds(69, 39, 272, 80);
-		contentPane.add(txtQuestaLa);
-		txtQuestaLa.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Aggiungi qualcosa");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton Aggiungi = new JButton("");
+		Aggiungi.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/Add 2.png")));
+		Aggiungi.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		Aggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareAddNew();
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(55, 186, 243, 73);
-		contentPane.add(btnNewButton);
+		Aggiungi.setBounds(455, 125, 80, 80);
+		contentPane.add(Aggiungi);
 		
-		JButton btnAssegnaUnaVasca = new JButton("Assegna una vasca a una tartaruga");
-		btnAssegnaUnaVasca.addMouseListener(new MouseAdapter() {
+		JButton AssegnaVasca = new JButton("");
+		AssegnaVasca.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/Assegnazione.png")));
+		AssegnaVasca.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareVascaTartaruga();
 				setVisible(false);
 			}
 		});
-		btnAssegnaUnaVasca.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAssegnaUnaVasca.setBounds(424, 186, 346, 73);
-		contentPane.add(btnAssegnaUnaVasca);
+		AssegnaVasca.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		AssegnaVasca.setBounds(466, 666, 80, 80);
+		contentPane.add(AssegnaVasca);
 		
-		JButton btnNewButton_1 = new JButton("Visualizza Tartarughe\r\n");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		JButton Visualizza = new JButton("");
+		Visualizza.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/tartaruga icona.jpg")));
+		Visualizza.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareSeeSediTartarughe();
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_1.setBounds(55, 386, 243, 73);
-		contentPane.add(btnNewButton_1);
+		Visualizza.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Visualizza.setBounds(348, 335, 80, 80);
+		contentPane.add(Visualizza);
 		
-		JButton btnNewButton_2 = new JButton("Statistiche Mensili");
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
+		JButton StatMensili = new JButton("");
+		StatMensili.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/Icona Mese.jpg")));
+		StatMensili.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareStatMensili();
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(424, 386, 162, 62);
-		contentPane.add(btnNewButton_2);
+		StatMensili.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		StatMensili.setBounds(348, 438, 80, 80);
+		contentPane.add(StatMensili);
 		
-		JButton btnNewButton_2_1 = new JButton("Statistiche Annuali");
-		btnNewButton_2_1.addMouseListener(new MouseAdapter() {
+		JButton StatAnnuali = new JButton("");
+		StatAnnuali.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/Icona Anno.jpg")));
+		StatAnnuali.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareStatAnnuali();
 				setVisible(false);
 			}
 		});
-		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_2_1.setBounds(656, 386, 162, 62);
-		contentPane.add(btnNewButton_2_1);
+		StatAnnuali.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		StatAnnuali.setBounds(348, 549, 80, 80);
+		contentPane.add(StatAnnuali);
 		
-		JButton btnNewButton_3 = new JButton("Cancella Qualcosa");
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
+		JButton Cancella = new JButton("");
+		Cancella.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/Delete icon.png")));
+		Cancella.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		Cancella.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.AppareDelete();
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_3.setBounds(424, 49, 346, 70);
-		contentPane.add(btnNewButton_3);
+		Cancella.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Cancella.setBounds(455, 225, 80, 80);
+		contentPane.add(Cancella);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/MainGui3.PNG")));
+		lblNewLabel.setBounds(0, 0, 1550, 845);
+		contentPane.add(lblNewLabel);
+		
+		
 	}
 }
