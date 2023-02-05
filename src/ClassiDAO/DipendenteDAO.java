@@ -13,6 +13,21 @@ import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 public class DipendenteDAO {
+	
+
+	private DipendenteDAO() {}
+	
+	private static DipendenteDAO IstanzaDipendenteDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static DipendenteDAO GetIstanza() {
+		if (IstanzaDipendenteDAO == null) {
+			IstanzaDipendenteDAO = new DipendenteDAO();
+		}
+		return IstanzaDipendenteDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public void PushDipendente (Dipendente boh) {

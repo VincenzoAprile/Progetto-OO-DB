@@ -13,6 +13,21 @@ import ClassiTabelle.Sede;
 import PackageController.Controller;
 
 public class AmmissioneTartarugaDAO {
+	
+	
+	private AmmissioneTartarugaDAO() {}
+	
+	private static AmmissioneTartarugaDAO IstanzaAmmissioneTartarugaDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static AmmissioneTartarugaDAO GetIstanza() {
+		if (IstanzaAmmissioneTartarugaDAO == null) {
+			IstanzaAmmissioneTartarugaDAO = new AmmissioneTartarugaDAO();
+		}
+		return IstanzaAmmissioneTartarugaDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public ArrayList<AmmissioneTartaruga> ViewAmmissioniTartarughe() {

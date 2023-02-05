@@ -13,6 +13,21 @@ import ClassiTabelle.Dipendente;
 import PackageController.Controller;
 
 public class CartellaClinicaDAO {
+	
+
+	private CartellaClinicaDAO() {}
+	
+	private static CartellaClinicaDAO IstanzaCartellaClinicaDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static CartellaClinicaDAO GetIstanza() {
+		if (IstanzaCartellaClinicaDAO == null) {
+			IstanzaCartellaClinicaDAO = new CartellaClinicaDAO();
+		}
+		return IstanzaCartellaClinicaDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public void pushCartellaClinica (CartellaClinica boh) {

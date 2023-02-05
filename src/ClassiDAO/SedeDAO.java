@@ -8,6 +8,20 @@ import PackageController.Controller;
 
 public class SedeDAO {
 	
+
+	private SedeDAO() {}
+	
+	private static SedeDAO IstanzaSedeDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static SedeDAO GetIstanza() {
+		if (IstanzaSedeDAO == null) {
+			IstanzaSedeDAO = new SedeDAO();
+		}
+		return IstanzaSedeDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public void PushSede (Sede boh) {

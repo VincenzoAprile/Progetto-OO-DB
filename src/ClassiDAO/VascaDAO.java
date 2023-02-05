@@ -14,6 +14,20 @@ import PackageController.Controller;
 
 public class VascaDAO {
 	
+
+	private VascaDAO() {}
+	
+	private static VascaDAO IstanzaVascaDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static VascaDAO GetIstanza() {
+		if (IstanzaVascaDAO == null) {
+			IstanzaVascaDAO = new VascaDAO();
+		}
+		return IstanzaVascaDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public void pushVasca(Vasca boh) {

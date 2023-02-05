@@ -30,7 +30,7 @@ public class SetAmmissione extends JFrame {
 	private JTextField Giorno;
 	private JButton btnNewButton_1;
 	
-	Controller controller = new Controller();
+	Controller controller = Controller.GetIstanza();
 	
 	/**
 	 * Create the frame.

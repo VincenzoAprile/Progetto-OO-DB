@@ -50,6 +50,10 @@ public class Controller {
 	private static Controller IstanzaController = null;
 	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
 	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
+
+	
+	private Controller() {}
+	
 	
 	/*LOGICA DEL PATTERN SINGLETON*/
 	public static Controller GetIstanza() {
@@ -181,52 +185,52 @@ public class Controller {
 	//INSERIMENTO DI UNA CLASSE NEL DAO CORRISPONDENTE
 	
 	public void PassaPerIlSedeDAO(Sede foo) {
-		SedeDAO SedeDAO1 = new SedeDAO();
+		SedeDAO SedeDAO1 = SedeDAO.GetIstanza() ; 
 		SedeDAO1.PushSede(foo);
 	}
 	
 	public void PassaPerIlDipendenteDAO(Dipendente foo) {
-		DipendenteDAO DipendenteDAO1 = new DipendenteDAO();
+		DipendenteDAO DipendenteDAO1 = DipendenteDAO.GetIstanza() ;
 		DipendenteDAO1.PushDipendente(foo);
 	}
 	
 	public void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
-		AmmissioneDAO AmmissioneDAO1 = new AmmissioneDAO();
+		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
 		AmmissioneDAO1.pushAmmissione(foo);
 	}
 	
 	public void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
-		TartarugaDAO TartarugaDAO1 = new TartarugaDAO();
+		TartarugaDAO TartarugaDAO1 = TartarugaDAO.GetIstanza();
 		TartarugaDAO1	.pushTartaruga(foo);
 	}
 	
 	public void PassaPerIlDocumentazioneDAO(Documentazione foo) {
-		DocumentazioneDAO DocumentazioneDAO1 = new DocumentazioneDAO();
+		DocumentazioneDAO DocumentazioneDAO1 = DocumentazioneDAO.GetIstanza();
 		DocumentazioneDAO1.pushDocumentazione(foo);
 	}
 	
 	public void PassaPerIlCartellaClinicaDAO(CartellaClinica foo) {
-		CartellaClinicaDAO CartellaClinicaDAO1 = new CartellaClinicaDAO();
+		CartellaClinicaDAO CartellaClinicaDAO1 = CartellaClinicaDAO.GetIstanza();
 		CartellaClinicaDAO1.pushCartellaClinica(foo);
 	}
 	
 	public void PassaPerIlVascaDAO(Vasca foo) {
-		VascaDAO VascaDAO1 = new VascaDAO();
+		VascaDAO VascaDAO1 = VascaDAO.GetIstanza();
 		VascaDAO1.pushVasca(foo);
 	}
 	
 	public void PassaPerIlVascaTartarugaDAO(String Vasca, String Tartaruga) {
-		VascaDAO VascaDAO1 = new VascaDAO();
+		VascaDAO VascaDAO1 = VascaDAO.GetIstanza();
 		VascaDAO1.assegnaVascaTartaruga(Vasca, Tartaruga);
 	}
 	
 	public void StatAmmissioniAnnueDAO(String foo) {
-		AmmissioneDAO AmmissioneDAO1 = new AmmissioneDAO();
+		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
 		AppareStatAmmissioni(AmmissioneDAO1.StatisticaAmmissioniAnnue(foo));
 	}
 	
 	public void StatAmmissioniMensiliDAO(String foo, String boo) {
-		AmmissioneDAO AmmissioneDAO1 = new AmmissioneDAO();
+		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
 		AppareStatAmmissioni(AmmissioneDAO1.StatisticheAmmissioniMensili(foo, boo));
 	}
 	
@@ -252,32 +256,32 @@ public class Controller {
 	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI E PER LA DELETE
 	
 	public void AmmissioneIndebita(AmmissioneTartaruga foo) {
-		AmmissioneDAO AmmissioneDAO1 = new AmmissioneDAO();
+		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
 		AmmissioneDAO1.CancellaAmmissioneIndebita(foo);
 	}
 	
 	public void DocumentazioneIndebita(String foo) {
-		DocumentazioneDAO DocumentazioneDAO1 = new DocumentazioneDAO();
+		DocumentazioneDAO DocumentazioneDAO1 = DocumentazioneDAO.GetIstanza();
 		DocumentazioneDAO1.CancellaDocumentazioneIndebita(foo);
 	}
 	
 	public void CancellaAmmissioneTartaruga(String foo) {
-		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = new AmmissioneTartarugaDAO();
+		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = AmmissioneTartarugaDAO.GetIstanza();
 		AmmissioneTartarugaDAO1.DeleteAmmissioneTartaruga(foo);
 	}
 	
 	public void CancellaDocumentazioneCartellaClinica(String foo) {
-		DocumentazioniCartelleClinicheDAO DocumentazioniCartelleClinicheDAO1 = new DocumentazioniCartelleClinicheDAO();
+		DocumentazioniCartelleClinicheDAO DocumentazioniCartelleClinicheDAO1 = DocumentazioniCartelleClinicheDAO.GetIstanza();
 		DocumentazioniCartelleClinicheDAO1.DeleteDocumentazioneCartellaClinica(foo);
 	}
 	
 	public void CancellaDipendente(String foo) {
-		DipendenteDAO DipendenteDAO1 = new DipendenteDAO();
+		DipendenteDAO DipendenteDAO1 = DipendenteDAO.GetIstanza();
 		DipendenteDAO1.DeleteDipendente(foo);
 	}
 	
 	public void CancellaSede(String foo) {
-		SedeDAO SedeDAO1 = new SedeDAO();
+		SedeDAO SedeDAO1 = SedeDAO.GetIstanza();
 		SedeDAO1.DeleteSede(foo);
 	}
 	
@@ -287,7 +291,7 @@ public class Controller {
 	
 	//TROVA IL NOME DELLA TARTARUGA	
 	public String TrovaNomeTartaruga(String foo) {
-		TartarugaDAO TartarugaDAO1 = new TartarugaDAO();
+		TartarugaDAO TartarugaDAO1 = TartarugaDAO.GetIstanza();
 		return TartarugaDAO1.CercaNomeTartaruga(foo);
 	}
 	
@@ -297,67 +301,67 @@ public class Controller {
 	
 	//METODI PER VISUALIZZARE LE TABELLE AGGIORNATE
 	public void ViewSedi() {
-		SedeDAO SedeDAO1 = new SedeDAO();
+		SedeDAO SedeDAO1 = SedeDAO.GetIstanza();
 		AllSede boh = new AllSede(SedeDAO1.ViewSedi());
 		boh.setVisible(true);
 	}
 	
 	public void ViewDipendenti() {
-		DipendenteDAO DipendenteDAO1 = new DipendenteDAO();
+		DipendenteDAO DipendenteDAO1 = DipendenteDAO.GetIstanza();
 		AllDipendenti boh = new AllDipendenti(DipendenteDAO1.ViewDipendenti());
 		boh.setVisible(true);
 	}
 	
 	public void ViewAmmissioniTartarughe() {
-		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = new AmmissioneTartarugaDAO();
+		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = AmmissioneTartarugaDAO.GetIstanza();
 		AllAmmissioniTartarughe boh = new AllAmmissioniTartarughe(AmmissioneTartarugaDAO1.ViewAmmissioniTartarughe());
 		boh.setVisible(true);
 	}
 	
 	public void ViewDocumentazioniCartelleCliniche() {
-		DocumentazioniCartelleClinicheDAO DocumentazioniCartelleClinicheDAO1 = new DocumentazioniCartelleClinicheDAO();
+		DocumentazioniCartelleClinicheDAO DocumentazioniCartelleClinicheDAO1 = DocumentazioniCartelleClinicheDAO.GetIstanza();
 		AllDocumentazioniCartellaClinica boh = new AllDocumentazioniCartellaClinica(DocumentazioniCartelleClinicheDAO1.AllDocumentazioniCartelleCliniche());
 		boh.setVisible(true);
 	}
 	
 	public void ViewVasche() {
-		VascaDAO VascaDAO1 = new VascaDAO();
+		VascaDAO VascaDAO1 = VascaDAO.GetIstanza();
 		AllVasche boh = new AllVasche(VascaDAO1.AllVasche());
 		boh.setVisible(true);
 	}
 	
 	public void TartarugheSenzaVasca() {
-		TartarugaDAO TartarugaDAO1 = new TartarugaDAO();
+		TartarugaDAO TartarugaDAO1 = TartarugaDAO.GetIstanza();
 		TartarugheSenzaVasca boh = new TartarugheSenzaVasca(TartarugaDAO1.TartarugheSenzaVasca());
 		boh.setVisible(true);
 	}
 	
 	public void ViewTartarugheCentro(String foo) {
-		TartarugaDAO TartarugaDAO1 = new TartarugaDAO();
+		TartarugaDAO TartarugaDAO1 = TartarugaDAO.GetIstanza();
 		AllTartarughe boh = new AllTartarughe(TartarugaDAO1.TartarugheDiUnCentro(foo));
 		boh.setVisible(true);
 	}
 	
 	public void AmmissioniTarghetta(String foo) {
-		AmmissioneDAO AmmissioneDAO1 = new AmmissioneDAO();
+		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
 		AllAmmissione boh = new AllAmmissione(AmmissioneDAO1.AmmissionePerTarghetta(foo));
 		boh.setVisible(true);
 	}
 	
 	public void CartelleDiAmmissione(String foo) {
-		CartellaClinicaDAO CartellaClinicaDAO1 = new CartellaClinicaDAO();
+		CartellaClinicaDAO CartellaClinicaDAO1 = CartellaClinicaDAO.GetIstanza();
 		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO1.CartelleDiAmmissione(foo));
 		boh.setVisible(true);
 	}
 	
 	public void CartelleDiUnAnno(String foo) {
-		CartellaClinicaDAO CartellaClinicaDAO1 = new CartellaClinicaDAO();
+		CartellaClinicaDAO CartellaClinicaDAO1 = CartellaClinicaDAO.GetIstanza();
 		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO1.StatAnnuali(foo));
 		boh.setVisible(true);
 	}
 	
 	public void CartelleDiUnMese(String Mese, String Anno) {
-		CartellaClinicaDAO CartellaClinicaDAO1 = new CartellaClinicaDAO();
+		CartellaClinicaDAO CartellaClinicaDAO1 =  CartellaClinicaDAO.GetIstanza();
 		AllCartelleCliniche boh = new AllCartelleCliniche(CartellaClinicaDAO1.StatMensili(Mese, Anno));
 		boh.setVisible(true);
 	}

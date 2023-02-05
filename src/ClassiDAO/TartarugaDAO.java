@@ -15,6 +15,20 @@ import PackageController.Controller;
 
 public class TartarugaDAO {
 	
+
+	private TartarugaDAO() {}
+	
+	private static TartarugaDAO IstanzaTartarugaDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static TartarugaDAO GetIstanza() {
+		if (IstanzaTartarugaDAO == null) {
+			IstanzaTartarugaDAO = new TartarugaDAO();
+		}
+		return IstanzaTartarugaDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public String CercaNomeTartaruga (String boh) { 

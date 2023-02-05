@@ -13,6 +13,20 @@ import ClassiTabelle.DocumentazioniCartelleCliniche;
 
 public class DocumentazioniCartelleClinicheDAO {
 	
+
+	private DocumentazioniCartelleClinicheDAO() {}
+	
+	private static DocumentazioniCartelleClinicheDAO IstanzaDocumentazioniCartelleClinicheDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static DocumentazioniCartelleClinicheDAO GetIstanza() {
+		if (IstanzaDocumentazioniCartelleClinicheDAO == null) {
+			IstanzaDocumentazioniCartelleClinicheDAO = new DocumentazioniCartelleClinicheDAO();
+		}
+		return IstanzaDocumentazioniCartelleClinicheDAO;
+	}
+	
+	
 	public ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
 		ArrayList<DocumentazioniCartelleCliniche> dapassare = new ArrayList<DocumentazioniCartelleCliniche>();
 		

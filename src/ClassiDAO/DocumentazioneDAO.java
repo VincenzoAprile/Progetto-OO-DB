@@ -11,6 +11,21 @@ import ClassiTabelle.Documentazione;
 import PackageController.Controller;
 
 public class DocumentazioneDAO {
+	
+
+	private DocumentazioneDAO() {}
+	
+	private static DocumentazioneDAO IstanzaDocumentazioneDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static DocumentazioneDAO GetIstanza() {
+		if (IstanzaDocumentazioneDAO == null) {
+			IstanzaDocumentazioneDAO = new DocumentazioneDAO();
+		}
+		return IstanzaDocumentazioneDAO;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 	
 	public void pushDocumentazione(Documentazione boh) {
