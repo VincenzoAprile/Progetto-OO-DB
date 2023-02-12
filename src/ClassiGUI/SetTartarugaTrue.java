@@ -20,6 +20,17 @@ import ClassiDAO.TartarugaDAO;
 
 public class SetTartarugaTrue extends JFrame {
 	
+	private static SetTartarugaTrue IstanzaSetTartarugaTrue = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static SetTartarugaTrue GetIstanza() {
+		if (IstanzaSetTartarugaTrue == null) {
+			IstanzaSetTartarugaTrue = new SetTartarugaTrue();
+		}
+		return IstanzaSetTartarugaTrue;
+	}
+	
+	
 	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;

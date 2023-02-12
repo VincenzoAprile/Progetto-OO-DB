@@ -48,9 +48,7 @@ import VisualizzaStatoDataBase.TartarugheSenzaVasca;
 public class Controller {
 	
 	private static Controller IstanzaController = null;
-	static SetTartarugaFalse SetTartarugaFalse1 = new SetTartarugaFalse();
-	static SetTartarugaTrue SetTartarugaTrue1 = new SetTartarugaTrue();
-
+	
 	
 	private Controller() {}
 	
@@ -96,18 +94,22 @@ public class Controller {
 	}
 	
 	public void AppareSetTartarugaTrue() {
+		SetTartarugaTrue SetTartarugaTrue1 = SetTartarugaTrue.GetIstanza();
 		SetTartarugaTrue1.setVisible(true);
 	}
 	
 	public void ScompareSetTartarugaTrue() {
+		SetTartarugaTrue SetTartarugaTrue1 = SetTartarugaTrue.GetIstanza();
 		SetTartarugaTrue1.setVisible(false);
 	}
 	
 	public void ScompareSetTartarugaFalse() {
+		SetTartarugaFalse SetTartarugaFalse1 = SetTartarugaFalse.GetIstanza();
 		SetTartarugaFalse1.setVisible(false);
 	}
 	
 	public void AppareSetTartarugaFalse() {
+		SetTartarugaFalse SetTartarugaFalse1 = SetTartarugaFalse.GetIstanza();
 		SetTartarugaFalse1.setVisible(true);
 	}
 	
@@ -195,13 +197,13 @@ public class Controller {
 	}
 	
 	public void PassaPerIlAmmissioneDAO(AmmissioneTartaruga foo) {
-		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
-		AmmissioneDAO1.pushAmmissione(foo);
+		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = AmmissioneTartarugaDAO.GetIstanza();
+		AmmissioneTartarugaDAO1.pushAmmissione(foo);
 	}
 	
 	public void PassaPerIlTartarugaDAO(AmmissioneTartaruga foo) {
 		TartarugaDAO TartarugaDAO1 = TartarugaDAO.GetIstanza();
-		TartarugaDAO1	.pushTartaruga(foo);
+		TartarugaDAO1.pushTartaruga(foo);
 	}
 	
 	public void PassaPerIlDocumentazioneDAO(Documentazione foo) {
@@ -256,8 +258,8 @@ public class Controller {
 	//METODI PER LA CANCELLAZIONE DI INSERT INDEBITI E PER LA DELETE
 	
 	public void AmmissioneIndebita(AmmissioneTartaruga foo) {
-		AmmissioneDAO AmmissioneDAO1 = AmmissioneDAO.GetIstanza();
-		AmmissioneDAO1.CancellaAmmissioneIndebita(foo);
+		AmmissioneTartarugaDAO AmmissioneTartarugaDAO1 = AmmissioneTartarugaDAO.GetIstanza();
+		AmmissioneTartarugaDAO1.CancellaAmmissioneIndebita(foo);
 	}
 	
 	public void DocumentazioneIndebita(String foo) {

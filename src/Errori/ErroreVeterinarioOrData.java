@@ -13,12 +13,15 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Window.Type;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class ErroreVeterinarioOrData extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtIlVeterinarioInserito;
-	private JTextField txtOppureLaData;
+	private JLabel lblNewLabel;
 
 
 
@@ -26,29 +29,15 @@ public class ErroreVeterinarioOrData extends JFrame {
 	 * Create the frame.
 	 */
 	public ErroreVeterinarioOrData() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 807, 458);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ErroreVeterinarioOrData.class.getResource("/Textures/icona errore.png")));
+		setType(Type.UTILITY);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setBounds(100, 100, 900, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		txtIlVeterinarioInserito = new JTextField();
-		txtIlVeterinarioInserito.setText("Il veterinario inserito non è presente nella sede corrispondente");
-		txtIlVeterinarioInserito.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtIlVeterinarioInserito.setEditable(false);
-		txtIlVeterinarioInserito.setBounds(35, 30, 648, 92);
-		contentPane.add(txtIlVeterinarioInserito);
-		txtIlVeterinarioInserito.setColumns(10);
-		
-		txtOppureLaData = new JTextField();
-		txtOppureLaData.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtOppureLaData.setText("Oppure la data inserita non è valida (deve essere SUCCESSIVA alla data di ammissione corrispondente)");
-		txtOppureLaData.setEditable(false);
-		txtOppureLaData.setBounds(35, 189, 648, 74);
-		contentPane.add(txtOppureLaData);
-		txtOppureLaData.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -57,8 +46,13 @@ public class ErroreVeterinarioOrData extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnNewButton.setBounds(305, 321, 159, 61);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnNewButton.setBounds(660, 348, 160, 74);
 		contentPane.add(btnNewButton);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(ErroreVeterinarioOrData.class.getResource("/Textures/Errore Data Veterinario.png")));
+		lblNewLabel.setBounds(0, 0, 900, 500);
+		contentPane.add(lblNewLabel);
 	}
 }

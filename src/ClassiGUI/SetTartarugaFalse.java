@@ -19,6 +19,18 @@ import java.awt.Font;
 
 public class SetTartarugaFalse extends JFrame {
 	
+	private static SetTartarugaFalse IstanzaSetTartarugaFalse = null;
+	
+	
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static SetTartarugaFalse GetIstanza() {
+		if (IstanzaSetTartarugaFalse == null) {
+			IstanzaSetTartarugaFalse = new SetTartarugaFalse();
+		}
+		return IstanzaSetTartarugaFalse;
+	}
+	
 	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
@@ -38,7 +50,7 @@ public class SetTartarugaFalse extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SetTartarugaFalse() {
+	private SetTartarugaFalse() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 933, 488);
 		contentPane = new JPanel();
