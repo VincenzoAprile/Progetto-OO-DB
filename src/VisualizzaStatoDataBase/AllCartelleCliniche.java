@@ -22,7 +22,7 @@ public class AllCartelleCliniche extends JFrame {
 	public AllCartelleCliniche(ArrayList<CartellaClinica> temp) {
 		setType(Type.UTILITY);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 912, 542);
+		setBounds(0, 100, 1520, 542);
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);

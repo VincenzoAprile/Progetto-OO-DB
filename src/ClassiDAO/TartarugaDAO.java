@@ -156,7 +156,7 @@ public class TartarugaDAO {
 		
 		ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
 		
-		String query = "SELECT * FROM Tartarughe_Di_Un_Centro WHERE ID_Centro = '"+boh+"';"; 
+		String query = "SELECT * FROM Tartarughe_Di_Un_Centro WHERE ID_Centro LIKE '"+boh+"';"; 
 		try {
 			Class.forName("org.postgresql.Driver"); 
 		} catch (ClassNotFoundException e) {

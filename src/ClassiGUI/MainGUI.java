@@ -77,6 +77,10 @@ public class MainGUI extends JFrame {
 		contentPane.add(AssegnaVasca);
 		
 		JButton Visualizza = new JButton("");
+		Visualizza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		Visualizza.setIcon(new ImageIcon(MainGUI.class.getResource("/Textures/tartaruga icona.jpg")));
 		Visualizza.addMouseListener(new MouseAdapter() {
 			@Override
@@ -86,7 +90,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		Visualizza.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		Visualizza.setBounds(308, 340, 80, 80);
+		Visualizza.setBounds(612, 341, 80, 80);
 		contentPane.add(Visualizza);
 		
 		JButton StatMensili = new JButton("");
@@ -152,9 +156,9 @@ public class MainGUI extends JFrame {
 		lblNewLabel_3.setBounds(32, 243, 400, 51);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Visualizza le tartarughe:\r\n");
+		JLabel lblNewLabel_4 = new JLabel("Visualizza tartarughe, ammissioni e cartelle cliniche:\r\n");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel_4.setBounds(32, 352, 293, 51);
+		lblNewLabel_4.setBounds(32, 352, 676, 51);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Vedere statistiche mensili\r\n:");

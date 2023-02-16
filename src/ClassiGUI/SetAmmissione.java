@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JToggleButton;
 
 public class SetAmmissione extends JFrame {
 
@@ -79,7 +80,7 @@ public class SetAmmissione extends JFrame {
 		contentPane.add(Centro);
 		Centro.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Invio");
+		JButton btnNewButton = new JButton("Continua");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -220,6 +221,7 @@ public class SetAmmissione extends JFrame {
 		lblNewLabel_9.setIcon(new ImageIcon(SetAmmissione.class.getResource("/Textures/Mare Dall'interno.jpg")));
 		lblNewLabel_9.setBounds(0, 0, 1540, 845);
 		contentPane.add(lblNewLabel_9);
+		
 		
 	}
 }

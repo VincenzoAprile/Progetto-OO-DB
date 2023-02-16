@@ -16,6 +16,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class SetTartarugaFalse extends JFrame {
 	
@@ -36,11 +39,15 @@ public class SetTartarugaFalse extends JFrame {
 	private JPanel contentPane;
 	
 	private static AmmissioneTartaruga temp = new AmmissioneTartaruga();
-	private JTextField txtNomeTarghetta;
 	private JTextField Nome;
 	private JTextField Targhetta;
 	private JTextField IDTartaruga;
 	private JButton btnNewButton_1;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
 
 	public static void PassaASetTartarugaFalse(AmmissioneTartaruga boh) {
 		temp = boh;
@@ -51,15 +58,19 @@ public class SetTartarugaFalse extends JFrame {
 	 * Create the frame.
 	 */
 	private SetTartarugaFalse() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 933, 488);
+		setTitle("Aggiungi le informazioni della tartaruga");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SetTartarugaFalse.class.getResource("/Textures/Tartaruga frame.jpg")));
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 1920, 1080);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("OK\r\n");
+		JButton btnNewButton = new JButton("Invio\r\n");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -93,33 +104,29 @@ public class SetTartarugaFalse extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(108, 294, 173, 70);
+		btnNewButton.setBounds(684, 734, 173, 70);
 		contentPane.add(btnNewButton);
 		
-		txtNomeTarghetta = new JTextField();
-		txtNomeTarghetta.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		txtNomeTarghetta.setEditable(false);
-		txtNomeTarghetta.setText("Nome           Targhetta                  ID_Tartaruga");
-		txtNomeTarghetta.setBounds(33, 30, 581, 64);
-		contentPane.add(txtNomeTarghetta);
-		txtNomeTarghetta.setColumns(10);
-		
 		Nome = new JTextField();
-		Nome.setBounds(10, 132, 109, 64);
+		Nome.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Nome.setBounds(133, 121, 173, 58);
 		contentPane.add(Nome);
 		Nome.setColumns(10);
 		
 		Targhetta = new JTextField();
-		Targhetta.setBounds(181, 132, 173, 64);
+		Targhetta.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Targhetta.setBounds(168, 213, 173, 58);
 		contentPane.add(Targhetta);
 		Targhetta.setColumns(10);
 		
 		IDTartaruga = new JTextField();
-		IDTartaruga.setBounds(408, 132, 221, 64);
+		IDTartaruga.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		IDTartaruga.setBounds(277, 304, 221, 58);
 		contentPane.add(IDTartaruga);
 		IDTartaruga.setColumns(10);
 		
-		btnNewButton_1 = new JButton("Ammissioni e Tartarughe");
+		btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(SetTartarugaFalse.class.getResource("/Textures/TabellaDataBase.png")));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -127,8 +134,37 @@ public class SetTartarugaFalse extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_1.setBounds(497, 287, 336, 70);
+		btnNewButton_1.setBounds(609, 483, 80, 80);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("Compila le informazioni della tartaruga.");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
+		lblNewLabel.setBounds(10, 10, 878, 70);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Nome:\r\n");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1.setBounds(42, 120, 385, 58);
+		contentPane.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Targhetta:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_2.setBounds(42, 212, 385, 58);
+		contentPane.add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("ID della tartaruga:");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_3.setBounds(42, 304, 385, 58);
+		contentPane.add(lblNewLabel_3);
+		
+		lblNewLabel_4 = new JLabel("Visualizza le Tartarughe e le rispettive Ammissioni:");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_4.setBounds(42, 492, 656, 58);
+		contentPane.add(lblNewLabel_4);
+		
+		lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(SetTartarugaFalse.class.getResource("/Textures/Mare Dall'interno.jpg")));
+		lblNewLabel_5.setBounds(0, 0, 1540, 845);
+		contentPane.add(lblNewLabel_5);
 	}
-
 }

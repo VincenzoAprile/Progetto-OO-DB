@@ -60,8 +60,7 @@ public class DocumentazioneDAO {
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
-						controller.AppareSetCartellaClinica();
-						SetCartellaClinica.setDocumentazione(boh.getIDDocumentazione());
+						controller.AppareSetCartellaClinica(boh.getIDDocumentazione());
 					}
 					else if (e.getSQLState().equals("23503")) {
 						System.out.println("Quella tartaruga non esiste");

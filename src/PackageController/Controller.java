@@ -125,9 +125,10 @@ public class Controller {
 	}
 	
 	
-	public void AppareSetCartellaClinica() {
+	public void AppareSetCartellaClinica(String boh) {
 		SetCartellaClinica SetCartellaClinica1 = new SetCartellaClinica();
 		SetCartellaClinica1.setVisible(true);
+		SetCartellaClinica.setDocumentazione(boh);
 	}
 	
 	
