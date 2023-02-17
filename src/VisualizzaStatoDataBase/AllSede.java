@@ -27,7 +27,7 @@ public class AllSede extends JFrame {
 		setType(Type.UTILITY);
 		setTitle("Sedi");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 912, 542);
+		setBounds(630, 100, 912, 200);
 		
 		DefaultTableModel model = new DefaultTableModel();
 		table = new JTable(model);
@@ -36,6 +36,8 @@ public class AllSede extends JFrame {
 		model.addColumn("ID_Sede");
 		model.addColumn("Indirizzo");
 		model.addColumn("Contatti");
+		
+		
 		
 		for (int i = 0; i < temp.size(); i++ ) {
 			String[] boh = new String [4];

@@ -12,7 +12,23 @@ import PackageController.Controller;
 
 public class DocumentazioneDAO {
 	
-	public static void pushDocumentazione(Documentazione boh) {
+
+	private DocumentazioneDAO() {}
+	
+	private static DocumentazioneDAO IstanzaDocumentazioneDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static DocumentazioneDAO GetIstanza() {
+		if (IstanzaDocumentazioneDAO == null) {
+			IstanzaDocumentazioneDAO = new DocumentazioneDAO();
+		}
+		return IstanzaDocumentazioneDAO;
+	}
+	
+	
+	Controller controller = Controller.GetIstanza();
+	
+	public void pushDocumentazione(Documentazione boh) {
 		
 		String query = "INSERT INTO DOCUMENTAZIONE VALUES "
 					+ "('"+boh.getVeterinario()+"','"+boh.getLuogoDiRitrovamento()+"','"+boh.getData()+"','"+boh.getIDDocumentazione()+"','"
@@ -39,33 +55,32 @@ public class DocumentazioneDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a un altra documentazione");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("Esiste già una documentazione con quell'id!");
+						controller.AppareMainGUI();
+						controller.AppareErroreSpecifico("Esiste già una documentazione con quell'id!");
 					}
 					else if (e.getSQLState().equals("02000")){
 						System.out.println("Operazione avvenuta con successo");
-						Controller.AppareSetCartellaClinica();
-						SetCartellaClinica.setDocumentazione(boh.getIDDocumentazione());
+						controller.AppareSetCartellaClinica(boh.getIDDocumentazione());
 					}
 					else if (e.getSQLState().equals("23503")) {
 						System.out.println("Quella tartaruga non esiste");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreSpecifico("La tartaruga inserita non esiste!");
+						controller.AppareMainGUI();
+						controller.AppareErroreSpecifico("La tartaruga inserita non esiste!");
 					}
 					else if (e.getSQLState().equals("P0001")) {
 						System.out.println("Il Veterinario inserito non corrisponde a un veterinario presente nella sede corrispondente");
 						System.out.println("Oppure la data inserita non è valida (Deve essere SUCCESSIVA alla data di ammissione della tartaruga corrispondente)");
-						Controller.AppareMainGUI();
-						Controller.AppareErroreVeterinarioOrData();
+						controller.AppareMainGUI();
+						controller.AppareErroreVeterinarioOrData();
 					}
 					else {
-						Controller.AppareMainGUI();
-						Controller.AppareErroreGenerico();
+						controller.AppareMainGUI();
+						controller.AppareErroreGenerico();
 					}
 				}
 	}
 	
-	public static void CancellaDocumentazioneIndebita (String IDDocumentazione) {
+	public void CancellaDocumentazioneIndebita (String IDDocumentazione) {
 		String query1 = "DELETE FROM Documentazione WHERE ID_Documentazione = '"+IDDocumentazione+"';";
 		//DEFINIZIONE DELLA QUERY
 		try {

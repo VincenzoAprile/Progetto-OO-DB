@@ -15,7 +15,23 @@ import PackageController.Controller;
 
 public class TartarugaDAO {
 	
-	public static String CercaNomeTartaruga (String boh) { 
+
+	private TartarugaDAO() {}
+	
+	private static TartarugaDAO IstanzaTartarugaDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static TartarugaDAO GetIstanza() {
+		if (IstanzaTartarugaDAO == null) {
+			IstanzaTartarugaDAO = new TartarugaDAO();
+		}
+		return IstanzaTartarugaDAO;
+	}
+	
+	
+	Controller controller = Controller.GetIstanza();
+	
+	public String CercaNomeTartaruga (String boh) { 
 
 
 		String query = "SELECT Nome FROM Tartaruga WHERE Targhetta = '"+boh+"' GROUP BY Nome;"; 
@@ -48,7 +64,7 @@ public class TartarugaDAO {
 		return null;
 	}
 	
-	public static void pushTartaruga(AmmissioneTartaruga boh) {
+	public void pushTartaruga(AmmissioneTartaruga boh) {
 
 
 		
@@ -76,8 +92,8 @@ public class TartarugaDAO {
 				} catch (SQLException e) {
 					if (e.getSQLState().equals("23505")) {
 						System.out.println("Hai inserito un id già assegnato a altra tartaruga");
-						Controller.AppareErroreSpecifico("Già esiste una tartaruga con quell'id!");
-						AmmissioneDAO.CancellaAmmissioneIndebita(boh);
+						controller.AppareErroreSpecifico("Già esiste una tartaruga con quell'id!");
+						controller.AmmissioneIndebita(boh);
 						
 					}
 		
@@ -86,18 +102,18 @@ public class TartarugaDAO {
 					}
 					else if(e.getSQLState().equals("P0001")) {
 						System.out.println("La targhetta è già presente nel database");
-						Controller.AppareErroreSpecifico("Esiste già una tartaruga con quella targhetta nel database!");
-						AmmissioneDAO.CancellaAmmissioneIndebita(boh);
+						controller.AppareErroreSpecifico("Esiste già una tartaruga con quella targhetta nel database!");
+						controller.AmmissioneIndebita(boh);
 					}
 					else {
 						System.out.println(e.getSQLState());
-						AmmissioneDAO.CancellaAmmissioneIndebita(boh);
+						controller.AmmissioneIndebita(boh);
 					}
 				}
 		
 	}
 
-	public static ArrayList<Tartaruga> TartarugheSenzaVasca(){
+	public ArrayList<Tartaruga> TartarugheSenzaVasca(){
 		
 		ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
 		
@@ -136,11 +152,11 @@ public class TartarugaDAO {
 		return dapassare;
 	}
 	
-	public static ArrayList<Tartaruga> TartarugheDiUnCentro(String boh){
+	public ArrayList<Tartaruga> TartarugheDiUnCentro(String boh){
 		
 		ArrayList<Tartaruga> dapassare = new ArrayList<Tartaruga>();
 		
-		String query = "SELECT * FROM Tartarughe_Di_Un_Centro WHERE ID_Centro = '"+boh+"';"; 
+		String query = "SELECT * FROM Tartarughe_Di_Un_Centro WHERE ID_Centro LIKE '"+boh+"';"; 
 		try {
 			Class.forName("org.postgresql.Driver"); 
 		} catch (ClassNotFoundException e) {

@@ -13,7 +13,21 @@ import ClassiTabelle.DocumentazioniCartelleCliniche;
 
 public class DocumentazioniCartelleClinicheDAO {
 	
-	public static ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
+
+	private DocumentazioniCartelleClinicheDAO() {}
+	
+	private static DocumentazioniCartelleClinicheDAO IstanzaDocumentazioniCartelleClinicheDAO = null;
+	
+	/*LOGICA DEL PATTERN SINGLETON*/
+	public static DocumentazioniCartelleClinicheDAO GetIstanza() {
+		if (IstanzaDocumentazioniCartelleClinicheDAO == null) {
+			IstanzaDocumentazioniCartelleClinicheDAO = new DocumentazioniCartelleClinicheDAO();
+		}
+		return IstanzaDocumentazioniCartelleClinicheDAO;
+	}
+	
+	
+	public ArrayList<DocumentazioniCartelleCliniche> AllDocumentazioniCartelleCliniche () {
 		ArrayList<DocumentazioniCartelleCliniche> dapassare = new ArrayList<DocumentazioniCartelleCliniche>();
 		
 		String query = "SELECT ID_Documentazione, FK_Tartaruga, ID_CartellaClinica "
@@ -49,6 +63,35 @@ public class DocumentazioniCartelleClinicheDAO {
 		}
 		
 		return dapassare;
+	}
+	
+	public void DeleteDocumentazioneCartellaClinica(String boh) {
+		
+		String query1 = "DELETE FROM DOCUMENTAZIONE WHERE ID_Documentazione = "
+				+"(SELECT ID_Documentazione FROM Documentazione JOIN CARTELLA_CLINICA ON Documentazione = ID_Documentazione "
+				+ "WHERE ID_CartellaClinica = '"+boh+"')";
+		//DEFINIZIONE DELLA QUERY
+		try {
+			Class.forName("org.postgresql.Driver"); // APERTURA DRIVER JDBC (DA ISTALLARE PRIMA IN JAVA BUILD PATH)
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Non trovato");
+		}
+		try {
+			Properties props = new Properties(); //DEFINIZIONE DELLA CLASSE PER INSERIRE USER, PASSWORD E SSL
+			props.setProperty("user", "postgres");
+			props.setProperty("password", "tantomelascordo");
+			props.setProperty("ssl", "false");
+
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProvaO", props);  //PER STABILIRE LA CONNESSIONE CON IL DATABASE
+			Statement statement = con.createStatement();    //PER INIZIARE UNA SERIE DI QUERY
+			statement.executeQuery(query1);  //PER ESEGUIRE UNA QUERY
+			
+			
+			statement.close();
+			con.close();  //PER TERMINARE QUERY E LA CONNESSIONE
+		} catch (SQLException e) {
+			e.getStackTrace();
+		}
 	}
 
 }

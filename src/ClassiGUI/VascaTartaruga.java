@@ -15,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class VascaTartaruga extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
 	private JTextField txtTarghettaDellaTartaruga;
@@ -61,16 +63,16 @@ public class VascaTartaruga extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				if(Targhetta.getText().equals("") || IDVasca.getText().equals("")) {
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
-					Controller.AppareErroreGenerico();
+					controller.AppareErroreGenerico();
 					
 				}
 				else {
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					setVisible(false);
 					
-					Controller.PassaPerIlVascaTartarugaDAO(IDVasca.getText(), Targhetta.getText());
+					controller.PassaPerIlVascaTartarugaDAO(IDVasca.getText(), Targhetta.getText());
 					
 				}
 			}
@@ -83,7 +85,7 @@ public class VascaTartaruga extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewVasche();
+				controller.ViewVasche();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -94,7 +96,7 @@ public class VascaTartaruga extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.TartarugheSenzaVasca();
+				controller.TartarugheSenzaVasca();
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 20));

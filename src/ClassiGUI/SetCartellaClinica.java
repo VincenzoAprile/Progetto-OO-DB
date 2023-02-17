@@ -17,11 +17,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class SetCartellaClinica extends JFrame {
+	
+	Controller controller = Controller.GetIstanza();
 
 	private JPanel contentPane;
-	private JTextField txtSpecieLunghezzaLarghezza;
 	private JTextField Specie;
 	private JTextField Lunghezza;
 	private JTextField Larghezza;
@@ -32,21 +36,15 @@ public class SetCartellaClinica extends JFrame {
 	
 	private CartellaClinica temp = new CartellaClinica();
 	private static String Documentazione;
-	private JTextField txtOcchi;
 	private JComboBox Occhi;
-	private JTextField txtTesta;
 	private JComboBox Testa;
-	private JTextField txtNaso;
 	private JComboBox Naso;
-	private JTextField txtBecco;
 	private JComboBox Becco;
-	private JTextField txtCollo;
 	private JComboBox Collo;
-	private JTextField txtPinne;
 	private JComboBox Pinne;
-	private JTextField txtCoda;
 	private JComboBox Coda;
 	private JButton btnNewButton_1;
+	
 	public String getDocumentazione() {
 		return Documentazione;
 	}
@@ -59,48 +57,49 @@ public class SetCartellaClinica extends JFrame {
 	 * Create the frame.
 	 */
 	public SetCartellaClinica() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 889, 523);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SetCartellaClinica.class.getResource("/Textures/Tartaruga frame.jpg")));
+		setTitle("Aggiungi una cartella clinica\r\n");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 1920, 1080);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtSpecieLunghezzaLarghezza = new JTextField();
-		txtSpecieLunghezzaLarghezza.setText("Specie    Lunghezza     Larghezza     Peso        ID Cartella Clinica\r\n\r\n");
-		txtSpecieLunghezzaLarghezza.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		txtSpecieLunghezzaLarghezza.setEditable(false);
-		txtSpecieLunghezzaLarghezza.setBounds(10, 10, 855, 65);
-		contentPane.add(txtSpecieLunghezzaLarghezza);
-		txtSpecieLunghezzaLarghezza.setColumns(10);
-		
 		Specie = new JTextField();
-		Specie.setBounds(0, 107, 96, 28);
+		Specie.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Specie.setBounds(120, 115, 178, 48);
 		contentPane.add(Specie);
 		Specie.setColumns(10);
 		
 		Lunghezza = new JTextField();
+		Lunghezza.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		Lunghezza.setColumns(10);
-		Lunghezza.setBounds(125, 107, 96, 28);
+		Lunghezza.setBounds(158, 196, 111, 47);
 		contentPane.add(Lunghezza);
 		
 		Larghezza = new JTextField();
+		Larghezza.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		Larghezza.setColumns(10);
-		Larghezza.setBounds(276, 111, 96, 28);
+		Larghezza.setBounds(158, 280, 111, 47);
 		contentPane.add(Larghezza);
 		
 		Peso = new JTextField();
+		Peso.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		Peso.setColumns(10);
-		Peso.setBounds(396, 111, 96, 28);
+		Peso.setBounds(98, 353, 140, 48);
 		contentPane.add(Peso);
 		
 		IDCartellaClinica = new JTextField();
+		IDCartellaClinica.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		IDCartellaClinica.setColumns(10);
-		IDCartellaClinica.setBounds(547, 107, 96, 28);
+		IDCartellaClinica.setBounds(294, 429, 140, 46);
 		contentPane.add(IDCartellaClinica);
 		
-		JButton btnNewButton = new JButton("OK");
+		JButton btnNewButton = new JButton("Invio");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,11 +109,11 @@ public class SetCartellaClinica extends JFrame {
 				   Larghezza.getText().equals("") || Peso.getText().equals("")) {
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
-					Controller.AppareErroreGenerico();
+					controller.AppareMainGUI();
+					controller.AppareErroreGenerico();
 					
 					
-					Controller.DocumentazioneIndebita(Documentazione);
+					controller.DocumentazioneIndebita(Documentazione);
 				}
 				else {
 					temp.setBecco((String) Becco.getItemAt(Becco.getSelectedIndex()));
@@ -132,110 +131,136 @@ public class SetCartellaClinica extends JFrame {
 					temp.setDocumentazione(Documentazione);
 					
 					setVisible(false);
-					Controller.AppareMainGUI();
+					controller.AppareMainGUI();
 					
-					Controller.PassaPerIlCartellaClinicaDAO(temp);
+					controller.PassaPerIlCartellaClinicaDAO(temp);
 					
 					
 				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(440, 387, 140, 73);
+		btnNewButton.setBounds(707, 740, 140, 73);
 		contentPane.add(btnNewButton);
 		
-		txtOcchi = new JTextField();
-		txtOcchi.setText("Occhi");
-		txtOcchi.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtOcchi.setEditable(false);
-		txtOcchi.setBounds(10, 196, 70, 39);
-		contentPane.add(txtOcchi);
-		txtOcchi.setColumns(10);
-		
 		Occhi = new JComboBox(Stati);
-		Occhi.setBounds(90, 196, 172, 39);
+		Occhi.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Occhi.setBounds(653, 195, 194, 48);
 		contentPane.add(Occhi);
 		
-		txtTesta = new JTextField();
-		txtTesta.setText("Testa");
-		txtTesta.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtTesta.setEditable(false);
-		txtTesta.setColumns(10);
-		txtTesta.setBounds(10, 256, 70, 39);
-		contentPane.add(txtTesta);
-		
 		Testa = new JComboBox(Stati);
-		Testa.setBounds(90, 256, 172, 39);
+		Testa.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Testa.setBounds(653, 115, 194, 49);
 		contentPane.add(Testa);
 		
-		txtNaso = new JTextField();
-		txtNaso.setText("Naso");
-		txtNaso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtNaso.setEditable(false);
-		txtNaso.setColumns(10);
-		txtNaso.setBounds(10, 315, 70, 39);
-		contentPane.add(txtNaso);
-		
 		Naso = new JComboBox(Stati);
-		Naso.setBounds(90, 315, 172, 39);
+		Naso.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Naso.setBounds(653, 280, 194, 47);
 		contentPane.add(Naso);
 		
-		txtBecco = new JTextField();
-		txtBecco.setText("Becco");
-		txtBecco.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtBecco.setEditable(false);
-		txtBecco.setColumns(10);
-		txtBecco.setBounds(346, 196, 70, 39);
-		contentPane.add(txtBecco);
-		
 		Becco = new JComboBox(Stati);
-		Becco.setBounds(426, 196, 172, 39);
+		Becco.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Becco.setBounds(653, 429, 194, 46);
 		contentPane.add(Becco);
 		
-		txtCollo = new JTextField();
-		txtCollo.setText("Collo");
-		txtCollo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtCollo.setEditable(false);
-		txtCollo.setColumns(10);
-		txtCollo.setBounds(346, 256, 70, 39);
-		contentPane.add(txtCollo);
-		
 		Collo = new JComboBox(Stati);
-		Collo.setBounds(426, 256, 172, 39);
+		Collo.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Collo.setBounds(653, 354, 194, 48);
 		contentPane.add(Collo);
 		
-		txtPinne = new JTextField();
-		txtPinne.setText("Pinne");
-		txtPinne.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtPinne.setEditable(false);
-		txtPinne.setColumns(10);
-		txtPinne.setBounds(346, 315, 70, 39);
-		contentPane.add(txtPinne);
-		
 		Pinne = new JComboBox(Stati);
-		Pinne.setBounds(426, 315, 172, 39);
+		Pinne.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		Pinne.setBounds(653, 505, 194, 48);
 		contentPane.add(Pinne);
 		
-		txtCoda = new JTextField();
-		txtCoda.setText("Coda\r\n");
-		txtCoda.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtCoda.setEditable(false);
-		txtCoda.setColumns(10);
-		txtCoda.setBounds(10, 374, 70, 39);
-		contentPane.add(txtCoda);
-		
 		Coda = new JComboBox(Stati);
-		Coda.setBounds(90, 374, 172, 39);
+		Coda.setBounds(653, 583, 194, 48);
 		contentPane.add(Coda);
 		
-		btnNewButton_1 = new JButton("ID Documentazioni e cartelle");
+		btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(SetCartellaClinica.class.getResource("/Textures/TabellaDataBase.png")));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.ViewDocumentazioniCartelleCliniche();
+				controller.ViewDocumentazioniCartelleCliniche();
 			}
 		});
-		btnNewButton_1.setBounds(680, 196, 185, 78);
+		btnNewButton_1.setBounds(1020, 651, 80, 80);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("Inserire i dati nella cartella clinica.");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
+		lblNewLabel.setBounds(10, 10, 1354, 73);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Specie:\r\n");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1.setBounds(31, 114, 366, 48);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Lunghezza:\r\n");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_1.setBounds(31, 196, 366, 48);
+		contentPane.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Larghezza:\r\n");
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_2.setBounds(31, 279, 366, 48);
+		contentPane.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_1_3 = new JLabel("Peso:\r\n");
+		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_3.setBounds(31, 348, 366, 48);
+		contentPane.add(lblNewLabel_1_3);
+		
+		JLabel lblNewLabel_1_4 = new JLabel("ID della cartella clinica:\r\n");
+		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_4.setBounds(31, 429, 366, 48);
+		contentPane.add(lblNewLabel_1_4);
+		
+		JLabel lblNewLabel_1_5 = new JLabel("Testa:\r\n");
+		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_5.setBounds(578, 114, 366, 48);
+		contentPane.add(lblNewLabel_1_5);
+		
+		JLabel lblNewLabel_1_6 = new JLabel("Occhi:\r\n");
+		lblNewLabel_1_6.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_6.setBounds(578, 196, 366, 48);
+		contentPane.add(lblNewLabel_1_6);
+		
+		JLabel lblNewLabel_1_7 = new JLabel("Naso:\r\n");
+		lblNewLabel_1_7.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_7.setBounds(578, 279, 366, 48);
+		contentPane.add(lblNewLabel_1_7);
+		
+		JLabel lblNewLabel_1_8 = new JLabel("Collo:\r\n");
+		lblNewLabel_1_8.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_8.setBounds(578, 353, 366, 48);
+		contentPane.add(lblNewLabel_1_8);
+		
+		JLabel lblNewLabel_1_9 = new JLabel("Becco\r\n:\r\n");
+		lblNewLabel_1_9.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_9.setBounds(578, 427, 366, 48);
+		contentPane.add(lblNewLabel_1_9);
+		
+		JLabel lblNewLabel_1_10 = new JLabel("Pinne:\r\n");
+		lblNewLabel_1_10.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_10.setBounds(578, 505, 366, 48);
+		contentPane.add(lblNewLabel_1_10);
+		
+		JLabel lblNewLabel_1_11 = new JLabel("Coda:\r\n");
+		lblNewLabel_1_11.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_1_11.setBounds(578, 583, 366, 48);
+		contentPane.add(lblNewLabel_1_11);
+		
+		JLabel lblNewLabel_2 = new JLabel("Visualizza gli ID delle tartarughe, documentazioni e cartelle cliniche associate tra di loro:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_2.setBounds(31, 664, 1009, 48);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(SetCartellaClinica.class.getResource("/Textures/Mare Dall'interno.jpg")));
+		lblNewLabel_3.setBounds(0, 0, 1540, 845);
+		contentPane.add(lblNewLabel_3);
 	}
 }
